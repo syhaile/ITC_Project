@@ -1,42 +1,23 @@
 ﻿Public Class Course
 
-    Private m_ID, m_title, m_date, m_time, m_room As String
+    Private m_ID, m_title As String
     Private m_units As Integer
-    Private m_companionCourse, m_PreRequisit As Course
-    Private m_teacher As Teacher
-    Private m_student As Student
+    Private m_companionCourse, m_PreRequisit As String
 
-    Public Property RoomNumber As String
-        Get
-            Return m_room
-        End Get
-        Set(value As String)
-            m_room = value
-        End Set
-    End Property
-
-    Public Property CompanionCourse As Course
+    Public Property CompanionCourse As String
         Get
             Return m_companionCourse
         End Get
-        Set(value As Course)
+        Set(value As String)
             m_companionCourse = value
         End Set
     End Property
 
-    Public Property Teacher As Teacher
-        Get
-            Return m_teacher
-        End Get
-        Set(value As Teacher)
-            m_teacher = value
-        End Set
-    End Property
-    Public Property PreRequisitCourse As Course
+    Public Property PreRequisitCourse As String
         Get
             Return m_PreRequisit
         End Get
-        Set(value As Course)
+        Set(value As String)
             m_PreRequisit = value
         End Set
     End Property
@@ -49,6 +30,7 @@
             m_units = value
         End Set
     End Property
+
     Public Property ID As String
         Get
             Return m_ID
@@ -67,27 +49,21 @@
         End Set
     End Property
 
-    Public Property DateOffered As String
-        Get
-            Return m_date
-        End Get
-        Set(value As String)
-            m_date = value
-        End Set
-    End Property
+    Public Function getCourseDescription()
+        Dim result As String
+        result = "Course ID: " & m_ID & vbCrLf & "Course Title: " & m_title & vbCrLf & "Units: " & m_units & vbCrLf
+        If m_companionCourse <> "" Then
+            result += "Companion Course: " & m_companionCourse & vbCrLf
+        End If
+        If m_PreRequisit <> "" Then
+            result += "PreRequisit Course: " & m_PreRequisit & vbCrLf
+        End If
 
-    Public Property TimeOffered As String
-        Get
-            Return m_time
-        End Get
-        Set(value As String)
-            m_time = value
-        End Set
-    End Property
 
-    Public Sub New()
+        Return result
 
-    End Sub
+
+    End Function
 
 
 End Class

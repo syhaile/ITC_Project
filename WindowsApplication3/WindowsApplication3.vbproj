@@ -80,6 +80,10 @@
     <Compile Include="PrerequisitClasses.vb" />
     <Compile Include="RequiredCoreCourses.vb" />
     <Compile Include="RequiredGECourses.vb" />
+    <Compile Include="Room.vb" />
+    <Compile Include="RoomDatabase.vb" />
+    <Compile Include="Schedule.vb" />
+    <Compile Include="ScheduleDatabase.vb" />
     <Compile Include="Student.vb" />
     <Compile Include="StudentDatabase.vb" />
     <Compile Include="Teacher.vb" />

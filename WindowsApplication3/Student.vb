@@ -1,16 +1,15 @@
 ﻿Public Class Student
 
-    Private m_ID As Integer
-    Private m_Name As String
+    Private m_ID, m_Name As String
     Private m_enrolledDate, m_ExpectedGraduation As Date
-    Private m_CurrentStudent As Boolean
+    Private m_CurrentStudent As Boolean = False
     Private m_coursesTaken As Collection
 
     Public Sub New()
 
     End Sub
 
-    Public Sub New(ByVal id As Integer, ByVal name As String,
+    Public Sub New(ByVal id As String, ByVal name As String,
             ByVal enrolledDate As Date, ByVal currentStudent As Boolean) ' Optional ByVal expectedGraudationDate As Date = Now
         'Me.ExpectedGraduationDate = expectedGraudationDate
         Me.ID = id
@@ -19,11 +18,11 @@
         Me.CurrentStudent = currentStudent
     End Sub
 
-    Public Property ID As Integer
+    Public Property ID As String
         Get
             Return m_ID
         End Get
-        Set(value As Integer)
+        Set(value As String)
             m_ID = value
         End Set
     End Property
@@ -70,8 +69,19 @@
         End Set
     End Property
 
-    Public Function GetDisplayText(ByVal sep As String) As String
-        Dim text As String = ID & sep & Name & sep & EnrolledDate & sep & CurrentStudent
-        Return text
+    Public Sub addCourseTaken(ByVal tempCourse As Course)
+        m_coursesTaken.Add(tempCourse, tempCourse.ID)
+    End Sub
+
+    Public Function getStudentDescription()
+        Dim msg As String = ""
+        msg += "Student ID: " & m_ID & vbCrLf & " Student Name: " & m_Name & vbCrLf & " Enrolled Date: " & m_enrolledDate & vbCrLf & " Current Student: " & m_CurrentStudent & vbCrLf
+        If m_CurrentStudent = True Then
+            msg += "Expected Graduation: " & m_ExpectedGraduation
+        End If
+
+        'add courses taken to description
+
+        Return msg
     End Function
 End Class

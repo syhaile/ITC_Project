@@ -6,7 +6,7 @@
 
     End Sub
 
-    Public Sub New(ByVal ID As Integer, ByVal name As String)
+    Public Sub New(ByVal ID As String, ByVal name As String)
         Me.ID = ID
         Me.Name = name
 
@@ -30,9 +30,12 @@
     End Property
 
     'Erased the Department property because the case only deals with ONE department - Miguel
-    Public Function GetDisplayText(ByVal sep As String) As String
-        Dim text As String = ID & sep & Name & sep      'Brian: What is this "Sep" that are you expecting?  I'm confused because u use it for both ID and Name -Miguel
+    Public Function getTeacherDescription()
+        Dim msg As String = ""
 
-        Return text
+        msg += "Teacher ID: " & m_ID & vbCrLf & "Teacher Name: " & m_Name & vbCrLf
+
+        Return msg
+
     End Function
 End Class
