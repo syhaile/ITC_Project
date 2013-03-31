@@ -97,6 +97,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="KSUDBDataSet.vb">
+      <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PrerequisitClasses.vb" />
     <Compile Include="RequiredCoreCourses.vb" />
     <Compile Include="RequiredGECourses.vb" />

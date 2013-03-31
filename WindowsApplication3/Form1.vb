@@ -8,37 +8,9 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCreateCurriculum.Click
 
         'Testing creating a course and adding prerequisit Course
-        Dim Course As New Course
-        Course.ID = "CIS-234"
-        Course.Title = "Beginners Java for Business"
-        Course.Units = 4
-        ctrlCourseDB.setCourse(Course)
-
-        Course = New Course
-        Course.ID = "CIS-304L"
-        Course.Title = "Java Companion Lab"
-        Course.Units = 2
-        ctrlCourseDB.setCourse(Course)
-
-        Course = New Course
-        Course.ID = "CIS-304"
-        Course.Title = "Intermediate Java for Business"
-        Course.Units = 4
-        Course.PreRequisitCourse = "CIS-234"  'requires a course. Therefore, I get course instance from database
-        Course.CompanionCourse = "CIS-304L"
-        ctrlCourseDB.setCourse(Course)
 
 
-        'Test student
 
-        Dim student As New Student("112233", "Miguel Angel Venegas", CDate("01/11/1111"), False)
-        ctrlStudentDB.setStudent(student)
-        student = New Student
-        student.ID = "442233"
-        student.Name = "Jesus Alberto Mendoza"
-        student.EnrolledDate = CDate("12/01/1102")
-        student.CurrentStudent = False
-        ctrlStudentDB.setStudent(student)
 
         'Test Teacher
         Dim teacher As New Teacher(998877, "Dr. S Curl")

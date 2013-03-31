@@ -4,6 +4,26 @@
     Private m_units As Integer
     Private m_companionCourse, m_PreRequisit As String
 
+    Public Sub New(ByVal id As String)
+        Dim ds As New KSUDBDataSet
+        Dim ta As New KSUDBDataSetTableAdapters.CourseTableAdapter
+        ta.FillCourseDataByID(ds.Course,id)
+        Dim ta2 As New KSUDBDataSetTableAdapters.PrerequisiteTableAdapter
+        ta2.Fill(ds.Prerequisite)
+        For Each row As DataRow In ds.Course.Rows
+            Me.ID = row("courseID")
+            Me.Units = row("units")
+            If Not IsDBNull(row("CompanionClassID"))
+                Me.CompanionCourse = row("CompanionClassID")
+            End If
+            For Each rowPre As DataRow In ds.Prerequisite
+                If Me.ID = rowPre("courseID")
+                    Me.PreRequisitCourse += rowPre("prerequisiteClassID") & " "
+                End If
+            Next
+        Next
+    End Sub
+
     Public Property CompanionCourse As String
         Get
             Return m_companionCourse
@@ -51,7 +71,7 @@
 
     Public Function getCourseDescription()
         Dim result As String
-        result = "Course ID: " & m_ID & vbCrLf & "Course Title: " & m_title & vbCrLf & "Units: " & m_units & vbCrLf
+        result = "Course ID: " & m_ID & vbCrLf & "Units: " & m_units & vbCrLf
         If m_companionCourse <> "" Then
             result += "Companion Course: " & m_companionCourse & vbCrLf
         End If

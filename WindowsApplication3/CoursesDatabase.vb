@@ -1,6 +1,7 @@
 ﻿Public Class CoursesDatabase
     'This class should contain a database having all Courses possible
     Private m_courseDatabase As New Collection
+    Private ds As New KSUDBDataSet
 
     Public Property MasterDatabase As Collection
         Get
@@ -10,6 +11,17 @@
             m_courseDatabase = value
         End Set
     End Property
+
+    Public Sub New()
+        Dim ta As New KSUDBDataSetTableAdapters.CourseTableAdapter
+        ta.Fill(ds.Course)
+        Dim ta2 As New KSUDBDataSetTableAdapters.PrerequisiteTableAdapter
+        ta2.Fill(ds.Prerequisite)
+        For Each row As DataRow In ds.Course.Rows
+            Dim c As New Course(row("courseID"))
+            setCourse(c)
+        Next
+    End Sub
 
     Public Sub setCourse(ByVal course As Course)
    
