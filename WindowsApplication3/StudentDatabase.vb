@@ -1,5 +1,6 @@
 ﻿Public Class StudentDatabase
     'This class should have all the students in the database
+    'This class can also generate students based on parameters (not yet implemented)
     Private m_studentDatabase As New Collection
     Private Dim ds As New KSUDBDataSet
     

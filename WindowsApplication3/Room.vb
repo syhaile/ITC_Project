@@ -1,64 +1,59 @@
 ﻿Public Class Room
-    'This class should make up what a room is (ID, location, time, dates)
-    Private m_id, m_location, m_dates As String
-    Private m_startTime, m_endTime As DateTime
-    Private m_assigned As Boolean
+    'This class should make up what a room is (ID, location)
+    Private m_id As String
+    Private m_capacity, m_building, m_roomNumber As Integer
+
+    Public Sub New(ByVal id As String)
+        'Pull data from sql db to this class based on id
+        Dim ds As New DataSet
+        Dim ta As New KSUDBDataSetTableAdapters.ClassroomTableAdapter
+        ds.Tables.Add(ta.GetClassroomDataByID(id))
+        Me.ID = id
+        Me.Building = ds.Tables(0).Rows(0).Item("buildingNumber")
+        Me.RoomNumber = ds.Tables(0).Rows(0).Item("roomNumber")
+        Me.Capacity = ds.Tables(0).Rows(0).Item("capacity")
+    End Sub
 
     Public Property ID As String
         Get
             Return m_id
         End Get
-        Set(value As String)
+        Set(ByVal value As String)
             m_id = value
         End Set
     End Property
 
-    Public Property Location As String
+
+    Public Property Building() As Integer
         Get
-            Return m_location
+            Return m_building
         End Get
-        Set(value As String)
-            m_location = value
+        Set(ByVal value As Integer)
+            m_building = value
         End Set
     End Property
 
-    Public Property StartTime As DateTime
+    Public Property RoomNumber() As Integer
         Get
-            Return m_startTime
+            Return m_roomNumber
+
         End Get
-        Set(value As Date)
-            m_startTime = value
+        Set(ByVal value As Integer)
+            m_roomNumber = value
         End Set
     End Property
 
-    Public Property EndTime As DateTime
-        Get
-            Return m_endTime
+    Public Property Capacity As Integer
+        Get 
+            Return m_capacity
         End Get
-        Set(value As Date)
-            m_endTime = value
+        Set(ByVal value As Integer)
+            m_capacity = value
         End Set
     End Property
 
-    Public Property Days As String
-        Get
-            Return m_dates
-        End Get
-        Set(value As String)
-            m_dates = value
-        End Set
-    End Property
-
-    Public Property Assigned As Boolean
-        Get
-            Return m_assigned
-        End Get
-        Set(value As Boolean)
-            m_assigned = value
-        End Set
-    End Property
-    
+    'needs fixin
     Public Function getDescription()
-        Return "Room ID: " & m_id & vbCrLf & "Room Location: " & m_location & vbCrLf & "Date Assigned: " & m_dates & vbCrLf & "Start Time: " & m_startTime & vbCrLf & "End Time: " & m_endTime & vbCrLf
+        Return "Room ID: " & m_id & vbCrLf & "Room Location: " 
     End Function
 End Class

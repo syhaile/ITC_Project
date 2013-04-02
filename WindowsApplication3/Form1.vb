@@ -3,7 +3,7 @@
     Dim ctrlStudentDB As New StudentDatabase
     Dim ctrlTeacherDB As New TeacherDatabase
     Dim ctrlRoomDB As New RoomDatabase
-    Dim ctrlScheduleDB As New ScheduleDatabase
+    Dim ctrlScheduleDB As New Schedule
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCreateCurriculum.Click
 
@@ -38,14 +38,14 @@
         ctrlRoomDB.setRoom(room)
 
         'test adding room, course, student and professor  into a master schedule
-        Dim scheduler As New Schedule
-        scheduler.ScheduleID = "Spring-2012"
+        Dim scheduler As New Section
+        scheduler.SectionID = "Spring-2012"
         scheduler.CourseID = "CIS-304"
         scheduler.RoomID = "CLA-1001"
         scheduler.TeacherID = "667788"
         scheduler.addStudentID("442233")
         scheduler.addStudentID("112233")
-        ctrlScheduleDB.setSchedule(scheduler)
+        ctrlScheduleDB.addSection(scheduler)
 
     End Sub
 
@@ -97,12 +97,12 @@
 
     Private Sub btnSchedule_Click(sender As System.Object, e As System.EventArgs) Handles btnSchedule.Click
         txtArea.Clear()
-        Dim list As ArrayList = ctrlScheduleDB.getAllSchedules()
-        Dim tempSchedule As Schedule
+        Dim list As ArrayList = ctrlScheduleDB.getAllSections()
+        Dim tempSchedule As Section
         Dim msg As String = ""
 
         For Each tempSchedule In list
-            msg += tempSchedule.getScheduleDescription & vbCrLf
+            msg += tempSchedule.getSectionDescription & vbCrLf
         Next
         txtArea.Text = msg
 

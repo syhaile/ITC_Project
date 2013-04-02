@@ -1,30 +1,32 @@
 ﻿Public Class ScheduleDatabase
-    'This class contains all schedule courses (courseID, teacherID, roomID, studentID's)
-    Private m_scheduleDatabase As New Collection
+    'This class holds a collection of schedule objects and pushes updates to relevant tables in sql db
+    Private m_scheduleDatabase As Collection
 
-    Public Property MasterDatabase As Collection
-        Get
-            Return m_scheduleDatabase
-        End Get
-        Set(value As Collection)
-            m_scheduleDatabase = value
-        End Set
-    End Property
+    Public Sub New()
+        'pull data from sql db to this database placeholder
+        Dim ds As New KSUDBDataSet
+        Dim ta As New KSUDBDataSetTableAdapters.ClassScheduleTableAdapter
+        ta.Fill(ds.ClassSchedule)
+        For Each row As DataRow In ds.ClassSchedule.Rows
+            addSchedule(New Schedule(row("scheduleID")))
+        Next
 
-    Public Sub setSchedule(ByVal schedule As Schedule)
+    End Sub
+
+    Public Sub addSchedule(ByVal schedule As Schedule)
         m_scheduleDatabase.Add(schedule, schedule.ScheduleID)
     End Sub
 
-    Public Function getSchedule(ByVal ID As String)
-        Return m_scheduleDatabase.Item(ID)
+    Public Function getSchedule(ByVal id As String) As Schedule
+        Return m_scheduleDatabase.Item(id)
     End Function
 
-    Public Function getAllSchedules() As ArrayList
+    Public Function getAllSchedule() As ArrayList
         Dim list As New ArrayList
-        Dim schedule As Schedule
-        For Each schedule In m_scheduleDatabase
-            list.Add(schedule)
+        For Each sched As Schedule In m_scheduleDatabase
+            list.Add(sched)
         Next
         Return list
     End Function
+
 End Class

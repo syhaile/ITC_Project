@@ -1,81 +1,79 @@
 ﻿Public Class Schedule
-    'This class will receive a Student, Course, Room and teacher making up a schedule of classes that were held and who was there
-    'All id's should be saved here
-    'should receive the grade or status of each student
-    'Schedule ID should be made up by "Quarter/Year"
-    Private m_courseID, m_roomID, m_teacherID, m_scheduleID As String
-    Private m_studentsID As New ArrayList
+    'This class contains all sections in a schedule
+    Private m_sectionCollection As New Collection
+    Private m_year As String
+    Private m_quarter As String
+    Private m_scheduleID As String
 
-    Public Property ScheduleID As String
+    Public Sub New(ByVal id As String)
+        'pull data from sql db to generate schedule
+        Dim ds As New DataSet
+        Dim ta As New KSUDBDataSetTableAdapters.ClassScheduleTableAdapter
+        ds.Tables.Add(ta.GetScheduleDataByID(id))
+        Me.ScheduleID = ds.Tables(0).Rows(0).Item("scheduleID")
+        Me.Year = ds.Tables(0).Rows(0).Item("year")
+        Me.Quarter = ds.Tables(0).Rows(0).Item("quarter")
+        'add sections to section collection
+        Dim ta2 As New KSUDBDataSetTableAdapters.SectionTableAdapter
+        ds.Tables.Add(ta2.GetSectionDataByScheduleID(id))
+        For Each row As DataRow In ds.Tables(1).Rows
+            addSection(New Section(row("sectionID")))
+        Next
+        
+    End Sub
+
+    Public Property SectionCollection As Collection
+        Get
+            Return m_sectionCollection
+        End Get
+        Set(ByVal value As Collection)
+            m_sectionCollection = value
+        End Set
+    End Property
+
+    Public Property ScheduleID() As String
         Get
             Return m_scheduleID
         End Get
-        Set(value As String)
+        Set(ByVal value As String)
             m_scheduleID = value
         End Set
     End Property
 
-    Public Property CourseID As String
+    Public Property Year() As String
         Get
-            Return m_courseID
+            Return m_year
         End Get
-        Set(value As String)
-            m_courseID = value
+        Set(ByVal value As String)
+            m_year = value
         End Set
     End Property
 
-    Public Property RoomID As String
+
+    Public Property Quarter() As String
         Get
-            Return m_roomID
+            Return m_quarter
         End Get
-        Set(value As String)
-            m_roomID = value
+        Set(ByVal value As String)
+            m_quarter = value
         End Set
     End Property
 
-    Public Property TeacherID As String
-        Get
-            Return m_teacherID
-        End Get
-        Set(value As String)
-            m_teacherID = value
-        End Set
-    End Property
 
-    Public Property StudentsID As ArrayList
-        Get
-            Return m_studentsID
-        End Get
-        Set(value As ArrayList)
-            m_studentsID = value
-        End Set
-    End Property
-
-    Public Sub addStudentID(ByVal ID As String)
-        m_studentsID.Add(ID)
+    Public Sub addSection(ByVal section As Section)
+        m_sectionCollection.Add(section, section.SectionID)
     End Sub
 
-    Public Function getAllStudentsIDs() As String
-        Dim count As String = m_studentsID.Count - 1
-        Dim msg As String = "Students ID: "
-        Dim index As Integer
-
-        For index = 0 To count Step 1
-            msg += m_studentsID.Item(index) & ", "
-        Next
-        msg += vbCrLf
-        Return msg
+    Public Function getSection(ByVal ID As String)
+        Return m_sectionCollection.Item(ID)
     End Function
-    
-    Public Function getScheduleDescription() As String
-        Dim msg As String = ""
 
-        msg += "Schedule ID: " & m_scheduleID & vbCrLf
-        msg += "Course ID: " & m_courseID & vbCrLf
-        msg += "Room ID: " & m_roomID & vbCrLf
-        msg += "Teacher ID: " & m_teacherID & vbCrLf
-        msg += getAllStudentsIDs()
-
-        Return msg
+    Public Function getAllSections() As ArrayList
+        Dim list As New ArrayList
+        Dim schedule As Section
+        For Each schedule In m_sectionCollection
+            list.Add(schedule)
+        Next
+        Return list
     End Function
 End Class
