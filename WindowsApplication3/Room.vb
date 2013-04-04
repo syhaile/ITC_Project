@@ -1,4 +1,10 @@
-﻿Public Class Room
+﻿''' <summary>
+''' This class represents a classroom on campus.
+''' </summary>
+''' <remarks>TODO:
+''' - better tostring method
+''' - code cleanup and documentation</remarks>
+Public Class Room
     'This class should make up what a room is (ID, location)
     Private m_id As String
     Private m_capacity, m_building, m_roomNumber As Integer
@@ -12,6 +18,11 @@
         Me.Building = ds.Tables(0).Rows(0).Item("buildingNumber")
         Me.RoomNumber = ds.Tables(0).Rows(0).Item("roomNumber")
         Me.Capacity = ds.Tables(0).Rows(0).Item("capacity")
+    End Sub
+
+    Public Sub New(ByVal id As String, ByVal capacity As Integer)
+        m_id = id
+        m_capacity = capacity
     End Sub
 
     Public Property ID As String

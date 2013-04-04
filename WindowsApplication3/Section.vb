@@ -1,4 +1,11 @@
-﻿Public Class Section
+﻿''' <summary>
+''' Represents a section of an offered course. 
+''' </summary>
+''' <remarks>TODO:
+''' - constructor to initialize all values
+''' - code cleanup and documentation
+''' - better class description</remarks>
+Public Class Section
     'This class will receive a Student, Course, Room and teacher making up a schedule of classes that were held and who was there
     'All id's should be saved here
     'should receive the grade or status of each student

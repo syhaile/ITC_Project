@@ -1,4 +1,12 @@
-﻿Public Class ScheduleDatabase
+﻿''' <summary>
+''' Contains all schedules loaded and created by application.
+''' </summary>
+''' <remarks>TODO:
+''' - generate data from TSV file
+''' - create file that contains schedules made by program
+''' - functions needed by views if any
+''' - code cleanup and documentation</remarks>
+Public Class ScheduleDatabase
     'This class holds a collection of schedule objects and pushes updates to relevant tables in sql db
     Private m_scheduleDatabase As Collection
 

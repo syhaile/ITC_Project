@@ -1,4 +1,12 @@
-﻿Public Class TeacherDatabase
+﻿''' <summary>
+''' A db of teachers
+''' </summary>
+''' <remarks>TODO:
+''' - initialize with a number of teachers
+''' - cleanup and docs
+''' - better class description
+''' - db connections(if needed)</remarks>
+Public Class TeacherDatabase
     'This class should contain the master database of all teachers possible
     Private m_id As Integer
     Private m_Name As String

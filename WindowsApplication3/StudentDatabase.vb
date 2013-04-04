@@ -1,4 +1,11 @@
-﻿Public Class StudentDatabase
+﻿''' <summary>
+''' Contains all students enrolled in the university.
+''' </summary>
+''' <remarks>TODO:
+''' - generate db from list of students(works in tandem with yet to be created class that generates students)
+''' - functions needed by views
+''' - code cleanup and documentation</remarks>
+Public Class StudentDatabase
     'This class should have all the students in the database
     'This class can also generate students based on parameters (not yet implemented)
     Private m_studentDatabase As New Collection

@@ -1,5 +1,10 @@
-﻿Public Class CoursesDatabase
-    'This class should contain a database having all Courses possible
+﻿''' <summary>
+''' This class contains all courses in the university. Data can be intialized from a TSV file.
+''' </summary>
+''' <remarks>TODO:
+''' - constructor to initialize data from file
+''' - code cleanup and documentation</remarks>
+Public Class CoursesDatabase
     Private m_courseDatabase As New Collection
     Private ds As New KSUDBDataSet
 

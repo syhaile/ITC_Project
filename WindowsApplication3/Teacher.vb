@@ -1,4 +1,9 @@
-﻿Public Class Teacher
+﻿''' <summary>
+''' Represents a teacher in the university
+''' </summary>
+''' <remarks>TODO:
+''' - cleanup and docs</remarks>
+Public Class Teacher
     Private m_ID, m_Name As String
 
 

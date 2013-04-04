@@ -1,7 +1,13 @@
-﻿Public Class Schedule
+﻿''' <summary>
+''' A schedule keeps track of all courses offered in a quarter.
+''' </summary>
+''' <remarks>TODO:
+''' - code cleanup and documentation
+''' - validation rules for adding into schedule</remarks>
+Public Class Schedule
     'This class contains all sections in a schedule
     Private m_sectionCollection As New Collection
-    Private m_year As String
+    Private m_year As Integer
     Private m_quarter As String
     Private m_scheduleID As String
 
@@ -22,6 +28,12 @@
         
     End Sub
 
+    Public Sub New(ByVal id As String, ByVal year As String, ByVal quarter As String)
+        Me.ScheduleID = id
+        Me.Year = year
+        Me.Quarter = quarter
+    End Sub
+
     Public Property SectionCollection As Collection
         Get
             Return m_sectionCollection
@@ -40,11 +52,11 @@
         End Set
     End Property
 
-    Public Property Year() As String
+    Public Property Year() As Integer
         Get
             Return m_year
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             m_year = value
         End Set
     End Property
