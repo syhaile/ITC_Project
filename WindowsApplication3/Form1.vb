@@ -107,4 +107,10 @@
         txtArea.Text = msg
 
     End Sub
+
+Private Sub btnCurriculum_Click( sender As Object,  e As EventArgs) Handles btnCurriculum.Click
+         CurriculumView.Show()
+         Me.Hide()
+End Sub
+
 End Class

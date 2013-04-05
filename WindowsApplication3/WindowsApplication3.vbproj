@@ -103,6 +103,12 @@
     <Compile Include="CurriculumView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CurriculumMetericView.Designer.vb">
+      <DependentUpon>CurriculumMetericView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CurriculumMetericView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KSUDBDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
