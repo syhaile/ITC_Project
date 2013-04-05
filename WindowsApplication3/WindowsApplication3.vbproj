@@ -152,6 +152,9 @@
     <Compile Include="TeacherDatabase.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CurriculumMetericView.resx">
+      <DependentUpon>CurriculumMetericView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CurriculumView.resx">
       <DependentUpon>CurriculumView.vb</DependentUpon>
     </EmbeddedResource>
