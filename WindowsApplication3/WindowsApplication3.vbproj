@@ -93,14 +93,6 @@
     <Compile Include="CoursesDatabase.vb" />
     <Compile Include="Curriculum.vb" />
     <Compile Include="ElectiveCoreCourses.vb" />
-    <Compile Include="KSUDBDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="KSUDBDataSet.vb">
-      <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="PrerequisitClasses.vb" />
     <Compile Include="RequiredCoreCourses.vb" />
     <Compile Include="RequiredGECourses.vb" />
@@ -149,17 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="KSUDBDataSet.xsc">
-      <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="KSUDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KSUDBDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="KSUDBDataSet.xss">
-      <DependentUpon>KSUDBDataSet.xsd</DependentUpon>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -169,15 +150,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="KSUDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="KSUDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>KSUDB.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
