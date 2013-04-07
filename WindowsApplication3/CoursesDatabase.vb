@@ -6,7 +6,7 @@
 ''' - code cleanup and documentation</remarks>
 Public Class CoursesDatabase
     Private m_courseDatabase As New Collection
-    Private ds As New KSUDBDataSet
+
 
     Public Property MasterDatabase As Collection
         Get
@@ -18,18 +18,11 @@ Public Class CoursesDatabase
     End Property
 
     Public Sub New()
-        Dim ta As New KSUDBDataSetTableAdapters.CourseTableAdapter
-        ta.Fill(ds.Course)
-        Dim ta2 As New KSUDBDataSetTableAdapters.PrerequisiteTableAdapter
-        ta2.Fill(ds.Prerequisite)
-        For Each row As DataRow In ds.Course.Rows
-            Dim c As New Course(row("courseID"))
-            setCourse(c)
-        Next
+   
     End Sub
 
-    Public Sub setCourse(ByVal course As Course)
-   
+    Public Sub addCourse(ByVal course As Course)
+
         m_courseDatabase.Add(course, course.ID)
     End Sub
 
