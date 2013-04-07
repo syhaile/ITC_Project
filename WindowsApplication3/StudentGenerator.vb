@@ -2,7 +2,7 @@
 
     Private m_numberStudents, m_idLength As Integer
     Private m_curriculumDistribution() As Double
-    Private dropoutRate As Double
+    Private m_dropoutRate As Double
 
 
     'db necessary to generate enrollments for students
@@ -23,7 +23,8 @@
         m_curriculumdb = curricdb
         m_coursedb = coursedb
         'create values for distribution
-        redim m_curriculumDistribution(m_curriculumdb.
+        m_dropoutRate = 0
+        'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
 
     Public Function generateStudents() As ArrayList 
@@ -32,8 +33,14 @@
         Dim studentCounter As Integer = 0
         While(studentCounter < m_numberStudents)
             'generate id
-
-            '
+            Dim tempid As String = generateCode
+            While(isDuplicateID(studentList, tempid))
+                  tempid = generateCode
+            End While
+            Dim tempstudent As New Student
+            tempstudent.ID = tempid
+            studentList.Add(tempstudent)
+            
         End While
 
         Return studentList
