@@ -3,6 +3,7 @@
     Private m_numberStudents, m_idLength As Integer
     Private m_curriculumDistribution() As Double
     Private m_dropoutRate As Double
+    Private m_curriculumList As ArrayList
 
 
     'db necessary to generate enrollments for students
@@ -22,9 +23,10 @@
         m_numberStudents = 100
         m_curriculumdb = curricdb
         m_coursedb = coursedb
-        'create values for distribution
-
         m_dropoutRate = 0
+        'create values for distribution
+        ''generate list of curriculums
+        
 
         'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
@@ -33,8 +35,8 @@
         'validate parameters first
         Dim studentList As New ArrayList(m_numberStudents)
         Dim studentCounter As Integer = 0
-        While(studentCounter < m_numberStudents)
-            'generate id
+        'generate id
+        While(studentCounter < m_numberStudents)           
             Dim tempid As String = generateCode
             While(isDuplicateID(studentList, tempid))
                   tempid = generateCode
@@ -42,8 +44,42 @@
             Dim tempstudent As New Student
             tempstudent.ID = tempid
             studentList.Add(tempstudent)
-            
+            studentCounter+= 1
         End While
+
+        'add curriculums to student
+        studentCounter = 0
+        Dim distmilestones(m_curriculumDistribution.Length) As Integer
+        Dim counter As Integer = 0
+        For Each value As double In m_curriculumDistribution 
+            distmilestones.SetValue(value * m_numberStudents, counter)
+            counter += 1
+        Next
+        For Each tempstudent As Student In studentList
+            For counter = distmilestones.Length - 1 to 0 Step -1
+                If(studentCounter < distmilestones(counter))
+                    'assign curriculum to use for this student
+                End If
+            Next
+            'set curriculum on student
+
+            studentCounter += 1
+        Next
+
+        'mark dropout students
+        Dim dropoutstudents As new ArrayList
+        Dim studentsToDrop As Integer = m_dropoutRate * m_numberStudents
+        Dim rng As New Random
+
+        For dropcounter As Integer = 0 to studentsToDrop Step 1
+            Dim tempindex As Integer = rng.Next() mod studentList.Count -1
+            While(isDuplicateID(dropoutstudents, studentList.Item(tempindex)))
+                tempindex = rng.Next() mod studentList.Count -1
+            End While
+            dropoutstudents.Add(studentList.Item(tempindex))
+        Next
+
+        'add courses to each student
 
         Return studentList
     End Function
