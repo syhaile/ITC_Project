@@ -13,7 +13,24 @@ Public Class Section
     Private m_studentsID As New ArrayList
     Private m_startTime As TimeSpan
 
-    Public Sub New()
+    Public Sub New(ByVal id As String)
+        'pull data from sql db to this class
+        Dim ds As New DataSet
+        Dim ta As New KSUDBDataSetTableAdapters.SectionTableAdapter
+        ds.Tables.Add(ta.GetSectionDataByID(id))
+        Me.SectionID = id
+        Me.CourseID = ds.Tables(0).Rows(0).Item("courseID")
+        Me.RoomID = ds.Tables(0).Rows(0).Item("classroomID")
+        Me.TeacherID = ds.Tables(0).Rows(0).Item("teacherID")
+        Me.ScheduleID = ds.Tables(0).Rows(0).Item("scheduleID")
+        Me.Days = ds.Tables(0).Rows(0).Item("days")
+        Me.StartTime = ds.Tables(0).Rows(0).Item("startTime")
+        'fill studentID array
+        Dim ta2 As New KSUDBDataSetTableAdapters.EnrollmentTableAdapter
+        ds.Tables.Add(ta2.GetStudentIDBySectionID(id))
+        For Each row As DataRow In ds.Tables(1).Rows
+            addStudentID(row("studentID"))
+        Next
 
     End Sub
 

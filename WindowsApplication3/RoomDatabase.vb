@@ -9,7 +9,13 @@ Public Class RoomDatabase
     Private m_roomDatabase As New Collection
 
     Public Sub New()
-  
+        'Add rooms from db to this db
+        Dim ds As New KSUDBDataSet
+        Dim ta As New KSUDBDataSetTableAdapters.ClassroomTableAdapter
+        ta.Fill(ds.Classroom)
+        For Each row As DataRow In ds.Classroom.Rows
+            addRoom(New Room(row("classroomID")))
+        Next
     End Sub
 
     ''' <summary>
