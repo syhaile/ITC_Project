@@ -1,37 +1,48 @@
 ﻿Public Class Controller
-    Private ctrlCourseDB As New CoursesDatabase
-    Private ctrlStudentDB As New StudentDatabase
-    Private ctrlTeacherDB As New TeacherDatabase
-    Private ctrlRoomDB As New RoomDatabase
-    Private ctrlScheduleDB As New ScheduleDatabase
+    Shared ctrlCourseDB As New CoursesDatabase
+    Shared ctrlStudentDB As New StudentDatabase
+    Shared ctrlTeacherDB As New TeacherDatabase
+    Shared ctrlRoomDB As New RoomDatabase
+    Shared ctrlScheduleDB As New ScheduleDatabase
 
-    Public Sub addCourse(ByVal course As Course)
-        ctrlCourseDB.addCourse(course)
-    End Sub
-
-    Public Function getAllCourses() As ArrayList
-        Return ctrlCourseDB.getAllCourses()
-    End Function
-
-    Public Function getCourseDB()
+    Public Shared Function getCourseDB()
         Return ctrlCourseDB.MasterDatabase
     End Function
 
-    Public Function getStudentDB()
+    Public Shared Sub updateCourseDB(ByVal db As Collection)
+        ctrlCourseDB.MasterDatabase = db
+    End Sub
+
+    Public Shared Function getStudentDB()
         Return ctrlStudentDB.MasterDatabase
     End Function
 
-    Public Function getTeacherDB()
+    Public Shared Sub updateStudentDB(ByVal db As Collection)
+        ctrlStudentDB.MasterDatabase = db
+    End Sub
+
+    Public Shared Function getTeacherDB()
         Return ctrlTeacherDB.MasterDatabase
     End Function
 
-    Public Function getRoomDB()
+    Public Shared Sub updateTeacherDB(ByVal db As Collection)
+        ctrlStudentDB.MasterDatabase = db
+    End Sub
+
+    Public Shared Function getRoomDB()
         Return ctrlRoomDB.MasterDatabase
     End Function
 
-    Public Function getScheduleDB()
+    Public Shared Sub updateRoomDB(ByVal db As Collection)
+        ctrlStudentDB.MasterDatabase = db
+    End Sub
+
+    Public Shared Function getScheduleDB()
         Return ctrlScheduleDB.MasterDatabase
     End Function
 
+    Public Shared Sub updateScheduleDB(ByVal db As Collection)
+        ctrlStudentDB.MasterDatabase = db
+    End Sub
 
 End Class

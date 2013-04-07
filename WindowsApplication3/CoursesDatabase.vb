@@ -29,13 +29,4 @@ Public Class CoursesDatabase
     Public Function getCourse(ByVal ID As String)
         Return m_courseDatabase.Item(ID)
     End Function
-
-    Public Function getAllCourses() As ArrayList
-        Dim list As New ArrayList
-        Dim course As Course
-        For Each course In m_courseDatabase
-            list.Add(course)
-        Next
-        Return list
-    End Function
 End Class

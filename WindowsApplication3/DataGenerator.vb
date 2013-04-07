@@ -1,5 +1,6 @@
 ﻿Public Class DataGenerator
-    Private ctrl As New Controller
+    Private tempCourseDB As Collection = Controller.getCourseDB
+
 
     Private Sub btnClassesBrowse_Click(sender As Object, e As EventArgs) Handles btnClassesBrowse.Click
         txtClassesFileSRC.Enabled = True
@@ -40,7 +41,8 @@
 
     Private Sub btnClassesAddClass_Click(sender As Object, e As EventArgs) Handles btnClassesAddClass.Click
         Dim course As New Course(txtCourseName.Text, nudClassesUnits.Value, txtClassesCompanion.Text, txtClassesPrerequisites.Text)
-        ctrl.addCourse(course)
+        tempCourseDB.Add(course, course.ID)
+        updateCourseDB()
         updateListbox()
         txtCourseName.Text = ""
         nudClassesUnits.Value = 1
@@ -53,9 +55,10 @@
     Private Sub updateListbox()
         lboxClassesCourses.Items.Clear()
         lboxCurriculumCourses.Items.Clear()
-        Dim list As ArrayList = ctrl.getAllCourses()
-        Dim course As New Course
-        For Each course In list
+      
+        Dim list As New ArrayList
+        Dim course As Course
+        For Each course In tempCourseDB
             lboxClassesCourses.Items.Add(course.ID & "  " & course.Units)
             lboxCurriculumCourses.Items.Add(course.ID)
         Next
@@ -72,5 +75,19 @@
                 lboxCurriculumCourses.SelectedIndex = -1
             End If
         End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If lboxClassesCourses.SelectedIndex = -1 Then
+            MessageBox.Show("You must have a course selected in order to delete one")
+        Else
+            tempCourseDB.Remove(lboxClassesCourses.SelectedItem)
+            lboxClassesCourses.Items.RemoveAt(lboxClassesCourses.SelectedIndex)
+            updateCourseDB()
+        End If
+    End Sub
+
+    Private Sub updateCourseDB()
+        Controller.updateCourseDB(tempCourseDB)
     End Sub
 End Class
