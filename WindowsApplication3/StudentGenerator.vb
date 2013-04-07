@@ -17,16 +17,15 @@
     ''' <param name="curricdb"></param>
     ''' <param name="coursedb"></param>
     ''' <remarks></remarks>
-    Public Sub new(ByVal curricdb As CurriculumDatabase, ByVal coursedb As CoursesDatabase)
+    Public Sub New(ByVal curricdb As CurriculumDatabase, ByVal coursedb As CoursesDatabase)
         m_idLength = 6
         m_numberStudents = 100
         m_curriculumdb = curricdb
         m_coursedb = coursedb
         'create values for distribution
-<<<<<<< HEAD
-=======
+
         m_dropoutRate = 0
->>>>>>> origin/mart-branch
+
         'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
 
