@@ -8,26 +8,18 @@ Public Class RoomDatabase
     'This class should contain the main database of all rooms available
     Private m_roomDatabase As New Collection
 
-    'Public Sub New()
-    '    'Add rooms from db to this db
-    '    Dim ds As New KSUDBDataSet
-    '    Dim ta As New KSUDBDataSetTableAdapters.ClassroomTableAdapter
-    '    ta.Fill(ds.Classroom)
-    '    For Each row As DataRow In ds.Classroom.Rows
-    '        addRoom(New Room(row("classroomID")))
-    '    Next
-    'End Sub
+    Public Sub New()
+  
+    End Sub
 
     ''' <summary>
     ''' Initializes database with given number of rooms. Uses default value of 30 capacity and starting ID of 0.
     ''' </summary>
     ''' <param name="numberOfRooms"></param>
     ''' <remarks></remarks>
-           
-            ' Commented out to make it compile -Brian 
-            'Public Sub New(ByVal numberOfRooms As Integer)
-            '    'implementation goes here
-            'End Sub
+    Public Sub New(ByVal numberOfRooms As Integer)
+        'implementation goes here
+    End Sub
 
     Public Property MasterDatabase As Collection
         Get

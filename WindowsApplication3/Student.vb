@@ -11,7 +11,8 @@ Public Class Student
 
     Private m_ID, m_Name, m_enrolledQuarter As String
     Private m_enrolledYear As Integer
-    Private m_enrolledDate, m_ExpectedGraduation As Date
+    Private m_enrolledDate As Date
+    Private m_ExpectedGraduation As Date = Now
     Private m_CurrentStudent As Boolean = False
     Private m_coursesTaken As New Collection
     Private m_curriculum As Curriculum
@@ -22,7 +23,7 @@ Public Class Student
     End Sub
 
     Public Sub New(ByVal id As String, ByVal name As String,
-            ByVal enrolledYear As Integer, ByVal enrolledQuarter As String, ByVal currentStudent As Boolean) ' Optional ByVal expectedGraudationDate As Date = Now
+            ByVal enrolledYear As String, ByVal enrolledQuarter As String, ByVal currentStudent As Boolean) ' Optional ByVal expectedGraudationDate As Date = Now
         'Me.ExpectedGraduationDate = expectedGraudationDate
         Me.ID = id
         Me.Name = name
@@ -32,17 +33,7 @@ Public Class Student
         Me.CurrentStudent = currentStudent
     End Sub
 
-    'Public Sub New(ByVal id As String, ByVal currentStudent As Boolean)
-    '    Dim ds As New DataSet
-    '    Dim ta As New KSUDBDataSetTableAdapters.StudentTableAdapter
-    '    ds.Tables.Add(ta.GetDataByID(id))
-    '    Me.ID = id
-    '    Me.Name = ds.Tables(0).Rows(0).Item("name")
-    '    Me.EnrolledYear = ds.Tables(0).Rows(0).Item("yearStarted")
-    '    Me.EnrolledQuarter = ds.Tables(0).Rows(0).Item("quarterStarted")
-    '    Me.CurrentStudent = currentStudent
 
-    'End Sub
 
     Public Property ID As String
         Get

@@ -9,25 +9,14 @@ Public Class Room
     Private m_id As String
     Private m_capacity, m_building, m_roomNumber As Integer
 
-    'Public Sub New(ByVal id As String)
-    '    'Pull data from sql db to this class based on id
-    '    Dim ds As New DataSet
-    '    Dim ta As New KSUDBDataSetTableAdapters.ClassroomTableAdapter
-    '    ds.Tables.Add(ta.GetClassroomDataByID(id))
-    '    Me.ID = id
-    '    Me.Building = ds.Tables(0).Rows(0).Item("buildingNumber")
-    '    Me.RoomNumber = ds.Tables(0).Rows(0).Item("roomNumber")
-    '    Me.Capacity = ds.Tables(0).Rows(0).Item("capacity")
-    'End Sub
+    Public Sub New()
+
+    End Sub
 
     Public Sub New(ByVal id As String, ByVal capacity As Integer)
         m_id = id
         m_capacity = capacity
     End Sub
-
-Sub New()
-' TODO: Complete member initialization 
- End Sub 
 
     Public Property ID As String
         Get

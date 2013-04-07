@@ -10,7 +10,12 @@
         'Testing creating a course and adding prerequisit Course
 
 
-
+        Dim course As New Course("CS101", 4, "", "MAT114")
+        ctrlCourseDB.addCourse(course)
+        course = New Course("CS102", 4, "", "CS101")
+        ctrlCourseDB.addCourse(course)
+        course = New Course("CS103", 4, "CS102", "")
+        ctrlCourseDB.addCourse(course)
 
         'Test Teacher
         Dim teacher As New Teacher(998877, "Dr. S Curl")
@@ -23,19 +28,19 @@
         'Test Room
         Dim room As New Room
         room.ID = "CLA-1001"
-        room.Location = "CLA Building, Room 1001"
-        room.StartTime = TimeValue("8:00")
-        room.EndTime = TimeValue("8:50")
-        room.Days = "Monday, Wednesday, Friday"
-        ctrlRoomDB.setRoom(room)
+
+        ctrlRoomDB.addRoom(room)
+
 
         room = New Room
         room.ID = "CLA-1002"
-        room.Location = "CLA Building, Room 1002"
-        room.StartTime = TimeValue("9:00")
-        room.EndTime = TimeValue("9:50")
-        room.Days = "Monday, Wednesday, Friday"
-        ctrlRoomDB.setRoom(room)
+
+        ctrlRoomDB.addRoom(room)
+
+        Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True)
+        ctrlStudentDB.addStudent(student)
+        student = New Student("442233", "MarTIN Legaspi", "2012", "Fall", True)
+        ctrlStudentDB.addStudent(student)
 
         'test adding room, course, student and professor  into a master schedule
         Dim scheduler As New Section
