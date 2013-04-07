@@ -8,7 +8,7 @@
 ''' - code cleanup and documentation</remarks>
 Public Class ScheduleDatabase
     'This class holds a collection of schedule objects and pushes updates to relevant tables in sql db
-    Private m_scheduleDatabase As Collection
+    Private m_scheduleDatabase As New Collection
 
     Public Sub New()
         'pull data from sql db to this database placeholder

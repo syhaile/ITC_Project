@@ -1,46 +1,44 @@
 ﻿Public Class Form1
-    Dim ctrlCourseDB As New CoursesDatabase
-    Dim ctrlStudentDB As New StudentDatabase
-    Dim ctrlTeacherDB As New TeacherDatabase
-    Dim ctrlRoomDB As New RoomDatabase
-    Dim ctrlScheduleDB As New Schedule
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCreateCurriculum.Click
 
         'Testing creating a course and adding prerequisit Course
-
+        Dim tempCourseDB As Collection = Controller.getCourseDB
+        Dim tempTeacherDB As Collection = Controller.getTeacherDB
+        Dim tempRoomDB As Collection = Controller.getRoomDB
+        Dim tempStudentDB As Collection = Controller.getStudentDB
+        Dim tempScheduleDB As Collection = Controller.getScheduleDB
 
         Dim course As New Course("CS101", 4, "", "MAT114")
-        ctrlCourseDB.addCourse(course)
+        tempCourseDB.Add(course, course.ID)
         course = New Course("CS102", 4, "", "CS101")
-        ctrlCourseDB.addCourse(course)
+        tempCourseDB.Add(course, course.ID)
         course = New Course("CS103", 4, "CS102", "")
-        ctrlCourseDB.addCourse(course)
+        tempCourseDB.Add(course, course.ID)
 
         'Test Teacher
         Dim teacher As New Teacher(998877, "Dr. S Curl")
-        ctrlTeacherDB.setTeacher(teacher)
+        tempTeacherDB.Add(teacher, teacher.ID)
         teacher = New Teacher
         teacher.ID = "667788"
         teacher.Name = "Dr. S Zhang"
-        ctrlTeacherDB.setTeacher(teacher)
+        tempTeacherDB.Add(teacher, teacher.ID)
 
         'Test Room
         Dim room As New Room
         room.ID = "CLA-1001"
 
-        ctrlRoomDB.addRoom(room)
+        tempRoomDB.Add(room, room.ID)
 
 
         room = New Room
         room.ID = "CLA-1002"
 
-        ctrlRoomDB.addRoom(room)
+        tempRoomDB.Add(room, room.ID)
 
         Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True)
-        ctrlStudentDB.addStudent(student)
+        tempStudentDB.Add(student, student.ID)
         student = New Student("442233", "MarTIN Legaspi", "2012", "Fall", True)
-        ctrlStudentDB.addStudent(student)
+        tempStudentDB.Add(student, student.ID)
 
         'test adding room, course, student and professor  into a master schedule
         Dim scheduler As New Section
@@ -50,11 +48,17 @@
         scheduler.TeacherID = "667788"
         scheduler.addStudentID("442233")
         scheduler.addStudentID("112233")
-        ctrlScheduleDB.addSection(scheduler)
+        tempScheduleDB.Add(scheduler, scheduler.ScheduleID)
 
+        Controller.updateCourseDB(tempCourseDB)
+        Controller.updateRoomDB(tempRoomDB)
+        Controller.updateScheduleDB(tempScheduleDB)
+        Controller.updateStudentDB(tempStudentDB)
+        Controller.updateTeacherDB(tempTeacherDB)
     End Sub
 
 
+<<<<<<< HEAD
     Private Sub btnCourses_Click(sender As System.Object, e As System.EventArgs) Handles btnCourses.Click
         txtArea.Clear()
         'Loops list to show on listBox
@@ -116,4 +120,7 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+=======
+   
+>>>>>>> origin/master
 End Class
