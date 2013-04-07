@@ -28,8 +28,13 @@ Partial Class MDIParentForm
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DataImplementationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StudentsViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CurriculumViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SchedulesViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TESTDATAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewWindowToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,9 +45,9 @@ Partial Class MDIParentForm
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.MenuStrip.SuspendLayout
-        Me.StatusStrip.SuspendLayout
-        Me.SuspendLayout
+        Me.MenuStrip.SuspendLayout()
+        Me.StatusStrip.SuspendLayout()
+        Me.SuspendLayout()
         '
         'MenuStrip
         '
@@ -56,7 +61,7 @@ Partial Class MDIParentForm
         '
         'FileMenu
         '
-        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator3, Me.ExitToolStripMenuItem})
+        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator3, Me.ExitToolStripMenuItem, Me.TESTDATAToolStripMenuItem})
         Me.FileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.FileMenu.Name = "FileMenu"
         Me.FileMenu.Size = New System.Drawing.Size(37, 20)
@@ -64,23 +69,54 @@ Partial Class MDIParentForm
         '
         'NewToolStripMenuItem
         '
-        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"),System.Drawing.Image)
+        Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataImplementationToolStripMenuItem, Me.StudentsViewToolStripMenuItem, Me.CurriculumViewToolStripMenuItem, Me.SchedulesViewToolStripMenuItem})
+        Me.NewToolStripMenuItem.Image = CType(resources.GetObject("NewToolStripMenuItem.Image"), System.Drawing.Image)
         Me.NewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N),System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "&New"
+        '
+        'DataImplementationToolStripMenuItem
+        '
+        Me.DataImplementationToolStripMenuItem.Name = "DataImplementationToolStripMenuItem"
+        Me.DataImplementationToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.DataImplementationToolStripMenuItem.Text = "Data Implementation"
+        '
+        'StudentsViewToolStripMenuItem
+        '
+        Me.StudentsViewToolStripMenuItem.Name = "StudentsViewToolStripMenuItem"
+        Me.StudentsViewToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.StudentsViewToolStripMenuItem.Text = "Student's View"
+        '
+        'CurriculumViewToolStripMenuItem
+        '
+        Me.CurriculumViewToolStripMenuItem.Name = "CurriculumViewToolStripMenuItem"
+        Me.CurriculumViewToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.CurriculumViewToolStripMenuItem.Text = "Curriculum's View"
+        '
+        'SchedulesViewToolStripMenuItem
+        '
+        Me.SchedulesViewToolStripMenuItem.Name = "SchedulesViewToolStripMenuItem"
+        Me.SchedulesViewToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
+        Me.SchedulesViewToolStripMenuItem.Text = "Schedule's View"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(138, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
+        '
+        'TESTDATAToolStripMenuItem
+        '
+        Me.TESTDATAToolStripMenuItem.Name = "TESTDATAToolStripMenuItem"
+        Me.TESTDATAToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TESTDATAToolStripMenuItem.Text = "TEST DATA"
         '
         'WindowsMenu
         '
@@ -174,5 +210,10 @@ End Sub
     Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TESTDATAToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DataImplementationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StudentsViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CurriculumViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SchedulesViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

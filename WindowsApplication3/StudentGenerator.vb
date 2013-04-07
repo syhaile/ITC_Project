@@ -23,7 +23,7 @@
         m_curriculumdb = curricdb
         m_coursedb = coursedb
         'create values for distribution
-        redim m_curriculumDistribution(m_curriculumdb.
+        'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
 
     Public Function generateStudents() As ArrayList 

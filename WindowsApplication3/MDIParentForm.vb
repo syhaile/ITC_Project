@@ -2,18 +2,6 @@
 
 Public Class MDIParentForm
 
-    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewWindowToolStripMenuItem.Click
-        ' Create a new instance of the child form.
-        Dim ChildForm As New DataGenerator
-        ' Make it a child of this MDI form before showing it.
-        ChildForm.MdiParent = Me
-
-        m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
-
-        ChildForm.Show()
-    End Sub
-
     Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs)
         Dim OpenFileDialog As New OpenFileDialog
         OpenFileDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
@@ -77,4 +65,55 @@ Public Class MDIParentForm
 
     Private m_ChildFormNumber As Integer
 
+    Private Sub TESTDATAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TESTDATAToolStripMenuItem.Click
+        ' Create a new instance of the child form.
+        Dim ChildForm As New Form1
+        ' Make it a child of this MDI form before showing it.
+        ChildForm.MdiParent = Me
+
+        m_ChildFormNumber += 1
+        ChildForm.Text = "Window " & m_ChildFormNumber
+
+        ChildForm.Show()
+    End Sub
+
+    Private Sub DataImplementationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DataImplementationToolStripMenuItem.Click
+        ' Create a new instance of the child form.
+        Dim ChildForm As New DataGenerator
+        ' Make it a child of this MDI form before showing it.
+        ChildForm.MdiParent = Me
+
+        m_ChildFormNumber += 1
+        ChildForm.Text = "Window " & m_ChildFormNumber
+
+        ChildForm.Show()
+    End Sub
+
+    Private Sub StudentsViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StudentsViewToolStripMenuItem.Click
+        ' Create a new instance of the child form.
+        Dim ChildForm As New StudentView
+        ' Make it a child of this MDI form before showing it.
+        ChildForm.MdiParent = Me
+
+        m_ChildFormNumber += 1
+        ChildForm.Text = "Window " & m_ChildFormNumber
+
+        ChildForm.Show()
+    End Sub
+
+    Private Sub CurriculumViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CurriculumViewToolStripMenuItem.Click
+        ' Create a new instance of the child form.
+        Dim ChildForm As New CurriculumView
+        ' Make it a child of this MDI form before showing it.
+        ChildForm.MdiParent = Me
+
+        m_ChildFormNumber += 1
+        ChildForm.Text = "Window " & m_ChildFormNumber
+
+        ChildForm.Show()
+    End Sub
+
+    Private Sub SchedulesViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SchedulesViewToolStripMenuItem.Click
+
+    End Sub
 End Class
