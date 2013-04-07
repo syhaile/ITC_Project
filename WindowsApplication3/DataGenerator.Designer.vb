@@ -39,6 +39,10 @@ Partial Class DataGenerator
         Me.txtClassesFileSRC = New System.Windows.Forms.TextBox()
         Me.btnClassesBrowse = New System.Windows.Forms.Button()
         Me.Curriculum = New System.Windows.Forms.TabPage()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnDrop = New System.Windows.Forms.Button()
+        Me.lboxCurriculumCurrent = New System.Windows.Forms.ListBox()
+        Me.lboxCurriculumCourses = New System.Windows.Forms.ListBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -46,10 +50,7 @@ Partial Class DataGenerator
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.lboxCurriculumCourses = New System.Windows.Forms.ListBox()
-        Me.lboxCurriculumCurrent = New System.Windows.Forms.ListBox()
-        Me.btnDrop = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Classes.SuspendLayout()
         CType(Me.nudClassesUnits, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,6 +71,7 @@ Partial Class DataGenerator
         '
         'Classes
         '
+        Me.Classes.Controls.Add(Me.Button3)
         Me.Classes.Controls.Add(Me.lboxClassesCourses)
         Me.Classes.Controls.Add(Me.btnClassesAddClass)
         Me.Classes.Controls.Add(Me.txtClassesPrerequisites)
@@ -101,9 +103,9 @@ Partial Class DataGenerator
         '
         'btnClassesAddClass
         '
-        Me.btnClassesAddClass.Location = New System.Drawing.Point(108, 258)
+        Me.btnClassesAddClass.Location = New System.Drawing.Point(223, 260)
         Me.btnClassesAddClass.Name = "btnClassesAddClass"
-        Me.btnClassesAddClass.Size = New System.Drawing.Size(75, 23)
+        Me.btnClassesAddClass.Size = New System.Drawing.Size(97, 23)
         Me.btnClassesAddClass.TabIndex = 17
         Me.btnClassesAddClass.Text = "Add Class"
         Me.btnClassesAddClass.UseVisualStyleBackColor = True
@@ -230,6 +232,40 @@ Partial Class DataGenerator
         Me.Curriculum.Text = "Curriculum"
         Me.Curriculum.UseVisualStyleBackColor = True
         '
+        'btnAdd
+        '
+        Me.btnAdd.Image = CType(resources.GetObject("btnAdd.Image"), System.Drawing.Image)
+        Me.btnAdd.Location = New System.Drawing.Point(185, 160)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 50)
+        Me.btnAdd.TabIndex = 9
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnDrop
+        '
+        Me.btnDrop.Image = CType(resources.GetObject("btnDrop.Image"), System.Drawing.Image)
+        Me.btnDrop.Location = New System.Drawing.Point(185, 104)
+        Me.btnDrop.Name = "btnDrop"
+        Me.btnDrop.Size = New System.Drawing.Size(75, 50)
+        Me.btnDrop.TabIndex = 8
+        Me.btnDrop.UseVisualStyleBackColor = True
+        '
+        'lboxCurriculumCurrent
+        '
+        Me.lboxCurriculumCurrent.FormattingEnabled = True
+        Me.lboxCurriculumCurrent.Location = New System.Drawing.Point(266, 58)
+        Me.lboxCurriculumCurrent.Name = "lboxCurriculumCurrent"
+        Me.lboxCurriculumCurrent.Size = New System.Drawing.Size(158, 199)
+        Me.lboxCurriculumCurrent.TabIndex = 7
+        '
+        'lboxCurriculumCourses
+        '
+        Me.lboxCurriculumCourses.FormattingEnabled = True
+        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(19, 58)
+        Me.lboxCurriculumCourses.Name = "lboxCurriculumCourses"
+        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 199)
+        Me.lboxCurriculumCourses.TabIndex = 6
+        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(366, 10)
@@ -294,39 +330,15 @@ Partial Class DataGenerator
         Me.TextBox2.Size = New System.Drawing.Size(254, 20)
         Me.TextBox2.TabIndex = 2
         '
-        'lboxCurriculumCourses
+        'Button3
         '
-        Me.lboxCurriculumCourses.FormattingEnabled = True
-        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(19, 58)
-        Me.lboxCurriculumCourses.Name = "lboxCurriculumCourses"
-        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 199)
-        Me.lboxCurriculumCourses.TabIndex = 6
-        '
-        'lboxCurriculumCurrent
-        '
-        Me.lboxCurriculumCurrent.FormattingEnabled = True
-        Me.lboxCurriculumCurrent.Location = New System.Drawing.Point(266, 58)
-        Me.lboxCurriculumCurrent.Name = "lboxCurriculumCurrent"
-        Me.lboxCurriculumCurrent.Size = New System.Drawing.Size(158, 199)
-        Me.lboxCurriculumCurrent.TabIndex = 7
-        '
-        'btnDrop
-        '
-        Me.btnDrop.Image = CType(resources.GetObject("btnDrop.Image"), System.Drawing.Image)
-        Me.btnDrop.Location = New System.Drawing.Point(185, 104)
-        Me.btnDrop.Name = "btnDrop"
-        Me.btnDrop.Size = New System.Drawing.Size(75, 50)
-        Me.btnDrop.TabIndex = 8
-        Me.btnDrop.UseVisualStyleBackColor = True
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Image = CType(resources.GetObject("btnAdd.Image"), System.Drawing.Image)
-        Me.btnAdd.Location = New System.Drawing.Point(185, 160)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 50)
-        Me.btnAdd.TabIndex = 9
-        Me.btnAdd.UseVisualStyleBackColor = True
+        Me.Button3.Location = New System.Drawing.Point(324, 260)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(97, 23)
+        Me.Button3.TabIndex = 19
+        Me.Button3.Text = "Remove Class"
+        Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.Visible = False
         '
         'DataGenerator
         '
@@ -374,4 +386,5 @@ Partial Class DataGenerator
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnDrop As System.Windows.Forms.Button
     Friend WithEvents lboxCurriculumCurrent As System.Windows.Forms.ListBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class
