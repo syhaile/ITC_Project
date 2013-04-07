@@ -32,17 +32,17 @@ Public Class Student
         Me.CurrentStudent = currentStudent
     End Sub
 
-    Public Sub New(ByVal id As String, ByVal currentStudent As Boolean)
-        Dim ds As New DataSet
-        Dim ta As New KSUDBDataSetTableAdapters.StudentTableAdapter
-        ds.Tables.Add(ta.GetDataByID(id))
-        Me.ID = id
-        Me.Name = ds.Tables(0).Rows(0).Item("name")
-        Me.EnrolledYear = ds.Tables(0).Rows(0).Item("yearStarted")
-        Me.EnrolledQuarter = ds.Tables(0).Rows(0).Item("quarterStarted")
-        Me.CurrentStudent = currentStudent
+    'Public Sub New(ByVal id As String, ByVal currentStudent As Boolean)
+    '    Dim ds As New DataSet
+    '    Dim ta As New KSUDBDataSetTableAdapters.StudentTableAdapter
+    '    ds.Tables.Add(ta.GetDataByID(id))
+    '    Me.ID = id
+    '    Me.Name = ds.Tables(0).Rows(0).Item("name")
+    '    Me.EnrolledYear = ds.Tables(0).Rows(0).Item("yearStarted")
+    '    Me.EnrolledQuarter = ds.Tables(0).Rows(0).Item("quarterStarted")
+    '    Me.CurrentStudent = currentStudent
 
-    End Sub
+    'End Sub
 
     Public Property ID As String
         Get

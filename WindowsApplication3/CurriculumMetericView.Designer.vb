@@ -25,6 +25,7 @@ Partial Class CurriculumMetericView
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.lblCurriculumTitle = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.lblAvgGPA = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -38,7 +39,7 @@ Partial Class CurriculumMetericView
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.TabPage2.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.GroupBox2.SuspendLayout
@@ -48,6 +49,7 @@ Partial Class CurriculumMetericView
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.TreeView1)
         Me.TabPage2.Controls.Add(Me.lblCurriculumTitle)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -70,7 +72,7 @@ Partial Class CurriculumMetericView
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Label8)
+        Me.TabPage1.Controls.Add(Me.lblAvgGPA)
         Me.TabPage1.Controls.Add(Me.GroupBox2)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.lblMetricsTitle)
@@ -83,6 +85,16 @@ Partial Class CurriculumMetericView
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Metrics View "
         Me.TabPage1.UseVisualStyleBackColor = true
+        '
+        'lblAvgGPA
+        '
+        Me.lblAvgGPA.AutoSize = true
+        Me.lblAvgGPA.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgGPA.Location = New System.Drawing.Point(234, 40)
+        Me.lblAvgGPA.Name = "lblAvgGPA"
+        Me.lblAvgGPA.Size = New System.Drawing.Size(75, 13)
+        Me.lblAvgGPA.TabIndex = 12
+        Me.lblAvgGPA.Text = "Average GPA:"
         '
         'GroupBox2
         '
@@ -220,15 +232,12 @@ Partial Class CurriculumMetericView
         Me.TabControl1.Size = New System.Drawing.Size(498, 593)
         Me.TabControl1.TabIndex = 10
         '
-        'Label8
+        'TreeView1
         '
-        Me.Label8.AutoSize = true
-        Me.Label8.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label8.Location = New System.Drawing.Point(234, 40)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(75, 13)
-        Me.Label8.TabIndex = 12
-        Me.Label8.Text = "Average GPA:"
+        Me.TreeView1.Location = New System.Drawing.Point(13, 30)
+        Me.TreeView1.Name = "TreeView1"
+        Me.TreeView1.Size = New System.Drawing.Size(469, 528)
+        Me.TreeView1.TabIndex = 13
         '
         'CurriculumMetericView
         '
@@ -267,5 +276,6 @@ End Sub
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents lblCurriculumTitle As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lblAvgGPA As System.Windows.Forms.Label
+    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
 End Class
