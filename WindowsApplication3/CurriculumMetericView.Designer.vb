@@ -23,6 +23,7 @@ Partial Class CurriculumMetericView
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.tvCurriculum = New System.Windows.Forms.TreeView()
         Me.lblCurriculumTitle = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.lblAvgGPA = New System.Windows.Forms.Label()
@@ -39,7 +40,6 @@ Partial Class CurriculumMetericView
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.TabPage2.SuspendLayout
         Me.TabPage1.SuspendLayout
         Me.GroupBox2.SuspendLayout
@@ -49,7 +49,7 @@ Partial Class CurriculumMetericView
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.TreeView1)
+        Me.TabPage2.Controls.Add(Me.tvCurriculum)
         Me.TabPage2.Controls.Add(Me.lblCurriculumTitle)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -58,6 +58,13 @@ Partial Class CurriculumMetericView
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Curriculum View"
         Me.TabPage2.UseVisualStyleBackColor = true
+        '
+        'tvCurriculum
+        '
+        Me.tvCurriculum.Location = New System.Drawing.Point(13, 30)
+        Me.tvCurriculum.Name = "tvCurriculum"
+        Me.tvCurriculum.Size = New System.Drawing.Size(469, 528)
+        Me.tvCurriculum.TabIndex = 13
         '
         'lblCurriculumTitle
         '
@@ -232,13 +239,6 @@ Partial Class CurriculumMetericView
         Me.TabControl1.Size = New System.Drawing.Size(498, 593)
         Me.TabControl1.TabIndex = 10
         '
-        'TreeView1
-        '
-        Me.TreeView1.Location = New System.Drawing.Point(13, 30)
-        Me.TreeView1.Name = "TreeView1"
-        Me.TreeView1.Size = New System.Drawing.Size(469, 528)
-        Me.TreeView1.TabIndex = 13
-        '
         'CurriculumMetericView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -277,5 +277,5 @@ End Sub
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents lblCurriculumTitle As System.Windows.Forms.Label
     Friend WithEvents lblAvgGPA As System.Windows.Forms.Label
-    Friend WithEvents TreeView1 As System.Windows.Forms.TreeView
+    Friend WithEvents tvCurriculum As System.Windows.Forms.TreeView
 End Class

@@ -2,6 +2,7 @@
    
     Dim curriculumQuarterAndDate As String = "Spring 2012"
     Dim avgGPA As Integer = 2.4
+    Dim node As TreeNode 
     
     Private Sub CurriculumMetericView_Load( sender As Object,  e As EventArgs) Handles MyBase.Load
             lblMetricsTitle.Text = curriculumQuarterAndDate + " Metrics"
@@ -9,6 +10,8 @@
             Dim m_avgGPAString As String = avgGPA.ToString()
             lblAvgGPA.Text = "Average GPA: " + avgGPA
         
+            'Populating the treeview for curriculum 
+             node = New TreeNode 
     End Sub
     Private Sub CurriculumMetricView_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         CurriculumView.Show()
@@ -17,4 +20,5 @@
 Private Sub lblMetricsTitle_Click( sender As Object,  e As EventArgs) Handles lblMetricsTitle.Click
 
 End Sub
+
 End Class

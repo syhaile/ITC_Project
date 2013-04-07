@@ -25,6 +25,10 @@ Public Class Room
         m_capacity = capacity
     End Sub
 
+Sub New()
+' TODO: Complete member initialization 
+ End Sub 
+
     Public Property ID As String
         Get
             Return m_id
