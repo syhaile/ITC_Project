@@ -6,13 +6,15 @@
 
         Dim students As Collection = Controller.getStudentDB()
         Dim studentList As ArrayList = New ArrayList()
-        Dim tempStudent As New Student
+        Dim tempStudent As Student
+
+        MessageBox.Show(students.Count())
 
         For Each tempStudent In students
-            studentList.Add(New Student() With {.ID = tempStudent.ID, .Name = tempStudent.Name})
-            lbxStudentList.DataSource = studentList
-            lbxStudentList.ValueMember = "ID"
-            lbxStudentList.DisplayMember = "Name"
+
+            'lbxStudentList.DataSource = students
+            lbxStudentList.ValueMember = tempStudent.ID.ToString()
+            lbxStudentList.DisplayMember = tempStudent.Name.ToString()
         Next
 
     End Sub
