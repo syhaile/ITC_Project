@@ -132,6 +132,7 @@
     <Compile Include="Schedule.vb" />
     <Compile Include="Student.vb" />
     <Compile Include="StudentDatabase.vb" />
+    <Compile Include="StudentGenerator.vb" />
     <Compile Include="StudentView.Designer.vb">
       <DependentUpon>StudentView.vb</DependentUpon>
     </Compile>
