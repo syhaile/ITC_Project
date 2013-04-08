@@ -93,7 +93,6 @@
   <ItemGroup>
     <Compile Include="Controller.vb" />
     <Compile Include="CurriculumDatabase.vb" />
-    <Compile Include="CoreClasses.vb" />
     <Compile Include="Course.vb" />
     <Compile Include="CoursesDatabase.vb" />
     <Compile Include="Curriculum.vb" />
@@ -123,7 +122,6 @@
     <Compile Include="MDIParentForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrerequisitClasses.vb" />
     <Compile Include="RequiredCoreCourses.vb" />
     <Compile Include="RequiredGECourses.vb" />
     <Compile Include="Room.vb" />

@@ -25,6 +25,7 @@ Partial Class DataGenerator
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DataGenerator))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Classes = New System.Windows.Forms.TabPage()
+        Me.btnClassesImport = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.lboxClassesCourses = New System.Windows.Forms.ListBox()
@@ -41,6 +42,7 @@ Partial Class DataGenerator
         Me.txtClassesFileSRC = New System.Windows.Forms.TextBox()
         Me.btnClassesBrowse = New System.Windows.Forms.Button()
         Me.Curriculum = New System.Windows.Forms.TabPage()
+        Me.btnCurriculumImport = New System.Windows.Forms.Button()
         Me.btnCurriculumAddElectives = New System.Windows.Forms.Button()
         Me.btnCurriculumAddCore = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -53,14 +55,14 @@ Partial Class DataGenerator
         Me.btnCurriculumDrop = New System.Windows.Forms.Button()
         Me.lboxCurriculumReqGE = New System.Windows.Forms.ListBox()
         Me.lboxCurriculumCourses = New System.Windows.Forms.ListBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnCurriculumBrowse = New System.Windows.Forms.Button()
+        Me.txtCurriculumFileSrc = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Students = New System.Windows.Forms.TabPage()
         Me.testbox = New System.Windows.Forms.TextBox()
         Me.btnRandomGenerate = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnStudentBrowse = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.Classes.SuspendLayout()
@@ -82,6 +84,7 @@ Partial Class DataGenerator
         '
         'Classes
         '
+        Me.Classes.Controls.Add(Me.btnClassesImport)
         Me.Classes.Controls.Add(Me.Label5)
         Me.Classes.Controls.Add(Me.Button3)
         Me.Classes.Controls.Add(Me.lboxClassesCourses)
@@ -105,6 +108,15 @@ Partial Class DataGenerator
         Me.Classes.Text = "Classes"
         Me.Classes.UseVisualStyleBackColor = True
         '
+        'btnClassesImport
+        '
+        Me.btnClassesImport.Location = New System.Drawing.Point(260, 301)
+        Me.btnClassesImport.Name = "btnClassesImport"
+        Me.btnClassesImport.Size = New System.Drawing.Size(97, 23)
+        Me.btnClassesImport.TabIndex = 21
+        Me.btnClassesImport.Text = "Import Classes"
+        Me.btnClassesImport.UseVisualStyleBackColor = True
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -123,7 +135,6 @@ Partial Class DataGenerator
         Me.Button3.TabIndex = 19
         Me.Button3.Text = "Remove Class"
         Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
         '
         'lboxClassesCourses
         '
@@ -141,7 +152,6 @@ Partial Class DataGenerator
         Me.btnClassesAddClass.TabIndex = 17
         Me.btnClassesAddClass.Text = "Add Class"
         Me.btnClassesAddClass.UseVisualStyleBackColor = True
-        Me.btnClassesAddClass.Visible = False
         '
         'txtClassesPrerequisites
         '
@@ -249,6 +259,7 @@ Partial Class DataGenerator
         '
         'Curriculum
         '
+        Me.Curriculum.Controls.Add(Me.btnCurriculumImport)
         Me.Curriculum.Controls.Add(Me.btnCurriculumAddElectives)
         Me.Curriculum.Controls.Add(Me.btnCurriculumAddCore)
         Me.Curriculum.Controls.Add(Me.Label10)
@@ -261,8 +272,8 @@ Partial Class DataGenerator
         Me.Curriculum.Controls.Add(Me.btnCurriculumDrop)
         Me.Curriculum.Controls.Add(Me.lboxCurriculumReqGE)
         Me.Curriculum.Controls.Add(Me.lboxCurriculumCourses)
-        Me.Curriculum.Controls.Add(Me.Button1)
-        Me.Curriculum.Controls.Add(Me.TextBox1)
+        Me.Curriculum.Controls.Add(Me.btnCurriculumBrowse)
+        Me.Curriculum.Controls.Add(Me.txtCurriculumFileSrc)
         Me.Curriculum.Controls.Add(Me.Label3)
         Me.Curriculum.Location = New System.Drawing.Point(4, 22)
         Me.Curriculum.Name = "Curriculum"
@@ -271,6 +282,15 @@ Partial Class DataGenerator
         Me.Curriculum.TabIndex = 1
         Me.Curriculum.Text = "Curriculum"
         Me.Curriculum.UseVisualStyleBackColor = True
+        '
+        'btnCurriculumImport
+        '
+        Me.btnCurriculumImport.Location = New System.Drawing.Point(366, 331)
+        Me.btnCurriculumImport.Name = "btnCurriculumImport"
+        Me.btnCurriculumImport.Size = New System.Drawing.Size(97, 23)
+        Me.btnCurriculumImport.TabIndex = 29
+        Me.btnCurriculumImport.Text = "Import Classes"
+        Me.btnCurriculumImport.UseVisualStyleBackColor = True
         '
         'btnCurriculumAddElectives
         '
@@ -380,21 +400,22 @@ Partial Class DataGenerator
         Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 251)
         Me.lboxCurriculumCourses.TabIndex = 6
         '
-        'Button1
+        'btnCurriculumBrowse
         '
-        Me.Button1.Location = New System.Drawing.Point(366, 10)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Browse"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnCurriculumBrowse.Location = New System.Drawing.Point(366, 10)
+        Me.btnCurriculumBrowse.Name = "btnCurriculumBrowse"
+        Me.btnCurriculumBrowse.Size = New System.Drawing.Size(75, 23)
+        Me.btnCurriculumBrowse.TabIndex = 5
+        Me.btnCurriculumBrowse.Text = "Browse"
+        Me.btnCurriculumBrowse.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtCurriculumFileSrc
         '
-        Me.TextBox1.Location = New System.Drawing.Point(106, 12)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(254, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.txtCurriculumFileSrc.Enabled = False
+        Me.txtCurriculumFileSrc.Location = New System.Drawing.Point(106, 12)
+        Me.txtCurriculumFileSrc.Name = "txtCurriculumFileSrc"
+        Me.txtCurriculumFileSrc.Size = New System.Drawing.Size(254, 20)
+        Me.txtCurriculumFileSrc.TabIndex = 4
         '
         'Label3
         '
@@ -411,7 +432,7 @@ Partial Class DataGenerator
         Me.Students.Controls.Add(Me.testbox)
         Me.Students.Controls.Add(Me.btnRandomGenerate)
         Me.Students.Controls.Add(Me.Label2)
-        Me.Students.Controls.Add(Me.Button2)
+        Me.Students.Controls.Add(Me.btnStudentBrowse)
         Me.Students.Controls.Add(Me.TextBox2)
         Me.Students.Location = New System.Drawing.Point(4, 22)
         Me.Students.Name = "Students"
@@ -448,14 +469,14 @@ Partial Class DataGenerator
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Import a File"
         '
-        'Button2
+        'btnStudentBrowse
         '
-        Me.Button2.Location = New System.Drawing.Point(366, 10)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Browse"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnStudentBrowse.Location = New System.Drawing.Point(366, 10)
+        Me.btnStudentBrowse.Name = "btnStudentBrowse"
+        Me.btnStudentBrowse.Size = New System.Drawing.Size(75, 23)
+        Me.btnStudentBrowse.TabIndex = 3
+        Me.btnStudentBrowse.Text = "Browse"
+        Me.btnStudentBrowse.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
@@ -491,12 +512,12 @@ Partial Class DataGenerator
     Friend WithEvents txtClassesFileSRC As System.Windows.Forms.TextBox
     Friend WithEvents btnClassesBrowse As System.Windows.Forms.Button
     Friend WithEvents Curriculum As System.Windows.Forms.TabPage
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents btnCurriculumBrowse As System.Windows.Forms.Button
+    Friend WithEvents txtCurriculumFileSrc As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Students As System.Windows.Forms.TabPage
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnStudentBrowse As System.Windows.Forms.Button
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents txtClassesPrerequisites As System.Windows.Forms.TextBox
     Friend WithEvents cboxClassesPrerequisites As System.Windows.Forms.CheckBox
@@ -522,4 +543,6 @@ Partial Class DataGenerator
     Friend WithEvents btnCurriculumAddCore As System.Windows.Forms.Button
     Friend WithEvents btnRandomGenerate As System.Windows.Forms.Button
     Friend WithEvents testbox As System.Windows.Forms.TextBox
+    Friend WithEvents btnClassesImport As System.Windows.Forms.Button
+    Friend WithEvents btnCurriculumImport As System.Windows.Forms.Button
 End Class
