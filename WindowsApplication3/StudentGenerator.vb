@@ -4,6 +4,9 @@
     Private m_curriculumDistribution As New ArrayList
     Private m_dropoutRate As Double
     Private m_curriculumList As New ArrayList
+    Private m_currentQuarter As String
+    Private m_currentYear As Integer
+    Private m_quatersToDropout As Integer
     Private rng As New Random
 
     'db necessary to generate enrollments for students
@@ -24,6 +27,9 @@
         m_curriculumdb = curricdb
         m_coursedb = coursedb
         m_dropoutRate = 0
+        m_currentQuarter = "Spring"
+        m_currentYear = 2013
+        m_quatersToDropout = 3
         'create values for distribution
         ''generate list of curriculums
         For Each c As Curriculum In curricdb
@@ -50,7 +56,7 @@
             studentCounter+= 1
         End While
 
-        'add curriculums to student
+        'add curriculums to student (default all students begin in Fall)
         studentCounter = 0
         Dim distmilestones(m_curriculumDistribution.Count) As Integer
         Dim counter As Integer = 0
@@ -63,6 +69,8 @@
                 If(studentCounter < distmilestones(counter))
                     'assign curriculum to use for this distribution on student
                     tempstudent.CurrentCurriculum = m_curriculumList.Item(counter)
+                    tempstudent.EnrolledQuarter = "FALL"
+                    tempstudent.EnrolledYear = Integer.Parse(tempstudent.CurrentCurriculum.ID)
                 End If
             Next
             studentCounter += 1
@@ -81,7 +89,23 @@
             dropoutstudents.Add(studentList.Item(tempindex))
         Next
 
-        'add courses to each student
+        'add courses to each student(default behavior is random 4 classes per quarter)
+        For Each stud As Student In studentList
+            Dim totalquarters As Integer = calcQuatertersTaken(stud)
+            If(dropoutstudents.Contains(stud))
+                totalquarters -= 3
+            End If
+            For quartercounter As Integer = 0 To calcQuatertersTaken(stud) Step 1
+                For classcounter As Integer = 0 To 1 Step 1
+                    Dim tempsection As Section = generateRandomSection(stud.CurrentCurriculum)
+                    While (Not isValidSection(stud, tempsection))
+                        tempsection = generateRandomSection(stud.CurrentCurriculum)
+                    End While
+                    stud.addCourseTakenWithGradeAndDate(tempsection, generateRandomGrade, calcYear(quartercounter, stud), calcQuarter(quartercounter))
+                Next
+            Next
+        Next
+
 
         Return studentList
     End Function
@@ -150,12 +174,72 @@
             tempcourselist.Add(enroll.SectionTaken.CourseID)
         Next
         For Each cid As String In prereqs
-            If(tempcourselist.Contains(cid))
-               
+            If(Not tempcourselist.Contains(cid))
+               Return False
             End If
         Next
 
         Return true
+    End Function
+
+    Private Function calcQuatertersTaken(ByVal stud As Student) As Integer
+        Dim value As Integer = 0
+        Dim currqval As Integer = 0
+        Dim qval As Integer = 0
+        If(stud.EnrolledQuarter.ToUpper = "FALL") Then
+            qval = 0
+            ElseIf(stud.EnrolledQuarter.ToUpper = "WINTER") Then
+            qval = 1
+            ElseIf(stud.EnrolledQuarter.ToUpper = "SPRING") Then
+            qval = 2
+        End If
+
+        If(m_currentQuarter.ToUpper = "FALL") Then
+            currqval = 0
+            ElseIf(m_currentQuarter.ToUpper = "WINTER") Then
+            currqval = 1
+            ElseIf(m_currentQuarter.ToUpper = "SPRING") Then
+            currqval = 2
+        End If
+
+        value = (m_currentYear - stud.EnrolledYear) + (currqval - qval)
+
+        Return value
+    End Function
+
+    Private Function generateRandomGrade() As String
+        Dim temp As Integer = rng.Next Mod 5
+        Select Case temp
+            Case 0
+                Return "A"
+            Case 1
+                Return "B"
+            Case 2
+                Return "C"
+            Case 3
+                Return "D"
+            Case Else 
+                Return "F"
+        End Select
+    End Function
+
+    'only works if students only start in fall
+    Private Function calcQuarter(ByVal currentCounter As Integer) As String
+        Select Case currentCounter mod 3
+            Case 0
+                Return "FALL"
+            Case 1
+                Return "WINTER"
+            Case Else
+                Return "SPRING"
+        End Select
+    End Function
+
+    Private Function calcYear(ByVal currentCounter As Integer, ByVal stud As Student) As Integer
+        Dim value As Integer = stud.EnrolledYear
+        value += currentCounter/3
+
+        Return value
     End Function
 
 End Class
