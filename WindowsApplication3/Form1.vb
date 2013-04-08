@@ -8,11 +8,14 @@
         Dim tempStudentDB As Collection = Controller.getStudentDB
         Dim tempScheduleDB As Collection = Controller.getScheduleDB
 
-        Dim course As New Course("CS101", 4, "", "MAT114")
+        Dim course As New Course("CS101", 4, "", New ArrayList())
         tempCourseDB.Add(course, course.ID)
-        course = New Course("CS102", 4, "", "CS101")
+
+        Dim templist As New ArrayList()
+        templist.Add("CS 101")
+        course = New Course("CS102", 4, "", templist)
         tempCourseDB.Add(course, course.ID)
-        course = New Course("CS103", 4, "CS102", "")
+        course = New Course("CS103", 4, "CS102", New ArrayList())
         tempCourseDB.Add(course, course.ID)
 
         'Test Teacher
