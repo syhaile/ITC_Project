@@ -5,6 +5,7 @@ Public Class DataGenerator
     Private tempCurriculumCollection As Collection = Controller.getCurriculumDB
 
 
+
     Private Sub btnClassesBrowse_Click(sender As Object, e As EventArgs) Handles btnClassesBrowse.Click
         txtClassesFileSRC.Enabled = True
         txtClassesFileSRC.Text = "C:\courses.txt"
@@ -78,18 +79,17 @@ Public Class DataGenerator
         If lboxCurriculumCourses.SelectedIndex = -1 Then
             MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
         Else
-            If lboxCurriculumReqGE.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
-                MessageBox.Show("That course is already in the current curriculum")
-            Else
-                lboxCurriculumReqGE.Items.Add(lboxCurriculumCourses.SelectedItem)
-                lboxCurriculumCourses.SelectedIndex = -1
-            End If
+            lboxCurriculumReqGE.Items.Add(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumReqGE.SelectedItem = lboxCurriculumCourses.SelectedItem
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumCourses.SelectedIndex = -1
+            updateCurriculumDB()
         End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If lboxClassesCourses.SelectedIndex = -1 Then
-            MessageBox.Show("You must have a course selected in order to delete one")
+            MessageBox.Show("You must have a course selected in order to remove one")
         Else
             tempCourseDB.Remove(lboxClassesCourses.SelectedItem)
             lboxClassesCourses.Items.RemoveAt(lboxClassesCourses.SelectedIndex)
@@ -104,13 +104,12 @@ Public Class DataGenerator
     Private Sub btnCurriculumAddCore_Click(sender As Object, e As EventArgs) Handles btnCurriculumAddCore.Click
         If lboxCurriculumCourses.SelectedIndex = -1 Then
             MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
-        Else
-            If lboxCurriculumReqCore.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
-                MessageBox.Show("That course is already in the current curriculum")
-            Else
-                lboxCurriculumReqCore.Items.Add(lboxCurriculumCourses.SelectedItem)
-                lboxCurriculumCourses.SelectedIndex = -1
-            End If
+        Else       
+            lboxCurriculumReqCore.Items.Add(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumReqCore.SelectedItem = lboxCurriculumCourses.SelectedItem
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumCourses.SelectedIndex = -1
+            updateCurriculumDB()
         End If
     End Sub
 
@@ -118,17 +117,12 @@ Public Class DataGenerator
         If lboxCurriculumCourses.SelectedIndex = -1 Then
             MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
         Else
-            If lboxCurriculumElective.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
-                MessageBox.Show("That course is already in the current curriculum")
-            Else
-                lboxCurriculumElective.Items.Add(lboxCurriculumCourses.SelectedItem)
-                lboxCurriculumCourses.SelectedIndex = -1
-            End If
+            lboxCurriculumElective.Items.Add(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumElective.SelectedItem = lboxCurriculumCourses.SelectedItem
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumCourses.SelectedItem)
+            lboxCurriculumCourses.SelectedIndex = -1
+            updateCurriculumDB()
         End If
-    End Sub
-
-    Private Sub DataGenerator_Load(sender As Object, e As EventArgs) Handles Me.Load
-
     End Sub
 
     Private Sub btnRandomGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRandomGenerate.Click
@@ -182,7 +176,7 @@ Public Class DataGenerator
         Dim reqGE, reqCore, reqElect, reqGEStart, reqGEEnd, reqCoreStart, reqCoreEnd, reqElectStart, reqElectEnd As Integer
         Dim reader As New StreamReader(txtCurriculumFileSrc.Text)
         Dim stringReader As String = reader.ReadLine()
-        Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
+
 
         While Not stringReader Is Nothing
             Dim lineValue() As String = stringReader.Split(vbTab)
@@ -212,6 +206,8 @@ Public Class DataGenerator
             reqElectStart = reqElect + 1
             reqElectEnd = lineValue.Count - 1
 
+            Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
+
             'Get Required GE Courses
             For index = reqGEStart To reqGEEnd Step 1
                 reqGEArray.Add(lineValue(index))
@@ -227,25 +223,23 @@ Public Class DataGenerator
                 reqElectArray.Add(lineValue(index))
             Next
 
+            
             'set Required GE Courses
             Dim tempReqGE As New RequiredGECourses
             For index = 0 To reqGEArray.Count - 1 Step 1
                 tempReqGE.addCourse(reqGEArray(index))
-                lboxCurriculumReqGE.Items.Add(reqGEArray(index))
             Next
 
             'set Required Core Courses
             Dim tempReqCore As New RequiredCoreCourses
             For index = 0 To reqCoreArray.Count - 1 Step 1
                 tempReqCore.addCourse(reqCoreArray(index))
-                lboxCurriculumReqCore.Items.Add(reqCoreArray(index))
             Next
 
             'set Elective Courses
             Dim tempElective As New ElectiveCoreCourses
             For index = 0 To reqElectArray.Count - 1 Step 1
                 tempElective.addCourse(reqElectArray(index))
-                lboxCurriculumElective.Items.Add(reqCoreArray(index))
             Next
 
             'set Curriculum
@@ -254,7 +248,12 @@ Public Class DataGenerator
             tempCurriculum.RequiredGECourses = tempReqGE
             tempCurriculum.RequiredCoreCourses = tempReqCore
             tempCurriculum.ElectiveCourses = tempElective
-            tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+            If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
+                tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+            Else
+                tempCurriculumCollection.Remove(tempCurriculum.ID)
+                tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+            End If
 
 
 
@@ -262,9 +261,152 @@ Public Class DataGenerator
 
             stringReader = reader.ReadLine()
         End While
+        updateComboBox()
+        ''set curriculum year
+        'cboCurriculumYear.Items.Add(curriculumYear)
+        'cboCurriculumYear.SelectedItem = curriculumYear
+        'lboxCurriculumReqGE.Items.Add(reqGEArray(index))
+        ' lboxCurriculumReqCore.Items.Add(reqCoreArray(index))
+        'lboxCurriculumElective.Items.Add(reqCoreArray(index))
+
+    End Sub
+
+    Private Sub updateComboBox()
+        tempCurriculumCollection = Controller.getCurriculumDB
+        Dim tempCurriculum As New Curriculum
+        For Each tempCurriculum In tempCurriculumCollection
+            cboCurriculumYear.Items.Add(tempCurriculum.ID)
+        Next
+    End Sub
+   
+    Private Sub lboxCurriculumReqGE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxCurriculumReqGE.SelectedIndexChanged
+        If Not lboxCurriculumReqGE.SelectedIndex = -1 Then
+            lboxCurriculumElective.SelectedIndex = -1
+            lboxCurriculumReqCore.SelectedIndex = -1
+        End If
 
 
     End Sub
 
-   
+    Private Sub lboxCurriculumReqCore_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxCurriculumReqCore.SelectedIndexChanged
+        If Not lboxCurriculumReqCore.SelectedIndex = -1 Then
+            lboxCurriculumElective.SelectedIndex = -1
+            lboxCurriculumReqGE.SelectedIndex = -1
+        End If
+
+    End Sub
+
+    Private Sub lboxCurriculumElective_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxCurriculumElective.SelectedIndexChanged
+        If Not lboxCurriculumElective.SelectedIndex = -1 Then
+            lboxCurriculumReqGE.SelectedIndex = -1
+            lboxCurriculumReqCore.SelectedIndex = -1
+        End If
+
+    End Sub
+
+    Private Sub btnCurriculumDrop_Click(sender As Object, e As EventArgs) Handles btnCurriculumDrop.Click
+        If Not lboxCurriculumElective.SelectedIndex = -1 Then
+            lboxCurriculumCourses.Items.Add(lboxCurriculumElective.SelectedItem)
+            lboxCurriculumElective.Items.Remove(lboxCurriculumElective.SelectedItem)
+        ElseIf Not lboxCurriculumReqCore.SelectedIndex = -1 Then
+            lboxCurriculumCourses.Items.Add(lboxCurriculumReqCore.SelectedItem)
+            lboxCurriculumReqCore.Items.Remove(lboxCurriculumReqCore.SelectedItem)
+        ElseIf Not lboxCurriculumReqGE.SelectedIndex = -1 Then
+            lboxCurriculumCourses.Items.Add(lboxCurriculumReqGE.SelectedItem)
+            lboxCurriculumReqGE.Items.Remove(lboxCurriculumReqGE.SelectedItem)
+        End If
+        updateCurriculumDB()
+    End Sub
+
+    Private Sub updateCurriculumDB()
+        'set Required GE Courses
+        Dim tempReqGE As New RequiredGECourses
+        For index = 0 To lboxCurriculumReqGE.Items.Count - 1 Step 1
+            tempReqGE.addCourse(lboxCurriculumReqGE.Items(index))
+        Next
+
+        'set Required Core Courses
+        Dim tempReqCore As New RequiredCoreCourses
+        For index = 0 To lboxCurriculumReqCore.Items.Count - 1 Step 1
+            tempReqCore.addCourse(lboxCurriculumReqCore.Items(index))
+        Next
+
+        'set Elective Courses
+        Dim tempElective As New ElectiveCoreCourses
+        For index = 0 To lboxCurriculumElective.Items.Count - 1 Step 1
+            tempElective.addCourse(lboxCurriculumElective.Items(index))
+        Next
+
+        'set Curriculum
+        Dim tempCurriculum As New Curriculum
+        tempCurriculum.ID = cboCurriculumYear.SelectedItem
+        tempCurriculum.RequiredGECourses = tempReqGE
+        tempCurriculum.RequiredCoreCourses = tempReqCore
+        tempCurriculum.ElectiveCourses = tempElective
+        If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
+            tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+        Else
+            tempCurriculumCollection.Remove(tempCurriculum.ID)
+            tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+        End If
+
+
+
+
+        Controller.updateCurriculumDB(tempCurriculumCollection)
+    End Sub
+
+    Private Sub cboCurriculumYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCurriculumYear.SelectedIndexChanged
+        lboxCurriculumElective.Items.Clear()
+        lboxCurriculumReqCore.Items.Clear()
+        lboxCurriculumReqGE.Items.Clear()
+
+        tempCurriculumCollection = Controller.getCurriculumDB
+
+        Dim currentCurriculum As Curriculum = tempCurriculumCollection.Item(cboCurriculumYear.SelectedItem)
+        Dim currentReqGE As RequiredGECourses = currentCurriculum.RequiredGECourses
+        Dim currentRegCore As RequiredCoreCourses = currentCurriculum.RequiredCoreCourses
+        Dim currentElective As ElectiveCoreCourses = currentCurriculum.ElectiveCourses
+
+        Dim currentReqGECourse As ArrayList = currentReqGE.Courses
+        Dim currentReqCoreCourse As ArrayList = currentRegCore.Courses
+        Dim currentElectiveCourse As ArrayList = currentElective.Courses
+
+        Dim nullString As String = ""
+
+        For Each nullString In currentReqGECourse
+            lboxCurriculumReqGE.Items.Add(nullString)
+        Next
+
+        For Each nullString In currentReqCoreCourse
+            lboxCurriculumReqCore.Items.Add(nullString)
+        Next
+
+        For Each nullString In currentElectiveCourse
+            lboxCurriculumElective.Items.Add(nullString)
+        Next
+        Dim nullCourse As New Course
+        tempCourseDB = Controller.getCourseDB
+        lboxCurriculumCourses.Items.Clear()
+        For Each nullCourse In tempCourseDB
+            lboxCurriculumCourses.Items.Add(nullCourse.ID)
+        Next
+        validateCourseLeft()
+
+    End Sub
+
+    Private Sub validateCourseLeft()
+        For index = 0 To lboxCurriculumReqGE.Items.Count - 1 Step 1
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumReqGE.Items(index))
+        Next
+
+        For index = 0 To lboxCurriculumReqCore.Items.Count - 1 Step 1
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumReqCore.Items(index))
+        Next
+
+        For index = 0 To lboxCurriculumElective.Items.Count - 1 Step 1
+            lboxCurriculumCourses.Items.Remove(lboxCurriculumElective.Items(index))
+        Next
+    End Sub
+
 End Class
