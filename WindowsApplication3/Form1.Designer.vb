@@ -29,7 +29,7 @@ Partial Class Form1
         '
         'btnCreateCurriculum
         '
-        Me.btnCreateCurriculum.Location = New System.Drawing.Point(246, 12)
+        Me.btnCreateCurriculum.Location = New System.Drawing.Point(79, 12)
         Me.btnCreateCurriculum.Name = "btnCreateCurriculum"
         Me.btnCreateCurriculum.Size = New System.Drawing.Size(139, 23)
         Me.btnCreateCurriculum.TabIndex = 1
@@ -48,7 +48,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(391, 17)
+        Me.Label1.Location = New System.Drawing.Point(253, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(140, 13)
         Me.Label1.TabIndex = 9
