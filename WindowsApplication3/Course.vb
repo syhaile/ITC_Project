@@ -9,6 +9,7 @@ Public Class Course
     Private m_ID, m_title As String
     Private m_units As Integer
     Private m_companionCourse, m_PreRequisit As String
+    Private m_prerequisite As ArrayList
 
     Public Sub New()
 
@@ -22,7 +23,7 @@ Public Class Course
     ''' <param name="companionCourse"></param>
     ''' <param name="prerequisiteCourse"></param>
     ''' <remarks></remarks>
-    Public Sub New(ByVal id As String, ByVal units As Integer, ByVal companionCourse As String, ByVal prerequisiteCourse As String)
+    Public Sub New(ByVal id As String, ByVal units As Integer, ByVal companionCourse As String, ByVal prerequisiteCourse As ArrayList)
         Me.ID = id
         Me.Units = units
         Me.CompanionCourse = companionCourse
@@ -46,17 +47,17 @@ Public Class Course
     End Property
 
     ''' <summary>
-    ''' A String of the ID's of any prerequisite courses to this course. Delimited by a single space.
+    ''' A List of ID's for prerequisites if any exists
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property PreRequisitCourse As String
+    Public Property PreRequisitCourse As ArrayList
         Get
-            Return m_PreRequisit
+            Return m_prerequisite
         End Get
-        Set(value As String)
-            m_PreRequisit = value
+        Set(value As ArrayList)
+            m_prerequisite = value
         End Set
     End Property
 

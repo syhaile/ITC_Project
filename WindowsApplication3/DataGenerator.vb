@@ -40,7 +40,11 @@
     End Sub
 
     Private Sub btnClassesAddClass_Click(sender As Object, e As EventArgs) Handles btnClassesAddClass.Click
-        Dim course As New Course(txtCourseName.Text, nudClassesUnits.Value, txtClassesCompanion.Text, txtClassesPrerequisites.Text)
+        Dim templist as New ArrayList()
+        For Each word As String In txtClassesPrerequisites.Text.Split(" ")
+            templist.Add(word)
+        Next
+        Dim course As New Course(txtCourseName.Text, nudClassesUnits.Value, txtClassesCompanion.Text, templist)
         tempCourseDB.Add(course, course.ID)
         updateCourseDB()
         updateListbox()
@@ -120,4 +124,13 @@
     Private Sub DataGenerator_Load(sender As Object, e As EventArgs) Handles Me.Load
 
     End Sub
+
+Private Sub btnRandomGenerate_Click( ByVal sender As System.Object,  ByVal e As System.EventArgs) Handles btnRandomGenerate.Click
+        Dim myGenerator As New StudentGenerator(Controller.getCurriculumDB, Controller.getCourseDB)
+        Dim mylist As ArrayList = myGenerator.generateStudents
+        For Each st As Student In mylist
+            testbox.Text += st.ID + " " + vbNewLine
+        Next
+End Sub
+
 End Class

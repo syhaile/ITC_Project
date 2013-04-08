@@ -154,9 +154,13 @@ Public Class Student
         m_courses.Add(New Enrollment(section, grade))
     End Sub
 
+    Public Sub addCourseTakenWithGradeAndDate(ByVal section As Section, ByVal grade As String, byval year As String, byVal quarter as String)
+        m_courses.Add(New Enrollment(section, grade, year, quarter))
+    end sub
+
     'Internal class used by student to keep track of courses taken.
     Private Class Enrollment
-        Private m_grade As String
+        Private m_grade, m_quarter, m_year As String
         Private m_section As Section
 
         Public Sub new()
@@ -171,6 +175,13 @@ Public Class Student
             SectionTaken = section
             Grade = grade
         End Sub
+
+        Public Sub New(ByVal section As Section, ByVal grade As String, byval year As String, byVal quarter as String)
+            SectionTaken = section
+            Grade = grade
+            Year = year
+            Quarter = quarter
+        End Sub 
 
         public Property SectionTaken As Section
             Get
@@ -188,6 +199,26 @@ Public Class Student
             End Get
             Set(ByVal value As String)
                 m_grade = value
+            End Set
+        end property
+
+        Public Property Year As String
+
+            Get
+                Return m_year
+            End Get
+            Set(ByVal value As String)
+                m_year = value
+            End Set
+        end property
+
+        Public Property Quarter As String
+
+            Get
+                Return m_quarter
+            End Get
+            Set(ByVal value As String)
+                m_quarter = value
             End Set
         end property
     End Class

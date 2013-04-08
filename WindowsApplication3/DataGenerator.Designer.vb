@@ -25,6 +25,7 @@ Partial Class DataGenerator
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DataGenerator))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Classes = New System.Windows.Forms.TabPage()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.lboxClassesCourses = New System.Windows.Forms.ListBox()
         Me.btnClassesAddClass = New System.Windows.Forms.Button()
@@ -40,6 +41,14 @@ Partial Class DataGenerator
         Me.txtClassesFileSRC = New System.Windows.Forms.TextBox()
         Me.btnClassesBrowse = New System.Windows.Forms.Button()
         Me.Curriculum = New System.Windows.Forms.TabPage()
+        Me.btnCurriculumAddElectives = New System.Windows.Forms.Button()
+        Me.btnCurriculumAddCore = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lboxCurriculumElective = New System.Windows.Forms.ListBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lboxCurriculumReqCore = New System.Windows.Forms.ListBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.btnCurriculumAddGE = New System.Windows.Forms.Button()
         Me.btnCurriculumDrop = New System.Windows.Forms.Button()
         Me.lboxCurriculumReqGE = New System.Windows.Forms.ListBox()
@@ -48,18 +57,11 @@ Partial Class DataGenerator
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Students = New System.Windows.Forms.TabPage()
+        Me.testbox = New System.Windows.Forms.TextBox()
+        Me.btnRandomGenerate = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.lboxCurriculumReqCore = New System.Windows.Forms.ListBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.lboxCurriculumElective = New System.Windows.Forms.ListBox()
-        Me.btnCurriculumAddCore = New System.Windows.Forms.Button()
-        Me.btnCurriculumAddElectives = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Classes.SuspendLayout()
         CType(Me.nudClassesUnits, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,10 +100,20 @@ Partial Class DataGenerator
         Me.Classes.Location = New System.Drawing.Point(4, 22)
         Me.Classes.Name = "Classes"
         Me.Classes.Padding = New System.Windows.Forms.Padding(3)
-        Me.Classes.Size = New System.Drawing.Size(447, 306)
+        Me.Classes.Size = New System.Drawing.Size(533, 381)
         Me.Classes.TabIndex = 0
         Me.Classes.Text = "Classes"
         Me.Classes.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(257, 45)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(103, 15)
+        Me.Label5.TabIndex = 20
+        Me.Label5.Text = "Courses Added"
         '
         'Button3
         '
@@ -260,6 +272,80 @@ Partial Class DataGenerator
         Me.Curriculum.Text = "Curriculum"
         Me.Curriculum.UseVisualStyleBackColor = True
         '
+        'btnCurriculumAddElectives
+        '
+        Me.btnCurriculumAddElectives.Image = CType(resources.GetObject("btnCurriculumAddElectives.Image"), System.Drawing.Image)
+        Me.btnCurriculumAddElectives.Location = New System.Drawing.Point(267, 252)
+        Me.btnCurriculumAddElectives.Name = "btnCurriculumAddElectives"
+        Me.btnCurriculumAddElectives.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumAddElectives.TabIndex = 28
+        Me.btnCurriculumAddElectives.UseVisualStyleBackColor = True
+        '
+        'btnCurriculumAddCore
+        '
+        Me.btnCurriculumAddCore.Image = CType(resources.GetObject("btnCurriculumAddCore.Image"), System.Drawing.Image)
+        Me.btnCurriculumAddCore.Location = New System.Drawing.Point(267, 157)
+        Me.btnCurriculumAddCore.Name = "btnCurriculumAddCore"
+        Me.btnCurriculumAddCore.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumAddCore.TabIndex = 27
+        Me.btnCurriculumAddCore.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(366, 219)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(68, 15)
+        Me.Label10.TabIndex = 26
+        Me.Label10.Text = "Electives "
+        '
+        'lboxCurriculumElective
+        '
+        Me.lboxCurriculumElective.FormattingEnabled = True
+        Me.lboxCurriculumElective.Location = New System.Drawing.Point(357, 237)
+        Me.lboxCurriculumElective.Name = "lboxCurriculumElective"
+        Me.lboxCurriculumElective.Size = New System.Drawing.Size(158, 69)
+        Me.lboxCurriculumElective.TabIndex = 25
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(366, 129)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(100, 15)
+        Me.Label9.TabIndex = 24
+        Me.Label9.Text = "Required Core"
+        '
+        'lboxCurriculumReqCore
+        '
+        Me.lboxCurriculumReqCore.FormattingEnabled = True
+        Me.lboxCurriculumReqCore.Location = New System.Drawing.Point(357, 147)
+        Me.lboxCurriculumReqCore.Name = "lboxCurriculumReqCore"
+        Me.lboxCurriculumReqCore.Size = New System.Drawing.Size(158, 69)
+        Me.lboxCurriculumReqCore.TabIndex = 23
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(366, 40)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(93, 15)
+        Me.Label7.TabIndex = 22
+        Me.Label7.Text = "Required GE "
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(41, 40)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(59, 15)
+        Me.Label6.TabIndex = 21
+        Me.Label6.Text = "Courses"
+        '
         'btnCurriculumAddGE
         '
         Me.btnCurriculumAddGE.Image = CType(resources.GetObject("btnCurriculumAddGE.Image"), System.Drawing.Image)
@@ -322,15 +408,35 @@ Partial Class DataGenerator
         '
         'Students
         '
+        Me.Students.Controls.Add(Me.testbox)
+        Me.Students.Controls.Add(Me.btnRandomGenerate)
         Me.Students.Controls.Add(Me.Label2)
         Me.Students.Controls.Add(Me.Button2)
         Me.Students.Controls.Add(Me.TextBox2)
         Me.Students.Location = New System.Drawing.Point(4, 22)
         Me.Students.Name = "Students"
-        Me.Students.Size = New System.Drawing.Size(447, 306)
+        Me.Students.Size = New System.Drawing.Size(533, 381)
         Me.Students.TabIndex = 2
         Me.Students.Text = "Students"
         Me.Students.UseVisualStyleBackColor = True
+        '
+        'testbox
+        '
+        Me.testbox.Location = New System.Drawing.Point(221, 64)
+        Me.testbox.Multiline = True
+        Me.testbox.Name = "testbox"
+        Me.testbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.testbox.Size = New System.Drawing.Size(232, 265)
+        Me.testbox.TabIndex = 6
+        '
+        'btnRandomGenerate
+        '
+        Me.btnRandomGenerate.Location = New System.Drawing.Point(48, 323)
+        Me.btnRandomGenerate.Name = "btnRandomGenerate"
+        Me.btnRandomGenerate.Size = New System.Drawing.Size(75, 23)
+        Me.btnRandomGenerate.TabIndex = 5
+        Me.btnRandomGenerate.Text = "Generate!"
+        Me.btnRandomGenerate.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -357,90 +463,6 @@ Partial Class DataGenerator
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(254, 20)
         Me.TextBox2.TabIndex = 2
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(257, 45)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(103, 15)
-        Me.Label5.TabIndex = 20
-        Me.Label5.Text = "Courses Added"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 40)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 15)
-        Me.Label6.TabIndex = 21
-        Me.Label6.Text = "Courses"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(366, 40)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(93, 15)
-        Me.Label7.TabIndex = 22
-        Me.Label7.Text = "Required GE "
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(366, 129)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(100, 15)
-        Me.Label9.TabIndex = 24
-        Me.Label9.Text = "Required Core"
-        '
-        'lboxCurriculumReqCore
-        '
-        Me.lboxCurriculumReqCore.FormattingEnabled = True
-        Me.lboxCurriculumReqCore.Location = New System.Drawing.Point(357, 147)
-        Me.lboxCurriculumReqCore.Name = "lboxCurriculumReqCore"
-        Me.lboxCurriculumReqCore.Size = New System.Drawing.Size(158, 69)
-        Me.lboxCurriculumReqCore.TabIndex = 23
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(366, 219)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(68, 15)
-        Me.Label10.TabIndex = 26
-        Me.Label10.Text = "Electives "
-        '
-        'lboxCurriculumElective
-        '
-        Me.lboxCurriculumElective.FormattingEnabled = True
-        Me.lboxCurriculumElective.Location = New System.Drawing.Point(357, 237)
-        Me.lboxCurriculumElective.Name = "lboxCurriculumElective"
-        Me.lboxCurriculumElective.Size = New System.Drawing.Size(158, 69)
-        Me.lboxCurriculumElective.TabIndex = 25
-        '
-        'btnCurriculumAddCore
-        '
-        Me.btnCurriculumAddCore.Image = CType(resources.GetObject("btnCurriculumAddCore.Image"), System.Drawing.Image)
-        Me.btnCurriculumAddCore.Location = New System.Drawing.Point(267, 157)
-        Me.btnCurriculumAddCore.Name = "btnCurriculumAddCore"
-        Me.btnCurriculumAddCore.Size = New System.Drawing.Size(75, 50)
-        Me.btnCurriculumAddCore.TabIndex = 27
-        Me.btnCurriculumAddCore.UseVisualStyleBackColor = True
-        '
-        'btnCurriculumAddElectives
-        '
-        Me.btnCurriculumAddElectives.Image = CType(resources.GetObject("btnCurriculumAddElectives.Image"), System.Drawing.Image)
-        Me.btnCurriculumAddElectives.Location = New System.Drawing.Point(267, 252)
-        Me.btnCurriculumAddElectives.Name = "btnCurriculumAddElectives"
-        Me.btnCurriculumAddElectives.Size = New System.Drawing.Size(75, 50)
-        Me.btnCurriculumAddElectives.TabIndex = 28
-        Me.btnCurriculumAddElectives.UseVisualStyleBackColor = True
         '
         'DataGenerator
         '
@@ -498,4 +520,6 @@ Partial Class DataGenerator
     Friend WithEvents lboxCurriculumReqCore As System.Windows.Forms.ListBox
     Friend WithEvents btnCurriculumAddElectives As System.Windows.Forms.Button
     Friend WithEvents btnCurriculumAddCore As System.Windows.Forms.Button
+    Friend WithEvents btnRandomGenerate As System.Windows.Forms.Button
+    Friend WithEvents testbox As System.Windows.Forms.TextBox
 End Class
