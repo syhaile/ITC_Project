@@ -176,9 +176,9 @@ Partial Class StudentView
         'lblAvgUnitsPerQuarter
         '
         Me.lblAvgUnitsPerQuarter.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAvgUnitsPerQuarter.Location = New System.Drawing.Point(342, 208)
+        Me.lblAvgUnitsPerQuarter.Location = New System.Drawing.Point(316, 208)
         Me.lblAvgUnitsPerQuarter.Name = "lblAvgUnitsPerQuarter"
-        Me.lblAvgUnitsPerQuarter.Size = New System.Drawing.Size(83, 26)
+        Me.lblAvgUnitsPerQuarter.Size = New System.Drawing.Size(109, 26)
         Me.lblAvgUnitsPerQuarter.TabIndex = 26
         Me.lblAvgUnitsPerQuarter.Text = "Avg. Units Per Quarter:"
         Me.lblAvgUnitsPerQuarter.TextAlign = System.Drawing.ContentAlignment.TopRight

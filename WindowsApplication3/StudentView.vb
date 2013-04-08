@@ -31,24 +31,20 @@
 
     Private Function calculateGPA()
 
-        Dim gradePoints As Double = calculateGradePoints()
-        Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
-        Dim coursesTaken As Double = CDbl(coursesTakenList.Count())
-        Dim GPA As Double = (gradePoints / coursesTaken)
-
-        Return GPA.ToString()
-
-    End Function
-
-    'Calculate grade points based on alphabetic grade. Returns: cumulative grade points
-    Private Function calculateGradePoints()
-
+        Dim finalGradePoints As Double = 0.0
         Dim gradePoints As Double = 0.0
+        Dim classGradePoints As Double = 0.0
+        Dim unitsTaken As Double = 0.0
+        Dim totalUnitsTaken As Double = 0.0
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
         Dim enrollment As New Enrollment
         Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
+        Dim GPA As Double
 
         For Each enrollment In coursesTakenList
 
+            'Assign value to letter grade
             Select Case enrollment.Grade
                 Case "A"
                     gradePoints = 4.0
@@ -78,10 +74,22 @@
                     gradePoints = 0
             End Select
 
-            gradePoints += gradePoints
+            'Get course and then get the units for the course
+            course = courseDB.Item(enrollment.SectionTaken.CourseID)
+            unitsTaken = course.Units
+
+            'Calculate the grade points earned for the class
+            classGradePoints = gradePoints * CDbl(unitsTaken)
+
+            'Update the counters for total units taken and final grade points
+            totalUnitsTaken += unitsTaken
+            finalGradePoints += classGradePoints
         Next
 
-        Return gradePoints
+        'Calculate GPA and display to 3 decimal places
+        GPA = Math.Round((finalGradePoints / totalUnitsTaken), 3)
+
+        Return GPA.ToString()
 
     End Function
 

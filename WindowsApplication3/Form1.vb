@@ -18,6 +18,7 @@
         course = New Course("CS103", 4, "CS102", New ArrayList())
         tempCourseDB.Add(course, course.ID)
 
+
         'Test Teacher
         Dim teacher As New Teacher(998877, "Dr. S Curl")
         tempTeacherDB.Add(teacher, teacher.ID)
@@ -39,18 +40,28 @@
         'Test Data'
         tempRoomDB.Add(room, room.ID)
         Dim sect1 As New Section
-        sect1.CourseID = "CIS 102"
+        sect1.CourseID = "CS103"
         Dim sect2 As New Section
-        sect2.CourseID = "CIS 222"
+        sect2.CourseID = "CS222"
+        Dim sect3 As New Section
+        sect3.CourseID = "CS333"
+
+        course = New Course("CS222", 4, "CS102", New ArrayList())
+        tempCourseDB.Add(course, course.ID)
+        course = New Course("CS333", 4, "CS222", New ArrayList())
+        tempCourseDB.Add(course, course.ID)
+
         '/End Test Data'
 
         Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True)
         student.addCourseTakenWithGrade(sect1, "A")
-        student.addCourseTakenWithGrade(sect2, "A")
+        student.addCourseTakenWithGrade(sect2, "B+")
+        student.addCourseTakenWithGrade(sect3, "C+")
         tempStudentDB.Add(student, student.ID)
         student = New Student("442233", "MarTIN Legaspi", "2012", "Fall", True)
         student.addCourseTakenWithGrade(sect1, "B")
-        student.addCourseTakenWithGrade(sect2, "B")
+        student.addCourseTakenWithGrade(sect2, "C-")
+        student.addCourseTakenWithGrade(sect3, "D")
         tempStudentDB.Add(student, student.ID)
 
         'test adding room, course, student and professor  into a master schedule
