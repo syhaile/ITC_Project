@@ -46,6 +46,7 @@ Partial Class StudentView
         Me.gbxNotTaken = New System.Windows.Forms.GroupBox()
         Me.gbxFailDrop = New System.Windows.Forms.GroupBox()
         Me.lbxFailDrop = New System.Windows.Forms.ListBox()
+        Me.lblCurriculumValue = New System.Windows.Forms.Label()
         Me.gbxCompleted.SuspendLayout()
         Me.gbxNotTaken.SuspendLayout()
         Me.gbxFailDrop.SuspendLayout()
@@ -76,24 +77,23 @@ Partial Class StudentView
         Me.lblStudentName.Name = "lblStudentName"
         Me.lblStudentName.Size = New System.Drawing.Size(301, 24)
         Me.lblStudentName.TabIndex = 14
-        Me.lblStudentName.Text = "Brian Berg"
         Me.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblCurriculum
         '
         Me.lblCurriculum.AutoSize = True
         Me.lblCurriculum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCurriculum.Location = New System.Drawing.Point(388, 63)
+        Me.lblCurriculum.Location = New System.Drawing.Point(470, 62)
         Me.lblCurriculum.Name = "lblCurriculum"
-        Me.lblCurriculum.Size = New System.Drawing.Size(186, 20)
+        Me.lblCurriculum.Size = New System.Drawing.Size(91, 20)
         Me.lblCurriculum.TabIndex = 15
-        Me.lblCurriculum.Text = "Winter 2012 Curriculum"
+        Me.lblCurriculum.Text = "Curriculum"
         '
         'lblExpectedGraduation
         '
         Me.lblExpectedGraduation.AutoSize = True
         Me.lblExpectedGraduation.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExpectedGraduation.Location = New System.Drawing.Point(330, 82)
+        Me.lblExpectedGraduation.Location = New System.Drawing.Point(347, 82)
         Me.lblExpectedGraduation.Name = "lblExpectedGraduation"
         Me.lblExpectedGraduation.Size = New System.Drawing.Size(305, 20)
         Me.lblExpectedGraduation.TabIndex = 16
@@ -176,9 +176,9 @@ Partial Class StudentView
         'lblAvgUnitsPerQuarter
         '
         Me.lblAvgUnitsPerQuarter.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAvgUnitsPerQuarter.Location = New System.Drawing.Point(342, 208)
+        Me.lblAvgUnitsPerQuarter.Location = New System.Drawing.Point(316, 208)
         Me.lblAvgUnitsPerQuarter.Name = "lblAvgUnitsPerQuarter"
-        Me.lblAvgUnitsPerQuarter.Size = New System.Drawing.Size(83, 26)
+        Me.lblAvgUnitsPerQuarter.Size = New System.Drawing.Size(109, 26)
         Me.lblAvgUnitsPerQuarter.TabIndex = 26
         Me.lblAvgUnitsPerQuarter.Text = "Avg. Units Per Quarter:"
         Me.lblAvgUnitsPerQuarter.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -299,11 +299,21 @@ Partial Class StudentView
         Me.lbxFailDrop.Size = New System.Drawing.Size(103, 121)
         Me.lbxFailDrop.TabIndex = 0
         '
+        'lblCurriculumValue
+        '
+        Me.lblCurriculumValue.AutoSize = True
+        Me.lblCurriculumValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCurriculumValue.Location = New System.Drawing.Point(426, 62)
+        Me.lblCurriculumValue.Name = "lblCurriculumValue"
+        Me.lblCurriculumValue.Size = New System.Drawing.Size(0, 20)
+        Me.lblCurriculumValue.TabIndex = 37
+        '
         'StudentView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(913, 596)
+        Me.Controls.Add(Me.lblCurriculumValue)
         Me.Controls.Add(Me.gbxFailDrop)
         Me.Controls.Add(Me.gbxNotTaken)
         Me.Controls.Add(Me.gbxCompleted)
@@ -358,4 +368,5 @@ Partial Class StudentView
     Friend WithEvents gbxNotTaken As System.Windows.Forms.GroupBox
     Friend WithEvents gbxFailDrop As System.Windows.Forms.GroupBox
     Friend WithEvents lbxFailDrop As System.Windows.Forms.ListBox
+    Friend WithEvents lblCurriculumValue As System.Windows.Forms.Label
 End Class
