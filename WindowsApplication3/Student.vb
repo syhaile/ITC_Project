@@ -159,6 +159,7 @@ Public Class Student
     end sub
 
     'Internal class used by student to keep track of courses taken.
+<<<<<<< HEAD
     Private Class Enrollment
         Private m_grade, m_quarter, m_year As String
         Private m_section As Section
@@ -244,4 +245,7 @@ Public Class Student
         end property
 >>>>>>> origin/master
     End Class
+=======
+    
+>>>>>>> origin/master
 End Class

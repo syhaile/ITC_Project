@@ -28,5 +28,16 @@
 
     End Sub
 
+    Private Function CalculateGPA()
+
+        Dim GPA As Double
+        Dim enrollment As New Enrollment
+
+
+
+        Return GPA
+
+    End Function
+
 
 End Class
