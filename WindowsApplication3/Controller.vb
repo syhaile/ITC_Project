@@ -26,7 +26,7 @@
     End Function
 
     Public Shared Sub updateTeacherDB(ByVal db As Collection)
-        ctrlStudentDB.MasterDatabase = db
+        ctrlTeacherDB.MasterDatabase = db
     End Sub
 
     Public Shared Function getRoomDB()
@@ -34,7 +34,7 @@
     End Function
 
     Public Shared Sub updateRoomDB(ByVal db As Collection)
-        ctrlStudentDB.MasterDatabase = db
+        ctrlRoomDB.MasterDatabase = db
     End Sub
 
     Public Shared Function getScheduleDB()
@@ -42,7 +42,7 @@
     End Function
 
     Public Shared Sub updateScheduleDB(ByVal db As Collection)
-        ctrlStudentDB.MasterDatabase = db
+        ctrlScheduleDB.MasterDatabase = db
     End Sub
 
 End Class
