@@ -189,6 +189,24 @@ Public Class Student
             Set(ByVal value As String)
                 m_grade = value
             End Set
-        end property
+        End Property
+
+        Public Function calculateGPA()
+
+            Dim GPA As Double
+
+            Dim coursesTaken As Double = studentList(lbxStudentList.SelectedIndex).SectionsTaken.Count()
+            Dim gradePoints As Double
+            Dim enrollment As New Enrollment
+
+            For Each enrollment In SectionsTaken
+
+            Next
+
+
+
+            Return GPA
+
+        End Function
     End Class
 End Class

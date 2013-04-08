@@ -13,12 +13,20 @@
             studentList.Add(tempStudent)
         Next
 
+        lbxStudentList.SelectedIndex = 0
+        lblStudentName.Text = studentList(lbxStudentList.SelectedIndex).Name
+
     End Sub
 
     'Update the Student information labels
     Private Sub lbxStudentList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbxStudentList.SelectedIndexChanged
         lblStudentName.Text = studentList(lbxStudentList.SelectedIndex).Name
+        'To string for curriculum?
+        'lblCurriculum.Text = students(lbxStudentList.SelectedIndex).CurrentCurriculum
+        'lblExpectedGraduation.Text = studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate
+        'lblGPAValue.Text = studentList(lbxStudentList.SelectedIndex).GPA
 
     End Sub
+
 
 End Class

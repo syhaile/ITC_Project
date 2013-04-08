@@ -44,8 +44,7 @@
 
     Public Shared Sub updateScheduleDB(ByVal db As Collection)
         ctrlScheduleDB.MasterDatabase = db
-<<<<<<< HEAD
-=======
+
     End Sub
 
     Public Shared Function getCurriculumDB()
@@ -54,7 +53,7 @@
 
     Public Shared Sub updateCurriculumDB(ByVal db As Collection)
         ctrlCurriculumDB.MasterDatabase = db
->>>>>>> origin/master
+
     End Sub
 
 End Class

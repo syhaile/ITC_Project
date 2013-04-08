@@ -22,9 +22,7 @@ Partial Class StudentView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.lbxStudentList = New System.Windows.Forms.ListBox()
-        Me.StudentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblStudentList = New System.Windows.Forms.Label()
         Me.lblStudentName = New System.Windows.Forms.Label()
         Me.lblCurriculum = New System.Windows.Forms.Label()
@@ -48,30 +46,18 @@ Partial Class StudentView
         Me.gbxNotTaken = New System.Windows.Forms.GroupBox()
         Me.gbxFailDrop = New System.Windows.Forms.GroupBox()
         Me.lbxFailDrop = New System.Windows.Forms.ListBox()
-        Me.ControllerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ControllerBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.StudentDatabaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbxCompleted.SuspendLayout()
         Me.gbxNotTaken.SuspendLayout()
         Me.gbxFailDrop.SuspendLayout()
-        CType(Me.ControllerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ControllerBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StudentDatabaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbxStudentList
         '
-        Me.lbxStudentList.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.StudentBindingSource, "ID", True))
         Me.lbxStudentList.FormattingEnabled = True
         Me.lbxStudentList.Location = New System.Drawing.Point(39, 88)
         Me.lbxStudentList.Name = "lbxStudentList"
         Me.lbxStudentList.Size = New System.Drawing.Size(120, 95)
         Me.lbxStudentList.TabIndex = 0
-        '
-        'StudentBindingSource
-        '
-        Me.StudentBindingSource.DataSource = GetType(WindowsApplication3.Student)
         '
         'lblStudentList
         '
@@ -85,13 +71,13 @@ Partial Class StudentView
         '
         'lblStudentName
         '
-        Me.lblStudentName.AutoSize = True
         Me.lblStudentName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentName.Location = New System.Drawing.Point(435, 20)
+        Me.lblStudentName.Location = New System.Drawing.Point(334, 20)
         Me.lblStudentName.Name = "lblStudentName"
-        Me.lblStudentName.Size = New System.Drawing.Size(98, 24)
+        Me.lblStudentName.Size = New System.Drawing.Size(301, 24)
         Me.lblStudentName.TabIndex = 14
         Me.lblStudentName.Text = "Brian Berg"
+        Me.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblCurriculum
         '
@@ -234,11 +220,11 @@ Partial Class StudentView
         '
         Me.lblMajor.AutoSize = True
         Me.lblMajor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMajor.Location = New System.Drawing.Point(245, 44)
+        Me.lblMajor.Location = New System.Drawing.Point(391, 44)
         Me.lblMajor.Name = "lblMajor"
-        Me.lblMajor.Size = New System.Drawing.Size(468, 20)
+        Me.lblMajor.Size = New System.Drawing.Size(183, 20)
         Me.lblMajor.TabIndex = 30
-        Me.lblMajor.Text = "B.S. Business Administration: Computer Information Systems"
+        Me.lblMajor.Text = "B.S. Computer Science"
         '
         'lblCourseCurriculum
         '
@@ -313,18 +299,6 @@ Partial Class StudentView
         Me.lbxFailDrop.Size = New System.Drawing.Size(103, 121)
         Me.lbxFailDrop.TabIndex = 0
         '
-        'ControllerBindingSource
-        '
-        Me.ControllerBindingSource.DataSource = GetType(WindowsApplication3.Controller)
-        '
-        'ControllerBindingSource1
-        '
-        Me.ControllerBindingSource1.DataSource = GetType(WindowsApplication3.Controller)
-        '
-        'StudentDatabaseBindingSource
-        '
-        Me.StudentDatabaseBindingSource.DataSource = GetType(WindowsApplication3.StudentDatabase)
-        '
         'StudentView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -353,13 +327,9 @@ Partial Class StudentView
         Me.Controls.Add(Me.lbxStudentList)
         Me.Name = "StudentView"
         Me.Text = "StudentView"
-        CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbxCompleted.ResumeLayout(False)
         Me.gbxNotTaken.ResumeLayout(False)
         Me.gbxFailDrop.ResumeLayout(False)
-        CType(Me.ControllerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ControllerBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StudentDatabaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -388,8 +358,4 @@ Partial Class StudentView
     Friend WithEvents gbxNotTaken As System.Windows.Forms.GroupBox
     Friend WithEvents gbxFailDrop As System.Windows.Forms.GroupBox
     Friend WithEvents lbxFailDrop As System.Windows.Forms.ListBox
-    Friend WithEvents ControllerBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents ControllerBindingSource1 As System.Windows.Forms.BindingSource
-    Friend WithEvents StudentBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents StudentDatabaseBindingSource As System.Windows.Forms.BindingSource
 End Class
