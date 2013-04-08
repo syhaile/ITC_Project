@@ -42,6 +42,9 @@ Partial Class DataGenerator
         Me.txtClassesFileSRC = New System.Windows.Forms.TextBox()
         Me.btnClassesBrowse = New System.Windows.Forms.Button()
         Me.Curriculum = New System.Windows.Forms.TabPage()
+        Me.cboCurriculumYear = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.btnCurriculumImport = New System.Windows.Forms.Button()
         Me.btnCurriculumAddElectives = New System.Windows.Forms.Button()
         Me.btnCurriculumAddCore = New System.Windows.Forms.Button()
@@ -79,7 +82,7 @@ Partial Class DataGenerator
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(541, 407)
+        Me.TabControl1.Size = New System.Drawing.Size(582, 445)
         Me.TabControl1.TabIndex = 0
         '
         'Classes
@@ -103,14 +106,14 @@ Partial Class DataGenerator
         Me.Classes.Location = New System.Drawing.Point(4, 22)
         Me.Classes.Name = "Classes"
         Me.Classes.Padding = New System.Windows.Forms.Padding(3)
-        Me.Classes.Size = New System.Drawing.Size(533, 381)
+        Me.Classes.Size = New System.Drawing.Size(574, 419)
         Me.Classes.TabIndex = 0
         Me.Classes.Text = "Classes"
         Me.Classes.UseVisualStyleBackColor = True
         '
         'btnClassesImport
         '
-        Me.btnClassesImport.Location = New System.Drawing.Point(260, 301)
+        Me.btnClassesImport.Location = New System.Drawing.Point(447, 9)
         Me.btnClassesImport.Name = "btnClassesImport"
         Me.btnClassesImport.Size = New System.Drawing.Size(97, 23)
         Me.btnClassesImport.TabIndex = 21
@@ -121,7 +124,7 @@ Partial Class DataGenerator
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(257, 45)
+        Me.Label5.Location = New System.Drawing.Point(277, 45)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(103, 15)
         Me.Label5.TabIndex = 20
@@ -129,7 +132,7 @@ Partial Class DataGenerator
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(324, 260)
+        Me.Button3.Location = New System.Drawing.Point(344, 260)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(97, 23)
         Me.Button3.TabIndex = 19
@@ -139,14 +142,14 @@ Partial Class DataGenerator
         'lboxClassesCourses
         '
         Me.lboxClassesCourses.FormattingEnabled = True
-        Me.lboxClassesCourses.Location = New System.Drawing.Point(223, 63)
+        Me.lboxClassesCourses.Location = New System.Drawing.Point(243, 63)
         Me.lboxClassesCourses.Name = "lboxClassesCourses"
         Me.lboxClassesCourses.Size = New System.Drawing.Size(198, 173)
         Me.lboxClassesCourses.TabIndex = 18
         '
         'btnClassesAddClass
         '
-        Me.btnClassesAddClass.Location = New System.Drawing.Point(223, 260)
+        Me.btnClassesAddClass.Location = New System.Drawing.Point(243, 260)
         Me.btnClassesAddClass.Name = "btnClassesAddClass"
         Me.btnClassesAddClass.Size = New System.Drawing.Size(97, 23)
         Me.btnClassesAddClass.TabIndex = 17
@@ -259,6 +262,9 @@ Partial Class DataGenerator
         '
         'Curriculum
         '
+        Me.Curriculum.Controls.Add(Me.cboCurriculumYear)
+        Me.Curriculum.Controls.Add(Me.Label12)
+        Me.Curriculum.Controls.Add(Me.Label11)
         Me.Curriculum.Controls.Add(Me.btnCurriculumImport)
         Me.Curriculum.Controls.Add(Me.btnCurriculumAddElectives)
         Me.Curriculum.Controls.Add(Me.btnCurriculumAddCore)
@@ -278,14 +284,43 @@ Partial Class DataGenerator
         Me.Curriculum.Location = New System.Drawing.Point(4, 22)
         Me.Curriculum.Name = "Curriculum"
         Me.Curriculum.Padding = New System.Windows.Forms.Padding(3)
-        Me.Curriculum.Size = New System.Drawing.Size(533, 381)
+        Me.Curriculum.Size = New System.Drawing.Size(574, 419)
         Me.Curriculum.TabIndex = 1
         Me.Curriculum.Text = "Curriculum"
         Me.Curriculum.UseVisualStyleBackColor = True
         '
+        'cboCurriculumYear
+        '
+        Me.cboCurriculumYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCurriculumYear.FormattingEnabled = True
+        Me.cboCurriculumYear.Location = New System.Drawing.Point(447, 56)
+        Me.cboCurriculumYear.Name = "cboCurriculumYear"
+        Me.cboCurriculumYear.Size = New System.Drawing.Size(71, 21)
+        Me.cboCurriculumYear.TabIndex = 33
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(369, 62)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(36, 15)
+        Me.Label12.TabIndex = 32
+        Me.Label12.Text = "Year"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(360, 47)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(77, 15)
+        Me.Label11.TabIndex = 31
+        Me.Label11.Text = "Curriculum"
+        '
         'btnCurriculumImport
         '
-        Me.btnCurriculumImport.Location = New System.Drawing.Point(366, 331)
+        Me.btnCurriculumImport.Location = New System.Drawing.Point(447, 10)
         Me.btnCurriculumImport.Name = "btnCurriculumImport"
         Me.btnCurriculumImport.Size = New System.Drawing.Size(97, 23)
         Me.btnCurriculumImport.TabIndex = 29
@@ -295,18 +330,18 @@ Partial Class DataGenerator
         'btnCurriculumAddElectives
         '
         Me.btnCurriculumAddElectives.Image = CType(resources.GetObject("btnCurriculumAddElectives.Image"), System.Drawing.Image)
-        Me.btnCurriculumAddElectives.Location = New System.Drawing.Point(267, 252)
+        Me.btnCurriculumAddElectives.Location = New System.Drawing.Point(290, 304)
         Me.btnCurriculumAddElectives.Name = "btnCurriculumAddElectives"
-        Me.btnCurriculumAddElectives.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumAddElectives.Size = New System.Drawing.Size(55, 43)
         Me.btnCurriculumAddElectives.TabIndex = 28
         Me.btnCurriculumAddElectives.UseVisualStyleBackColor = True
         '
         'btnCurriculumAddCore
         '
         Me.btnCurriculumAddCore.Image = CType(resources.GetObject("btnCurriculumAddCore.Image"), System.Drawing.Image)
-        Me.btnCurriculumAddCore.Location = New System.Drawing.Point(267, 157)
+        Me.btnCurriculumAddCore.Location = New System.Drawing.Point(290, 213)
         Me.btnCurriculumAddCore.Name = "btnCurriculumAddCore"
-        Me.btnCurriculumAddCore.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumAddCore.Size = New System.Drawing.Size(55, 43)
         Me.btnCurriculumAddCore.TabIndex = 27
         Me.btnCurriculumAddCore.UseVisualStyleBackColor = True
         '
@@ -314,7 +349,7 @@ Partial Class DataGenerator
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(366, 219)
+        Me.Label10.Location = New System.Drawing.Point(369, 275)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(68, 15)
         Me.Label10.TabIndex = 26
@@ -323,7 +358,7 @@ Partial Class DataGenerator
         'lboxCurriculumElective
         '
         Me.lboxCurriculumElective.FormattingEnabled = True
-        Me.lboxCurriculumElective.Location = New System.Drawing.Point(357, 237)
+        Me.lboxCurriculumElective.Location = New System.Drawing.Point(360, 293)
         Me.lboxCurriculumElective.Name = "lboxCurriculumElective"
         Me.lboxCurriculumElective.Size = New System.Drawing.Size(158, 69)
         Me.lboxCurriculumElective.TabIndex = 25
@@ -332,7 +367,7 @@ Partial Class DataGenerator
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(366, 129)
+        Me.Label9.Location = New System.Drawing.Point(369, 185)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(100, 15)
         Me.Label9.TabIndex = 24
@@ -341,7 +376,7 @@ Partial Class DataGenerator
         'lboxCurriculumReqCore
         '
         Me.lboxCurriculumReqCore.FormattingEnabled = True
-        Me.lboxCurriculumReqCore.Location = New System.Drawing.Point(357, 147)
+        Me.lboxCurriculumReqCore.Location = New System.Drawing.Point(360, 203)
         Me.lboxCurriculumReqCore.Name = "lboxCurriculumReqCore"
         Me.lboxCurriculumReqCore.Size = New System.Drawing.Size(158, 69)
         Me.lboxCurriculumReqCore.TabIndex = 23
@@ -350,7 +385,7 @@ Partial Class DataGenerator
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(366, 40)
+        Me.Label7.Location = New System.Drawing.Point(369, 96)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(93, 15)
         Me.Label7.TabIndex = 22
@@ -360,7 +395,7 @@ Partial Class DataGenerator
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 40)
+        Me.Label6.Location = New System.Drawing.Point(41, 47)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(59, 15)
         Me.Label6.TabIndex = 21
@@ -369,25 +404,25 @@ Partial Class DataGenerator
         'btnCurriculumAddGE
         '
         Me.btnCurriculumAddGE.Image = CType(resources.GetObject("btnCurriculumAddGE.Image"), System.Drawing.Image)
-        Me.btnCurriculumAddGE.Location = New System.Drawing.Point(267, 67)
+        Me.btnCurriculumAddGE.Location = New System.Drawing.Point(290, 130)
         Me.btnCurriculumAddGE.Name = "btnCurriculumAddGE"
-        Me.btnCurriculumAddGE.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumAddGE.Size = New System.Drawing.Size(55, 43)
         Me.btnCurriculumAddGE.TabIndex = 9
         Me.btnCurriculumAddGE.UseVisualStyleBackColor = True
         '
         'btnCurriculumDrop
         '
         Me.btnCurriculumDrop.Image = CType(resources.GetObject("btnCurriculumDrop.Image"), System.Drawing.Image)
-        Me.btnCurriculumDrop.Location = New System.Drawing.Point(186, 157)
+        Me.btnCurriculumDrop.Location = New System.Drawing.Point(209, 213)
         Me.btnCurriculumDrop.Name = "btnCurriculumDrop"
-        Me.btnCurriculumDrop.Size = New System.Drawing.Size(75, 50)
+        Me.btnCurriculumDrop.Size = New System.Drawing.Size(55, 43)
         Me.btnCurriculumDrop.TabIndex = 8
         Me.btnCurriculumDrop.UseVisualStyleBackColor = True
         '
         'lboxCurriculumReqGE
         '
         Me.lboxCurriculumReqGE.FormattingEnabled = True
-        Me.lboxCurriculumReqGE.Location = New System.Drawing.Point(357, 58)
+        Me.lboxCurriculumReqGE.Location = New System.Drawing.Point(360, 114)
         Me.lboxCurriculumReqGE.Name = "lboxCurriculumReqGE"
         Me.lboxCurriculumReqGE.Size = New System.Drawing.Size(158, 69)
         Me.lboxCurriculumReqGE.TabIndex = 7
@@ -395,9 +430,9 @@ Partial Class DataGenerator
         'lboxCurriculumCourses
         '
         Me.lboxCurriculumCourses.FormattingEnabled = True
-        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(19, 58)
+        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(25, 65)
         Me.lboxCurriculumCourses.Name = "lboxCurriculumCourses"
-        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 251)
+        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 303)
         Me.lboxCurriculumCourses.TabIndex = 6
         '
         'btnCurriculumBrowse
@@ -436,7 +471,7 @@ Partial Class DataGenerator
         Me.Students.Controls.Add(Me.TextBox2)
         Me.Students.Location = New System.Drawing.Point(4, 22)
         Me.Students.Name = "Students"
-        Me.Students.Size = New System.Drawing.Size(533, 381)
+        Me.Students.Size = New System.Drawing.Size(574, 419)
         Me.Students.TabIndex = 2
         Me.Students.Text = "Students"
         Me.Students.UseVisualStyleBackColor = True
@@ -489,7 +524,7 @@ Partial Class DataGenerator
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(601, 497)
+        Me.ClientSize = New System.Drawing.Size(655, 543)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "DataGenerator"
         Me.Text = "DataGenerator"
@@ -545,4 +580,7 @@ Partial Class DataGenerator
     Friend WithEvents testbox As System.Windows.Forms.TextBox
     Friend WithEvents btnClassesImport As System.Windows.Forms.Button
     Friend WithEvents btnCurriculumImport As System.Windows.Forms.Button
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents cboCurriculumYear As System.Windows.Forms.ComboBox
+    Friend WithEvents Label12 As System.Windows.Forms.Label
 End Class
