@@ -33,6 +33,17 @@ Public Class Student
         Me.CurrentStudent = currentStudent
     End Sub
 
+    Public Sub New(ByVal id As String, ByVal name As String,
+            ByVal enrolledYear As String, ByVal enrolledQuarter As String, ByVal currentStudent As Boolean, ByVal currentCurriculum As Curriculum) ' Optional ByVal expectedGraudationDate As Date = Now
+        'Me.ExpectedGraduationDate = expectedGraudationDate
+        Me.ID = id
+        Me.Name = name
+        'Me.EnrolledDate = enrolledDate
+        Me.EnrolledYear = enrolledYear
+        Me.EnrolledQuarter = enrolledQuarter
+        Me.CurrentStudent = currentStudent
+        Me.CurrentCurriculum = currentCurriculum
+    End Sub
 
 
     Public Property ID As String

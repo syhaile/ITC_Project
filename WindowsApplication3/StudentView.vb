@@ -15,6 +15,8 @@
 
         lbxStudentList.SelectedIndex = 0
         lblStudentName.Text = studentList(lbxStudentList.SelectedIndex).Name
+        lblCurriculumValue.Text = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID
+        lblExpectedGraduation.Text = "Expected Graduation Date: " + studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate.ToString("y")
 
     End Sub
 
@@ -22,10 +24,11 @@
     Private Sub lbxStudentList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbxStudentList.SelectedIndexChanged
         lblStudentName.Text = studentList(lbxStudentList.SelectedIndex).Name
         'To string for curriculum?
-        'lblCurriculum.Text = students(lbxStudentList.SelectedIndex).CurrentCurriculum
-        'lblExpectedGraduation.Text = studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate
+        lblCurriculumValue.Text = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID
+        lblExpectedGraduation.Text = "Expected Graduation Date: " + studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate.ToString("y")
         lblGPAValue.Text = calculateGPA()
         lblClassesTakenValue.Text = studentList(lbxStudentList.SelectedIndex).SectionsTaken.Count()
+        
 
     End Sub
 
