@@ -64,14 +64,14 @@
         Next
     End Sub
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnCurriculumAddGE.Click
         If lboxCurriculumCourses.SelectedIndex = -1 Then
             MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
         Else
-            If lboxCurriculumCurrent.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
+            If lboxCurriculumReqGE.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
                 MessageBox.Show("That course is already in the current curriculum")
             Else
-                lboxCurriculumCurrent.Items.Add(lboxCurriculumCourses.SelectedItem)
+                lboxCurriculumReqGE.Items.Add(lboxCurriculumCourses.SelectedItem)
                 lboxCurriculumCourses.SelectedIndex = -1
             End If
         End If
@@ -89,5 +89,35 @@
 
     Private Sub updateCourseDB()
         Controller.updateCourseDB(tempCourseDB)
+    End Sub
+
+    Private Sub btnCurriculumAddCore_Click(sender As Object, e As EventArgs) Handles btnCurriculumAddCore.Click
+        If lboxCurriculumCourses.SelectedIndex = -1 Then
+            MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
+        Else
+            If lboxCurriculumReqCore.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
+                MessageBox.Show("That course is already in the current curriculum")
+            Else
+                lboxCurriculumReqCore.Items.Add(lboxCurriculumCourses.SelectedItem)
+                lboxCurriculumCourses.SelectedIndex = -1
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCurriculumAddElectives_Click(sender As Object, e As EventArgs) Handles btnCurriculumAddElectives.Click
+        If lboxCurriculumCourses.SelectedIndex = -1 Then
+            MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
+        Else
+            If lboxCurriculumElective.Items.Contains(lboxCurriculumCourses.SelectedItem) = True Then
+                MessageBox.Show("That course is already in the current curriculum")
+            Else
+                lboxCurriculumElective.Items.Add(lboxCurriculumCourses.SelectedItem)
+                lboxCurriculumCourses.SelectedIndex = -1
+            End If
+        End If
+    End Sub
+
+    Private Sub DataGenerator_Load(sender As Object, e As EventArgs) Handles Me.Load
+
     End Sub
 End Class

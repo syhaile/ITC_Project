@@ -106,7 +106,7 @@ Public Class Student
     End Property
 
 
-    Public Property CurrentCurriculum() As Curriculum
+    Public Property CurrentCurriculum As Curriculum
         Get
             Return m_curriculum
         End Get
@@ -115,10 +115,19 @@ Public Class Student
         End Set
     End Property
 
+    Public Property SectionsTaken As ArrayList
 
-    Public Sub addCourseTaken(ByVal tempCourse As Course)
-        m_coursesTaken.Add(tempCourse, tempCourse.ID)
-    End Sub
+        Get
+            Return m_courses
+        End Get
+        Set
+
+        End Set
+    end property
+
+    
+
+   
 
     Public Function getStudentDescription()
         Dim msg As String = ""
@@ -137,46 +146,49 @@ Public Class Student
         Return msg
     End Function
 
-    Public Sub addCourse(ByVal sectionID As String, ByVal courseID As String, ByVal grade As String, ByVal quarter As String, ByVal year As Integer, ByVal units As Integer)
-        m_courses.Add(New Enrollment(sectionID,courseID,grade,quarter,year,units))
+    Public Sub addCourse(ByVal section As Section)
+        m_courses.Add(New Enrollment(section))
     End Sub
 
-    'Internal class used by student to keep track of courses taken. Should refer to sections in schedules but is not required.
-    Private Class Enrollment
-        Private m_sectionID, m_courseID, m_grade, m_quarter As String
-        Private m_year, m_units As Integer
+     Public Sub addCourseTakenWithGrade(ByVal section As Section, ByVal grade As String)
+        m_courses.Add(New Enrollment(section, grade))
+    End Sub
 
-        Public Sub New(ByVal sectionID As String, ByVal courseID As String, ByVal grade As String, ByVal quarter As String, ByVal year As Integer, ByVal units As Integer)
-            m_sectionID = sectionID
-            m_courseID = courseID
-            m_grade = grade
-            m_quarter = quarter
-            m_year = year
-            m_units = units
+    'Internal class used by student to keep track of courses taken.
+    Private Class Enrollment
+        Private m_grade As String
+        Private m_section As Section
+
+        Public Sub new()
+            
         End Sub
 
-        Public Function getSectionID() As String
-            Return m_sectionID 
-        End Function
+        Public Sub new(ByVal section As Section)
+            SectionTaken = section
+        End Sub
 
-        Public Function getCourseID() As String
-            Return m_courseID 
-        End Function
+         Public Sub new(ByVal section As Section, ByVal grade As String)
+            SectionTaken = section
+            Grade = grade
+        End Sub
 
-        Public Function getGrade() As String
-            Return m_grade
-        End Function
+        public Property SectionTaken As Section
+            Get
+                Return m_section
+            End Get
+            Set(ByVal value As Section)
+                m_section = value
+            End Set
+        end property 
 
-        Public Function getQuarter() As String
-            Return m_quarter
-        End Function
+        Public Property Grade As String
 
-        Public Function getYear() As Integer
-            Return m_year
-        End Function
-
-        Public Function getUnits() As Integer
-            Return m_units
-        End Function
+            Get
+                Return m_grade
+            End Get
+            Set(ByVal value As String)
+                m_grade = value
+            End Set
+        end property
     End Class
 End Class

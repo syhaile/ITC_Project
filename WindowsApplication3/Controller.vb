@@ -4,6 +4,7 @@
     Shared ctrlTeacherDB As New TeacherDatabase
     Shared ctrlRoomDB As New RoomDatabase
     Shared ctrlScheduleDB As New ScheduleDatabase
+    Shared ctrlCurriculumDB As New CurriculumDatabase 
 
     Public Shared Function getCourseDB()
         Return ctrlCourseDB.MasterDatabase
@@ -43,6 +44,17 @@
 
     Public Shared Sub updateScheduleDB(ByVal db As Collection)
         ctrlScheduleDB.MasterDatabase = db
+<<<<<<< HEAD
+=======
+    End Sub
+
+    Public Shared Function getCurriculumDB()
+        Return ctrlCurriculumDB.MasterDatabase
+    End Function
+
+    Public Shared Sub updateCurriculumDB(ByVal db As Collection)
+        ctrlCurriculumDB.MasterDatabase = db
+>>>>>>> origin/master
     End Sub
 
 End Class
