@@ -10,17 +10,18 @@
             SectionTaken = section
         End Sub
 
-         Public Sub new(ByVal section As Section, ByVal grade As String)
-            SectionTaken = section
-            Grade = grade
-        End Sub
+    Public Sub New(ByVal section As Section, ByVal grade As String)
+        m_section = section
+        m_grade = grade
 
-        Public Sub New(ByVal section As Section, ByVal grade As String, byval year As String, byVal quarter as String)
-            SectionTaken = section
-            Grade = grade
-            Year = year
-            Quarter = quarter
-        End Sub 
+    End Sub
+
+    Public Sub New(ByVal section As Section, ByVal grade As String, ByVal year As String, ByVal quarter As String)
+        m_section = section
+        m_grade = grade
+        m_year = year
+        m_quarter = quarter
+    End Sub
 
         public Property SectionTaken As Section
             Get
