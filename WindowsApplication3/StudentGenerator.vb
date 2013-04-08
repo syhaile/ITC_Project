@@ -115,4 +115,37 @@
         End If
     End Function
 
+    Private Function generateRandomSection(ByVal curric As Curriculum) As Section
+        Dim tempcourselist As new ArrayList
+        Dim mysection As New Section
+        For Each cid As String In curric.ElectiveCourses.Courses
+            tempcourselist.Add(cid)
+        Next
+
+        For Each cid As String In curric.RequiredCoreCourses.Courses
+            tempcourselist.Add(cid)
+        Next
+
+        For Each cid As String In curric.RequiredGECourses.Courses
+            tempcourselist.Add(cid)
+        Next
+
+        mysection.CourseID = tempcourselist.Item(rng.Next() mod tempcourselist.Count)
+        Return mysection
+    End Function
+
+    Private Function isValidSection(ByVal student As Student, ByVal section As Section) As Boolean
+        'check taken
+        For Each enroll As Enrollment In student.SectionsTaken
+            If(enroll.SectionTaken.CourseID = section.CourseID)
+                If(enroll.Grade = "A" or enroll.Grade = "B" or enroll.Grade = "C")
+                    Return false
+                End If
+            End If
+        Next
+        'check prereqs
+
+        Return true
+    End Function
+
 End Class
