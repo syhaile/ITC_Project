@@ -7,19 +7,19 @@
         End Sub
 
         Public Sub new(ByVal section As Section)
-            SectionTaken = section
+            Me.SectionTaken = section
         End Sub
 
          Public Sub new(ByVal section As Section, ByVal grade As String)
-            SectionTaken = section
-            Grade = grade
+            Me.SectionTaken = section
+            Me.Grade = grade
         End Sub
 
         Public Sub New(ByVal section As Section, ByVal grade As String, byval year As String, byVal quarter as String)
-            SectionTaken = section
-            Grade = grade
-            Year = year
-            Quarter = quarter
+            Me.SectionTaken = section
+            Me.Grade = grade
+            Me.Year = year
+            Me.Quarter = quarter
         End Sub 
 
         public Property SectionTaken As Section
