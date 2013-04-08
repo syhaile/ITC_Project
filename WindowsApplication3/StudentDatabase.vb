@@ -25,12 +25,6 @@ Public Class StudentDatabase
       
     End Sub
 
-    Public Sub eh()
-        For Each s As Student In m_studentDatabase
-            For Each e A
-        Next
-    End Sub
-
     Public Sub addStudent(ByVal student As Student)
         m_studentDatabase.Add(student, student.ID)
     End Sub
