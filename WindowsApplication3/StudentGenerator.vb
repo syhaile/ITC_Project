@@ -144,6 +144,16 @@
             End If
         Next
         'check prereqs
+        Dim prereqs As ArrayList = m_coursedb.Item(section.CourseID).PreRequisitCourse
+        Dim tempcourselist As New ArrayList
+        For Each enroll As Enrollment In student.SectionsTaken
+            tempcourselist.Add(enroll.SectionTaken.CourseID)
+        Next
+        For Each cid As String In prereqs
+            If(tempcourselist.Contains(cid))
+               
+            End If
+        Next
 
         Return true
     End Function
