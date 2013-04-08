@@ -116,7 +116,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ElectiveCoreCourses.vb" />
-    <Compile Include="Enrollement.vb" />
+    <Compile Include="Enrollment.vb" />
     <Compile Include="MDIParentForm.Designer.vb">
       <DependentUpon>MDIParentForm.vb</DependentUpon>
     </Compile>
