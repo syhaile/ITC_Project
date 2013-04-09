@@ -297,7 +297,8 @@ Public Class DataGenerator
             tempCurriculum.ID = curriculumYear
             tempCurriculum.RequiredGECourses = tempReqGE
             tempCurriculum.RequiredCoreCourses = tempReqCore
-            tempCurriculum.ElectiveUnitsRequired = reqElectiveUnits
+            Dim temp() As String = reqElectiveUnits.Split(" ")
+            tempCurriculum.ElectiveUnitsRequired = temp(0)
             tempCurriculum.ElectiveCourses = tempElective
             If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
                 tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)

@@ -7,12 +7,11 @@
         Dim tempRoomDB As Collection = Controller.getRoomDB
         Dim tempStudentDB As Collection = Controller.getStudentDB
         Dim tempScheduleDB As Collection = Controller.getScheduleDB
-
         Dim course As New Course("CS101", 4, "", New ArrayList())
         tempCourseDB.Add(course, course.ID)
 
         Dim templist As New ArrayList()
-        templist.Add("CS 101")
+        templist.Add("CS101")
         course = New Course("CS102", 4, "", templist)
         tempCourseDB.Add(course, course.ID)
         course = New Course("CS103", 4, "CS102", New ArrayList())
@@ -38,29 +37,21 @@
         room.ID = "CLA-1002"
 
         'Test Data'
-        tempRoomDB.Add(room, room.ID)
+        'tempRoomDB.Add(room, room.ID)
         Dim sect1 As New Section
-        sect1.CourseID = "CS103"
+        sect1.CourseID = "CS101"
         Dim sect2 As New Section
-        sect2.CourseID = "CS222"
+        sect2.CourseID = "CS102"
         Dim sect3 As New Section
-        sect3.CourseID = "CS333"
+        sect3.CourseID = "CS103"
 
-
-        course = New Course("CS222", 4, "CS102", New ArrayList())
-        tempCourseDB.Add(course, course.ID)
-        course = New Course("CS333", 4, "CS222", New ArrayList())
-        tempCourseDB.Add(course, course.ID)
-
-        Controller.getCurriculumDB.Item("2008").electiveUnitsRequired = 20
         Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, Controller.getCurriculumDB.Item("2008"))
         student.addCourseTakenWithGrade(sect1, "A")
         student.addCourseTakenWithGrade(sect2, "B+")
         student.addCourseTakenWithGrade(sect3, "C+")
         tempStudentDB.Add(student, student.ID)
 
-        Controller.getCurriculumDB.Item("2012").electiveUnitsRequired = 20
-        student = New Student("442233", "Martin Legaspi", "2012", "Fall", True, Controller.getCurriculumDB.Item("2012"))
+        student = New Student("442233", "Martin Legaspi", "2012", "Fall", True, Controller.getCurriculumDB.Item("2008"))
         student.addCourseTakenWithGrade(sect1, "B")
         student.addCourseTakenWithGrade(sect2, "C-")
         student.addCourseTakenWithGrade(sect3, "D")
