@@ -4,6 +4,7 @@
     Private m_requiredCore As RequiredCoreCourses
     Private m_requiredGE As RequiredGECourses
     Private m_electiveCore As ElectiveCoreCourses
+    Private m_electiveUnitsRequired As Integer
 
     Public Property ID As String
         Get
@@ -41,5 +42,13 @@
         End Set
     End Property
 
+    Public Property ElectiveUnitsRequired As Integer
+        Get
+            Return m_electiveUnitsRequired
+        End Get
+        Set(value As Integer)
+            m_electiveUnitsRequired = value
+        End Set
+    End Property
 
 End Class

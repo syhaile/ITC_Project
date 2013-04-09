@@ -46,22 +46,21 @@
         Dim sect3 As New Section
         sect3.CourseID = "CS333"
 
+
         course = New Course("CS222", 4, "CS102", New ArrayList())
         tempCourseDB.Add(course, course.ID)
         course = New Course("CS333", 4, "CS222", New ArrayList())
         tempCourseDB.Add(course, course.ID)
 
-        Dim curriculum1 As New Curriculum
-        curriculum1.ID = "1999"
-        Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, curriculum1)
+        Controller.getCurriculumDB.Item("2008").electiveUnitsRequired = 20
+        Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, Controller.getCurriculumDB.Item("2008"))
         student.addCourseTakenWithGrade(sect1, "A")
         student.addCourseTakenWithGrade(sect2, "B+")
         student.addCourseTakenWithGrade(sect3, "C+")
         tempStudentDB.Add(student, student.ID)
 
-        Dim curriculum2 As New Curriculum
-        curriculum2.ID = "2009"
-        student = New Student("442233", "MarTIN Legaspi", "2012", "Fall", True, curriculum2)
+        Controller.getCurriculumDB.Item("2012").electiveUnitsRequired = 20
+        student = New Student("442233", "Martin Legaspi", "2012", "Fall", True, Controller.getCurriculumDB.Item("2012"))
         student.addCourseTakenWithGrade(sect1, "B")
         student.addCourseTakenWithGrade(sect2, "C-")
         student.addCourseTakenWithGrade(sect3, "D")

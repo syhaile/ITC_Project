@@ -73,29 +73,28 @@ Partial Class StudentView
         'lblStudentName
         '
         Me.lblStudentName.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentName.Location = New System.Drawing.Point(334, 20)
+        Me.lblStudentName.Location = New System.Drawing.Point(341, 20)
         Me.lblStudentName.Name = "lblStudentName"
-        Me.lblStudentName.Size = New System.Drawing.Size(301, 24)
+        Me.lblStudentName.Size = New System.Drawing.Size(300, 25)
         Me.lblStudentName.TabIndex = 14
+        Me.lblStudentName.Text = "Student Name"
         Me.lblStudentName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblCurriculum
         '
-        Me.lblCurriculum.AutoSize = True
         Me.lblCurriculum.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCurriculum.Location = New System.Drawing.Point(470, 62)
+        Me.lblCurriculum.Location = New System.Drawing.Point(402, 68)
         Me.lblCurriculum.Name = "lblCurriculum"
-        Me.lblCurriculum.Size = New System.Drawing.Size(91, 20)
+        Me.lblCurriculum.Size = New System.Drawing.Size(280, 25)
         Me.lblCurriculum.TabIndex = 15
-        Me.lblCurriculum.Text = "Curriculum"
+        Me.lblCurriculum.Text = "Curriculum Year: "
         '
         'lblExpectedGraduation
         '
-        Me.lblExpectedGraduation.AutoSize = True
         Me.lblExpectedGraduation.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExpectedGraduation.Location = New System.Drawing.Point(347, 82)
+        Me.lblExpectedGraduation.Location = New System.Drawing.Point(346, 89)
         Me.lblExpectedGraduation.Name = "lblExpectedGraduation"
-        Me.lblExpectedGraduation.Size = New System.Drawing.Size(305, 20)
+        Me.lblExpectedGraduation.Size = New System.Drawing.Size(330, 25)
         Me.lblExpectedGraduation.TabIndex = 16
         Me.lblExpectedGraduation.Text = "Expected Graduation Date: Spring 2015"
         '
@@ -218,13 +217,13 @@ Partial Class StudentView
         '
         'lblMajor
         '
-        Me.lblMajor.AutoSize = True
         Me.lblMajor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMajor.Location = New System.Drawing.Point(391, 44)
+        Me.lblMajor.Location = New System.Drawing.Point(343, 45)
         Me.lblMajor.Name = "lblMajor"
-        Me.lblMajor.Size = New System.Drawing.Size(183, 20)
+        Me.lblMajor.Size = New System.Drawing.Size(300, 25)
         Me.lblMajor.TabIndex = 30
         Me.lblMajor.Text = "B.S. Computer Science"
+        Me.lblMajor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblCourseCurriculum
         '
@@ -301,12 +300,12 @@ Partial Class StudentView
         '
         'lblCurriculumValue
         '
-        Me.lblCurriculumValue.AutoSize = True
         Me.lblCurriculumValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCurriculumValue.Location = New System.Drawing.Point(426, 62)
+        Me.lblCurriculumValue.Location = New System.Drawing.Point(537, 68)
         Me.lblCurriculumValue.Name = "lblCurriculumValue"
-        Me.lblCurriculumValue.Size = New System.Drawing.Size(0, 20)
+        Me.lblCurriculumValue.Size = New System.Drawing.Size(50, 25)
         Me.lblCurriculumValue.TabIndex = 37
+        Me.lblCurriculumValue.Text = "2000"
         '
         'StudentView
         '
