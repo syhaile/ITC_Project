@@ -148,7 +148,8 @@ Public Class DataGenerator
         Dim myGenerator As New StudentGenerator(Controller.getCurriculumDB, Controller.getCourseDB)
         Dim mylist As ArrayList = myGenerator.generateStudents
         For Each st As Student In mylist
-            testbox.Text += st.ID + " " + vbNewLine
+            testbox.Text += st.ID + " " + st.Name + vbNewLine
+            Controller.updateStudentDB(Controller.getStudentDB.add(st,st.ID))
         Next
     End Sub
 
