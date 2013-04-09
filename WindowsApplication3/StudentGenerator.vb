@@ -90,9 +90,9 @@
         Dim rng As New Random
 
         For dropcounter As Integer = 0 to studentsToDrop Step 1
-            Dim tempindex As Integer = rng.Next() mod studentList.Count -1
+            Dim tempindex As Integer = rng.Next() mod studentList.Count 
             While(isDuplicateID(dropoutstudents, studentList.Item(tempindex).ID))
-                tempindex = rng.Next() mod studentList.Count -1
+                tempindex = rng.Next() mod studentList.Count 
             End While
             dropoutstudents.Add(studentList.Item(tempindex))
         Next
@@ -122,6 +122,69 @@
 
         Return studentList
     End Function
+
+    Property NumberOfStudents As Integer
+        Get
+            Return m_numberStudents
+        End Get
+        Set(value As Integer)
+            m_numberStudents = value
+        End Set
+    End Property
+
+    Property DropoutRate As Double
+        Get
+            Return m_dropoutRate
+        End Get
+        Set(value As Double)
+            m_dropoutRate = value
+        End Set
+    End Property
+
+    Property ClassesPerQuarter As Integer
+        Get
+            Return m_classesPerQuarter
+        End Get
+        Set(value As Integer)
+            m_classesPerQuarter = value
+        End Set
+    End Property
+
+    Property CurrentQuarter As String
+        Get
+            Return m_currentQuarter
+        End Get
+        Set(value As String)
+            m_currentQuarter = value
+        End Set
+    End Property
+
+    Property CurrentYear As String
+        Get
+            Return m_currentYear
+        End Get
+        Set(value As String)
+            m_currentYear = value
+        End Set
+    End Property
+
+    Property RandomClassesPerQuarter As Boolean
+        Get
+            Return m_randomClassSelection
+        End Get
+        Set(value As Boolean)
+            m_randomClassSelection = value
+        End Set
+    End Property
+
+    Property CurriculumDistribution As ArrayList
+        Get
+            Return m_curriculumDistribution
+        End Get
+        Set(value As ArrayList)
+            m_curriculumDistribution = value
+        End Set
+    End Property
 
     Private Function generateCode() As String
         Dim code As String = ""

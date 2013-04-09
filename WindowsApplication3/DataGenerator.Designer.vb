@@ -63,6 +63,22 @@ Partial Class DataGenerator
         Me.txtCurriculumFileSrc = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Students = New System.Windows.Forms.TabPage()
+        Me.lblStudentsGenerated = New System.Windows.Forms.Label()
+        Me.lbl = New System.Windows.Forms.Label()
+        Me.txtCurriculumDist = New System.Windows.Forms.TextBox()
+        Me.cbxCurriculumYear = New System.Windows.Forms.ComboBox()
+        Me.lblCurriculumYear = New System.Windows.Forms.Label()
+        Me.nudClassesPerQuarter = New System.Windows.Forms.NumericUpDown()
+        Me.lblClassesPerQuarter = New System.Windows.Forms.Label()
+        Me.lblCurrentYear = New System.Windows.Forms.Label()
+        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
+        Me.lblCurrentQuarter = New System.Windows.Forms.Label()
+        Me.nudDropRate = New System.Windows.Forms.NumericUpDown()
+        Me.lblDropRate = New System.Windows.Forms.Label()
+        Me.nudNumberofStudentsgenerated = New System.Windows.Forms.NumericUpDown()
+        Me.lblNumberofStudents = New System.Windows.Forms.Label()
+        Me.cbxCurrentQuarter = New System.Windows.Forms.ComboBox()
+        Me.chkRandClassGen = New System.Windows.Forms.CheckBox()
         Me.testbox = New System.Windows.Forms.TextBox()
         Me.btnRandomGenerate = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -83,6 +99,10 @@ Partial Class DataGenerator
         CType(Me.nudClassesUnits, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Curriculum.SuspendLayout()
         Me.Students.SuspendLayout()
+        CType(Me.nudClassesPerQuarter, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudDropRate, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudNumberofStudentsgenerated, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Rooms.SuspendLayout()
         CType(Me.nudRoomsStudents, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudRoomsAvailable, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -489,6 +509,22 @@ Partial Class DataGenerator
         '
         'Students
         '
+        Me.Students.Controls.Add(Me.lblStudentsGenerated)
+        Me.Students.Controls.Add(Me.lbl)
+        Me.Students.Controls.Add(Me.txtCurriculumDist)
+        Me.Students.Controls.Add(Me.cbxCurriculumYear)
+        Me.Students.Controls.Add(Me.lblCurriculumYear)
+        Me.Students.Controls.Add(Me.nudClassesPerQuarter)
+        Me.Students.Controls.Add(Me.lblClassesPerQuarter)
+        Me.Students.Controls.Add(Me.lblCurrentYear)
+        Me.Students.Controls.Add(Me.NumericUpDown3)
+        Me.Students.Controls.Add(Me.lblCurrentQuarter)
+        Me.Students.Controls.Add(Me.nudDropRate)
+        Me.Students.Controls.Add(Me.lblDropRate)
+        Me.Students.Controls.Add(Me.nudNumberofStudentsgenerated)
+        Me.Students.Controls.Add(Me.lblNumberofStudents)
+        Me.Students.Controls.Add(Me.cbxCurrentQuarter)
+        Me.Students.Controls.Add(Me.chkRandClassGen)
         Me.Students.Controls.Add(Me.testbox)
         Me.Students.Controls.Add(Me.btnRandomGenerate)
         Me.Students.Controls.Add(Me.Label2)
@@ -501,9 +537,158 @@ Partial Class DataGenerator
         Me.Students.Text = "Students"
         Me.Students.UseVisualStyleBackColor = True
         '
+        'lblStudentsGenerated
+        '
+        Me.lblStudentsGenerated.AutoSize = True
+        Me.lblStudentsGenerated.Location = New System.Drawing.Point(327, 61)
+        Me.lblStudentsGenerated.Name = "lblStudentsGenerated"
+        Me.lblStudentsGenerated.Size = New System.Drawing.Size(102, 13)
+        Me.lblStudentsGenerated.TabIndex = 22
+        Me.lblStudentsGenerated.Text = "Generated Students"
+        '
+        'lbl
+        '
+        Me.lbl.AutoSize = True
+        Me.lbl.Location = New System.Drawing.Point(173, 52)
+        Me.lbl.Name = "lbl"
+        Me.lbl.Size = New System.Drawing.Size(106, 13)
+        Me.lbl.TabIndex = 21
+        Me.lbl.Text = "Curriculum Dist(%) for"
+        '
+        'txtCurriculumDist
+        '
+        Me.txtCurriculumDist.Location = New System.Drawing.Point(176, 68)
+        Me.txtCurriculumDist.Name = "txtCurriculumDist"
+        Me.txtCurriculumDist.Size = New System.Drawing.Size(100, 20)
+        Me.txtCurriculumDist.TabIndex = 20
+        '
+        'cbxCurriculumYear
+        '
+        Me.cbxCurriculumYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxCurriculumYear.FormattingEnabled = True
+        Me.cbxCurriculumYear.Location = New System.Drawing.Point(176, 114)
+        Me.cbxCurriculumYear.Name = "cbxCurriculumYear"
+        Me.cbxCurriculumYear.Size = New System.Drawing.Size(121, 21)
+        Me.cbxCurriculumYear.TabIndex = 19
+        '
+        'lblCurriculumYear
+        '
+        Me.lblCurriculumYear.AutoSize = True
+        Me.lblCurriculumYear.Location = New System.Drawing.Point(173, 97)
+        Me.lblCurriculumYear.Name = "lblCurriculumYear"
+        Me.lblCurriculumYear.Size = New System.Drawing.Size(81, 13)
+        Me.lblCurriculumYear.TabIndex = 18
+        Me.lblCurriculumYear.Text = "Curriculum Year"
+        '
+        'nudClassesPerQuarter
+        '
+        Me.nudClassesPerQuarter.Location = New System.Drawing.Point(29, 292)
+        Me.nudClassesPerQuarter.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
+        Me.nudClassesPerQuarter.Name = "nudClassesPerQuarter"
+        Me.nudClassesPerQuarter.Size = New System.Drawing.Size(120, 20)
+        Me.nudClassesPerQuarter.TabIndex = 17
+        Me.nudClassesPerQuarter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudClassesPerQuarter.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        '
+        'lblClassesPerQuarter
+        '
+        Me.lblClassesPerQuarter.AutoSize = True
+        Me.lblClassesPerQuarter.Location = New System.Drawing.Point(29, 276)
+        Me.lblClassesPerQuarter.Name = "lblClassesPerQuarter"
+        Me.lblClassesPerQuarter.Size = New System.Drawing.Size(100, 13)
+        Me.lblClassesPerQuarter.TabIndex = 16
+        Me.lblClassesPerQuarter.Text = "Classes Per Quarter"
+        '
+        'lblCurrentYear
+        '
+        Me.lblCurrentYear.AutoSize = True
+        Me.lblCurrentYear.Location = New System.Drawing.Point(29, 179)
+        Me.lblCurrentYear.Name = "lblCurrentYear"
+        Me.lblCurrentYear.Size = New System.Drawing.Size(66, 13)
+        Me.lblCurrentYear.TabIndex = 15
+        Me.lblCurrentYear.Text = "Current Year"
+        '
+        'NumericUpDown3
+        '
+        Me.NumericUpDown3.Location = New System.Drawing.Point(29, 195)
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {3000, 0, 0, 0})
+        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown3.Name = "NumericUpDown3"
+        Me.NumericUpDown3.Size = New System.Drawing.Size(120, 20)
+        Me.NumericUpDown3.TabIndex = 14
+        Me.NumericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.NumericUpDown3.Value = New Decimal(New Integer() {2013, 0, 0, 0})
+        '
+        'lblCurrentQuarter
+        '
+        Me.lblCurrentQuarter.AutoSize = True
+        Me.lblCurrentQuarter.Location = New System.Drawing.Point(26, 135)
+        Me.lblCurrentQuarter.Name = "lblCurrentQuarter"
+        Me.lblCurrentQuarter.Size = New System.Drawing.Size(79, 13)
+        Me.lblCurrentQuarter.TabIndex = 13
+        Me.lblCurrentQuarter.Text = "Current Quarter"
+        '
+        'nudDropRate
+        '
+        Me.nudDropRate.Location = New System.Drawing.Point(29, 112)
+        Me.nudDropRate.Name = "nudDropRate"
+        Me.nudDropRate.Size = New System.Drawing.Size(120, 20)
+        Me.nudDropRate.TabIndex = 12
+        Me.nudDropRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lblDropRate
+        '
+        Me.lblDropRate.AutoSize = True
+        Me.lblDropRate.Location = New System.Drawing.Point(26, 96)
+        Me.lblDropRate.Name = "lblDropRate"
+        Me.lblDropRate.Size = New System.Drawing.Size(73, 13)
+        Me.lblDropRate.TabIndex = 11
+        Me.lblDropRate.Text = "Drop Rate (%)"
+        '
+        'nudNumberofStudentsgenerated
+        '
+        Me.nudNumberofStudentsgenerated.Increment = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.nudNumberofStudentsgenerated.Location = New System.Drawing.Point(29, 68)
+        Me.nudNumberofStudentsgenerated.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.nudNumberofStudentsgenerated.Name = "nudNumberofStudentsgenerated"
+        Me.nudNumberofStudentsgenerated.Size = New System.Drawing.Size(120, 20)
+        Me.nudNumberofStudentsgenerated.TabIndex = 10
+        Me.nudNumberofStudentsgenerated.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudNumberofStudentsgenerated.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'lblNumberofStudents
+        '
+        Me.lblNumberofStudents.AutoSize = True
+        Me.lblNumberofStudents.Location = New System.Drawing.Point(26, 51)
+        Me.lblNumberofStudents.Name = "lblNumberofStudents"
+        Me.lblNumberofStudents.Size = New System.Drawing.Size(101, 13)
+        Me.lblNumberofStudents.TabIndex = 9
+        Me.lblNumberofStudents.Text = "Number of Students"
+        '
+        'cbxCurrentQuarter
+        '
+        Me.cbxCurrentQuarter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbxCurrentQuarter.FormattingEnabled = True
+        Me.cbxCurrentQuarter.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.cbxCurrentQuarter.Items.AddRange(New Object() {"FALL", "WINTER", "SPRING"})
+        Me.cbxCurrentQuarter.Location = New System.Drawing.Point(29, 151)
+        Me.cbxCurrentQuarter.Name = "cbxCurrentQuarter"
+        Me.cbxCurrentQuarter.Size = New System.Drawing.Size(121, 21)
+        Me.cbxCurrentQuarter.TabIndex = 8
+        '
+        'chkRandClassGen
+        '
+        Me.chkRandClassGen.AutoSize = True
+        Me.chkRandClassGen.Location = New System.Drawing.Point(29, 251)
+        Me.chkRandClassGen.Name = "chkRandClassGen"
+        Me.chkRandClassGen.Size = New System.Drawing.Size(149, 17)
+        Me.chkRandClassGen.TabIndex = 7
+        Me.chkRandClassGen.Text = "Random Class Generation"
+        Me.chkRandClassGen.UseVisualStyleBackColor = True
+        '
         'testbox
         '
-        Me.testbox.Location = New System.Drawing.Point(221, 64)
+        Me.testbox.Location = New System.Drawing.Point(327, 80)
         Me.testbox.Multiline = True
         Me.testbox.Name = "testbox"
         Me.testbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -512,7 +697,7 @@ Partial Class DataGenerator
         '
         'btnRandomGenerate
         '
-        Me.btnRandomGenerate.Location = New System.Drawing.Point(48, 323)
+        Me.btnRandomGenerate.Location = New System.Drawing.Point(186, 374)
         Me.btnRandomGenerate.Name = "btnRandomGenerate"
         Me.btnRandomGenerate.Size = New System.Drawing.Size(75, 23)
         Me.btnRandomGenerate.TabIndex = 5
@@ -662,6 +847,10 @@ Partial Class DataGenerator
         Me.Curriculum.PerformLayout()
         Me.Students.ResumeLayout(False)
         Me.Students.PerformLayout()
+        CType(Me.nudClassesPerQuarter, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudDropRate, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudNumberofStudentsgenerated, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Rooms.ResumeLayout(False)
         Me.Rooms.PerformLayout()
         CType(Me.nudRoomsStudents, System.ComponentModel.ISupportInitialize).EndInit()
@@ -724,4 +913,20 @@ Partial Class DataGenerator
     Friend WithEvents nudRoomsStudents As System.Windows.Forms.NumericUpDown
     Friend WithEvents nudRoomsAvailable As System.Windows.Forms.NumericUpDown
     Friend WithEvents btnRoomsGenerate As System.Windows.Forms.Button
+    Friend WithEvents cbxCurriculumYear As System.Windows.Forms.ComboBox
+    Friend WithEvents lblCurriculumYear As System.Windows.Forms.Label
+    Friend WithEvents nudClassesPerQuarter As System.Windows.Forms.NumericUpDown
+    Friend WithEvents lblClassesPerQuarter As System.Windows.Forms.Label
+    Friend WithEvents lblCurrentYear As System.Windows.Forms.Label
+    Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents lblCurrentQuarter As System.Windows.Forms.Label
+    Friend WithEvents nudDropRate As System.Windows.Forms.NumericUpDown
+    Friend WithEvents lblDropRate As System.Windows.Forms.Label
+    Friend WithEvents nudNumberofStudentsgenerated As System.Windows.Forms.NumericUpDown
+    Friend WithEvents lblNumberofStudents As System.Windows.Forms.Label
+    Friend WithEvents cbxCurrentQuarter As System.Windows.Forms.ComboBox
+    Friend WithEvents chkRandClassGen As System.Windows.Forms.CheckBox
+    Friend WithEvents lbl As System.Windows.Forms.Label
+    Friend WithEvents txtCurriculumDist As System.Windows.Forms.TextBox
+    Friend WithEvents lblStudentsGenerated As System.Windows.Forms.Label
 End Class
