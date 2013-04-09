@@ -34,25 +34,25 @@ Partial Class CurriculumMetericView
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.lblAvgGPA = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblAvgRemaining = New System.Windows.Forms.Label()
         Me.lblAvgUnits = New System.Windows.Forms.Label()
         Me.lblMinUnit = New System.Windows.Forms.Label()
         Me.lblMaxUnit = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblAvgTime = New System.Windows.Forms.Label()
+        Me.lblMaxTime = New System.Windows.Forms.Label()
+        Me.lblMinTime = New System.Windows.Forms.Label()
         Me.lblMetricsTitle = New System.Windows.Forms.Label()
         Me.lblGrad = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage2.SuspendLayout
-        Me.ClassBox.SuspendLayout
-        Me.TabPage1.SuspendLayout
-        Me.GroupBox2.SuspendLayout
-        Me.GroupBox1.SuspendLayout
-        Me.TabControl1.SuspendLayout
-        Me.SuspendLayout
+        Me.TabPage2.SuspendLayout()
+        Me.ClassBox.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.SuspendLayout()
         '
         'TabPage2
         '
@@ -67,12 +67,12 @@ Partial Class CurriculumMetericView
         Me.TabPage2.Size = New System.Drawing.Size(801, 567)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Curriculum View"
-        Me.TabPage2.UseVisualStyleBackColor = true
+        Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Label8
         '
-        Me.Label8.AutoSize = true
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.InfoText
         Me.Label8.Location = New System.Drawing.Point(157, 33)
         Me.Label8.Name = "Label8"
@@ -83,7 +83,7 @@ Partial Class CurriculumMetericView
         'cmbxCurriclum
         '
         Me.cmbxCurriclum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbxCurriclum.FormattingEnabled = true
+        Me.cmbxCurriclum.FormattingEnabled = True
         Me.cmbxCurriclum.Location = New System.Drawing.Point(277, 32)
         Me.cmbxCurriclum.Name = "cmbxCurriclum"
         Me.cmbxCurriclum.Size = New System.Drawing.Size(159, 21)
@@ -94,18 +94,18 @@ Partial Class CurriculumMetericView
         Me.ClassBox.Controls.Add(Me.lblCompanion)
         Me.ClassBox.Controls.Add(Me.lblUnit)
         Me.ClassBox.Controls.Add(Me.lblPrereq)
-        Me.ClassBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.ClassBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ClassBox.Location = New System.Drawing.Point(157, 57)
         Me.ClassBox.Name = "ClassBox"
         Me.ClassBox.Size = New System.Drawing.Size(593, 117)
         Me.ClassBox.TabIndex = 18
-        Me.ClassBox.TabStop = false
+        Me.ClassBox.TabStop = False
         Me.ClassBox.Text = "ClassBox"
         '
         'lblCompanion
         '
-        Me.lblCompanion.AutoSize = true
-        Me.lblCompanion.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblCompanion.AutoSize = True
+        Me.lblCompanion.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCompanion.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblCompanion.Location = New System.Drawing.Point(6, 81)
         Me.lblCompanion.Name = "lblCompanion"
@@ -115,8 +115,8 @@ Partial Class CurriculumMetericView
         '
         'lblUnit
         '
-        Me.lblUnit.AutoSize = true
-        Me.lblUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblUnit.AutoSize = True
+        Me.lblUnit.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUnit.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblUnit.Location = New System.Drawing.Point(6, 34)
         Me.lblUnit.Name = "lblUnit"
@@ -126,8 +126,8 @@ Partial Class CurriculumMetericView
         '
         'lblPrereq
         '
-        Me.lblPrereq.AutoSize = true
-        Me.lblPrereq.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblPrereq.AutoSize = True
+        Me.lblPrereq.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPrereq.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblPrereq.Location = New System.Drawing.Point(6, 57)
         Me.lblPrereq.Name = "lblPrereq"
@@ -137,7 +137,7 @@ Partial Class CurriculumMetericView
         '
         'lbxCurriculum
         '
-        Me.lbxCurriculum.FormattingEnabled = true
+        Me.lbxCurriculum.FormattingEnabled = True
         Me.lbxCurriculum.Location = New System.Drawing.Point(9, 30)
         Me.lbxCurriculum.Name = "lbxCurriculum"
         Me.lbxCurriculum.Size = New System.Drawing.Size(142, 524)
@@ -145,8 +145,8 @@ Partial Class CurriculumMetericView
         '
         'lblCurriculumTitle
         '
-        Me.lblCurriculumTitle.AutoSize = true
-        Me.lblCurriculumTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblCurriculumTitle.AutoSize = True
+        Me.lblCurriculumTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCurriculumTitle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblCurriculumTitle.Location = New System.Drawing.Point(301, 3)
         Me.lblCurriculumTitle.Name = "lblCurriculumTitle"
@@ -168,11 +168,11 @@ Partial Class CurriculumMetericView
         Me.TabPage1.Size = New System.Drawing.Size(801, 567)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Metrics View "
-        Me.TabPage1.UseVisualStyleBackColor = true
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'lblAvgGPA
         '
-        Me.lblAvgGPA.AutoSize = true
+        Me.lblAvgGPA.AutoSize = True
         Me.lblAvgGPA.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblAvgGPA.Location = New System.Drawing.Point(234, 40)
         Me.lblAvgGPA.Name = "lblAvgGPA"
@@ -182,7 +182,7 @@ Partial Class CurriculumMetericView
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.lblAvgRemaining)
         Me.GroupBox2.Controls.Add(Me.lblAvgUnits)
         Me.GroupBox2.Controls.Add(Me.lblMinUnit)
         Me.GroupBox2.Controls.Add(Me.lblMaxUnit)
@@ -190,22 +190,22 @@ Partial Class CurriculumMetericView
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(216, 106)
         Me.GroupBox2.TabIndex = 11
-        Me.GroupBox2.TabStop = false
+        Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Unit Metrics"
         '
-        'Label6
+        'lblAvgRemaining
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label6.Location = New System.Drawing.Point(6, 16)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(133, 13)
-        Me.Label6.TabIndex = 6
-        Me.Label6.Text = "Average Remaining Units: "
+        Me.lblAvgRemaining.AutoSize = True
+        Me.lblAvgRemaining.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgRemaining.Location = New System.Drawing.Point(6, 16)
+        Me.lblAvgRemaining.Name = "lblAvgRemaining"
+        Me.lblAvgRemaining.Size = New System.Drawing.Size(133, 13)
+        Me.lblAvgRemaining.TabIndex = 6
+        Me.lblAvgRemaining.Text = "Average Remaining Units: "
         '
         'lblAvgUnits
         '
-        Me.lblAvgUnits.AutoSize = true
+        Me.lblAvgUnits.AutoSize = True
         Me.lblAvgUnits.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblAvgUnits.Location = New System.Drawing.Point(6, 38)
         Me.lblAvgUnits.Name = "lblAvgUnits"
@@ -215,7 +215,7 @@ Partial Class CurriculumMetericView
         '
         'lblMinUnit
         '
-        Me.lblMinUnit.AutoSize = true
+        Me.lblMinUnit.AutoSize = True
         Me.lblMinUnit.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblMinUnit.Location = New System.Drawing.Point(6, 61)
         Me.lblMinUnit.Name = "lblMinUnit"
@@ -225,7 +225,7 @@ Partial Class CurriculumMetericView
         '
         'lblMaxUnit
         '
-        Me.lblMaxUnit.AutoSize = true
+        Me.lblMaxUnit.AutoSize = True
         Me.lblMaxUnit.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblMaxUnit.Location = New System.Drawing.Point(6, 83)
         Me.lblMaxUnit.Name = "lblMaxUnit"
@@ -235,50 +235,50 @@ Partial Class CurriculumMetericView
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.lblAvgTime)
+        Me.GroupBox1.Controls.Add(Me.lblMaxTime)
+        Me.GroupBox1.Controls.Add(Me.lblMinTime)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 92)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(200, 106)
         Me.GroupBox1.TabIndex = 10
-        Me.GroupBox1.TabStop = false
+        Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Time Metrics"
         '
-        'Label4
+        'lblAvgTime
         '
-        Me.Label4.AutoSize = true
-        Me.Label4.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label4.Location = New System.Drawing.Point(6, 16)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(127, 13)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Average Time in Quarters"
+        Me.lblAvgTime.AutoSize = True
+        Me.lblAvgTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgTime.Location = New System.Drawing.Point(6, 16)
+        Me.lblAvgTime.Name = "lblAvgTime"
+        Me.lblAvgTime.Size = New System.Drawing.Size(127, 13)
+        Me.lblAvgTime.TabIndex = 3
+        Me.lblAvgTime.Text = "Average Time in Quarters"
         '
-        'Label1
+        'lblMaxTime
         '
-        Me.Label1.AutoSize = true
-        Me.Label1.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label1.Location = New System.Drawing.Point(6, 61)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(111, 13)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Maximum Time Taken"
+        Me.lblMaxTime.AutoSize = True
+        Me.lblMaxTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMaxTime.Location = New System.Drawing.Point(6, 61)
+        Me.lblMaxTime.Name = "lblMaxTime"
+        Me.lblMaxTime.Size = New System.Drawing.Size(111, 13)
+        Me.lblMaxTime.TabIndex = 5
+        Me.lblMaxTime.Text = "Maximum Time Taken"
         '
-        'Label5
+        'lblMinTime
         '
-        Me.Label5.AutoSize = true
-        Me.Label5.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label5.Location = New System.Drawing.Point(6, 38)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(108, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Minimum Time Taken"
+        Me.lblMinTime.AutoSize = True
+        Me.lblMinTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMinTime.Location = New System.Drawing.Point(6, 38)
+        Me.lblMinTime.Name = "lblMinTime"
+        Me.lblMinTime.Size = New System.Drawing.Size(108, 13)
+        Me.lblMinTime.TabIndex = 4
+        Me.lblMinTime.Text = "Minimum Time Taken"
         '
         'lblMetricsTitle
         '
-        Me.lblMetricsTitle.AutoSize = true
-        Me.lblMetricsTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.lblMetricsTitle.AutoSize = True
+        Me.lblMetricsTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMetricsTitle.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblMetricsTitle.Location = New System.Drawing.Point(9, 3)
         Me.lblMetricsTitle.Name = "lblMetricsTitle"
@@ -288,7 +288,7 @@ Partial Class CurriculumMetericView
         '
         'lblGrad
         '
-        Me.lblGrad.AutoSize = true
+        Me.lblGrad.AutoSize = True
         Me.lblGrad.ForeColor = System.Drawing.SystemColors.InfoText
         Me.lblGrad.Location = New System.Drawing.Point(9, 40)
         Me.lblGrad.Name = "lblGrad"
@@ -298,7 +298,7 @@ Partial Class CurriculumMetericView
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
+        Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.SystemColors.InfoText
         Me.Label3.Location = New System.Drawing.Point(10, 62)
         Me.Label3.Name = "Label3"
@@ -318,38 +318,38 @@ Partial Class CurriculumMetericView
         '
         'CurriculumMetericView
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 591)
         Me.Controls.Add(Me.TabControl1)
         Me.ForeColor = System.Drawing.SystemColors.Window
         Me.Name = "CurriculumMetericView"
         Me.Text = "Form2"
-        Me.TabPage2.ResumeLayout(false)
-        Me.TabPage2.PerformLayout
-        Me.ClassBox.ResumeLayout(false)
-        Me.ClassBox.PerformLayout
-        Me.TabPage1.ResumeLayout(false)
-        Me.TabPage1.PerformLayout
-        Me.GroupBox2.ResumeLayout(false)
-        Me.GroupBox2.PerformLayout
-        Me.GroupBox1.ResumeLayout(false)
-        Me.GroupBox1.PerformLayout
-        Me.TabControl1.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
+        Me.ClassBox.ResumeLayout(False)
+        Me.ClassBox.PerformLayout()
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.TabControl1.ResumeLayout(False)
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblAvgRemaining As System.Windows.Forms.Label
     Friend WithEvents lblAvgUnits As System.Windows.Forms.Label
     Friend WithEvents lblMinUnit As System.Windows.Forms.Label
     Friend WithEvents lblMaxUnit As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblAvgTime As System.Windows.Forms.Label
+    Friend WithEvents lblMaxTime As System.Windows.Forms.Label
+    Friend WithEvents lblMinTime As System.Windows.Forms.Label
     Friend WithEvents lblMetricsTitle As System.Windows.Forms.Label
     Friend WithEvents lblGrad As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label

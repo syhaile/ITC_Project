@@ -3,9 +3,10 @@
 Public Class CurriculumMetericView
 
     'in class variables for handling data generation 
-    Private m_graduatedStudents As Integer
+    Private m_graduatedStudents, m_droppedStudents As Integer
     Private m_curriculum As String
-    Private m_maxUnits, m_minUnits, m_avgUnits As String 
+    Private m_maxUnits, m_minUnits, m_avgUnits, m_unitsLeft As String ' for unit metrics 
+    Private m_maxTime, m_minTime, m_avgTime As String ' for time metrics 
 
     'For displaying class information in the class metrics view
     Dim courses As Collection = Controller.getCourseDB
@@ -18,6 +19,7 @@ Public Class CurriculumMetericView
     Dim studentList As New List(Of Student)
     Dim tempStudent As New Student
     Dim unitsTaken As New ArrayList
+    Dim quartersAttended As New ArrayList
 
     'For dispalying curriculum centric data
     Dim curriculums As Collection = Controller.getCurriculumDB
@@ -134,23 +136,65 @@ Public Class CurriculumMetericView
 
     End Sub
 
-    Public Sub avgQuarterRemaining()
-
-    End Sub
-
     Public Sub time()
 
+        Dim quarterArray As New ArrayList
+        Dim course As New Course
+        Dim courseDB As Collection = Controller.getCourseDB()
+
+        m_maxTime = (maxTime(quarterArray)).ToString
+        m_minTime = (minTime(quarterArray)).ToString
+        m_avgTime = (avgTime(quarterArray)).ToString
+
+        lblMaxTime.Text = "Maximum quarters attended: " + m_maxTime
+        lblMinTime.Text = "Minimum quarters attended: " + m_minTime
+        lblAvgTime.Text = "Average quarters attended: " + m_avgTime
+
     End Sub
 
-    Public Function avgTime() 'in quarters 
+    Public Function avgTime(ByVal quarterArray As ArrayList) 'in quarters 
+        Dim quarters As Integer = Nothing
+        Dim num As Integer = Nothing
+        Dim calc As Double = Nothing
+        For i As Integer = 0 To (quarterArray.Count - 1)
+            quarters += quarterArray(i)
+
+            quarterArray.Count.ToString()
+            num = quarterArray.Count
+            calc = quarters / num
+        Next
+        avgTime = calc
+        Return avgTime
 
     End Function
 
-    Public Function minTime() 'in quarters 
+    Public Function minTime(ByVal quarterArray As ArrayList) 'in quarters 
+        Dim min As Integer = Nothing
+
+        For i As Integer = 0 To (quarterArray.Count - 1)
+            If i = 0 Then
+                min = quarterArray(i)
+            Else
+                If quarterArray(i) < min Then min = quarterArray(i)
+            End If
+        Next
+        minTime = min
+        Return minTime
 
     End Function
 
-    Public Function maxTime() 'in quarters 
+    Public Function maxTime(ByVal quarterArray As ArrayList) 'in quarters 
+        Dim max As Integer = Nothing
+
+        For i As Integer = 0 To (quarterArray.Count - 1)
+            If i = 0 Then
+                max = quarterArray(i)
+            Else
+                If quarterArray(i) > max Then max = quarterArray(i)
+            End If
+        Next
+        maxTime = max
+        Return maxTime
 
     End Function
 
@@ -158,24 +202,39 @@ Public Class CurriculumMetericView
     Public Sub Units()
         'Dim unitsTaken As Integer
         Dim unitArray As new ArrayList
-        Dim course As New Course
-        Dim courseDB As Collection = Controller.getCourseDB()
+        'Dim course As New Course
+        'Dim courseDB As Collection = Controller.getCourseDB()
          
-        Dim coursesTakenList As ArrayList = tempStudent.SectionsTaken
+        'Dim coursesTakenList As ArrayList = tempStudent.SectionsTaken
         
-        Dim tempArray As New ArrayList
+        'Dim tempArray As New ArrayList
 
-        For Each curriculum In tempStudent.CurrentCurriculum.ID
-            
-            For Each compare In curriculumList(cmbxCurriclum.SelectedIndex).ID
+        For Each id In tempStudent.ID
 
-                If compare = curriculum then 
-                    tempArray.Add(tempStudent.ID)
-
-                End If
-
-            Next 
+            MessageBox.Show(id)
         Next
+
+        ''For Each cid In tempStudent.CurrentCurriculum.ID
+        ''    If cid = curriculumList(cmbxCurriclum.SelectedIndex).ID And tempStudent.CurrentCurriculum.ID Then
+        ''        tempArray.Add(tempStudent.ID)
+        ''    Else
+        ''        'do nothing
+        ''    End If
+        ''Next
+
+
+
+        'For Each curriculum In tempStudent.CurrentCurriculum.ID
+
+        '    For Each compare In curriculumList(cmbxCurriclum.SelectedIndex).ID
+
+        '        If compare = curriculum then 
+        '            tempArray.Add(tempStudent.ID)
+
+        '        End If
+
+        '    Next 
+        'Next
 
 
         'For Each Me.enrollment In coursesTakenList
@@ -188,12 +247,13 @@ Public Class CurriculumMetericView
         m_maxUnits = (maxUnits(unitArray)).ToString
         m_minUnits = (minUnits(unitArray)).ToString
         m_avgUnits = (avgUnits(unitArray)).ToString
-        
+        m_unitsLeft = (avgUnitsRemaining()).ToString
+
         lblMaxUnit.Text = "Maximum units taken: " + m_maxUnits
         lblMinUnit.Text = "Minimum units taken: " + m_minUnits
         lblAvgUnits.Text = "Average units taken: " + m_avgUnits
-
-    End Sub 
+        lblAvgRemaining.Text = "Average Remaining Units: " + m_unitsLeft
+    End Sub
 
     Public Function avgUnits(ByVal unitArray As ArrayList)
         Dim units As Integer = Nothing 
@@ -209,6 +269,11 @@ Public Class CurriculumMetericView
         avgUnits = calc 
         Return avgUnits
     End Function 'working so far 
+
+    Public Function avgUnitsRemaining()
+        avgUnitsRemaining = "0"
+        Return avgUnitsRemaining
+    End Function
 
     Public Function maxUnits(ByVal unitArray As ArrayList)
         Dim max As Integer = Nothing 
