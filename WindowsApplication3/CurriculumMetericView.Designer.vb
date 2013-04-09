@@ -34,14 +34,14 @@ Partial Class CurriculumMetericView
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.lblAvgGPA = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblAvgRemaining = New System.Windows.Forms.Label()
+        Me.lblAvgUnits = New System.Windows.Forms.Label()
+        Me.lblMinUnit = New System.Windows.Forms.Label()
+        Me.lblMaxUnit = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblAvgTime = New System.Windows.Forms.Label()
+        Me.lblMaxTime = New System.Windows.Forms.Label()
+        Me.lblMinTime = New System.Windows.Forms.Label()
         Me.lblMetricsTitle = New System.Windows.Forms.Label()
         Me.lblGrad = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -182,10 +182,10 @@ Partial Class CurriculumMetericView
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.Label9)
-        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.lblAvgRemaining)
+        Me.GroupBox2.Controls.Add(Me.lblAvgUnits)
+        Me.GroupBox2.Controls.Add(Me.lblMinUnit)
+        Me.GroupBox2.Controls.Add(Me.lblMaxUnit)
         Me.GroupBox2.Location = New System.Drawing.Point(237, 92)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(216, 106)
@@ -193,51 +193,51 @@ Partial Class CurriculumMetericView
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Unit Metrics"
         '
-        'Label6
+        'lblAvgRemaining
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label6.Location = New System.Drawing.Point(6, 16)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(133, 13)
-        Me.Label6.TabIndex = 6
-        Me.Label6.Text = "Average Remaining Units: "
+        Me.lblAvgRemaining.AutoSize = True
+        Me.lblAvgRemaining.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgRemaining.Location = New System.Drawing.Point(6, 16)
+        Me.lblAvgRemaining.Name = "lblAvgRemaining"
+        Me.lblAvgRemaining.Size = New System.Drawing.Size(133, 13)
+        Me.lblAvgRemaining.TabIndex = 6
+        Me.lblAvgRemaining.Text = "Average Remaining Units: "
         '
-        'Label7
+        'lblAvgUnits
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label7.Location = New System.Drawing.Point(6, 38)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(114, 13)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Average Units Taken: "
+        Me.lblAvgUnits.AutoSize = True
+        Me.lblAvgUnits.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgUnits.Location = New System.Drawing.Point(6, 38)
+        Me.lblAvgUnits.Name = "lblAvgUnits"
+        Me.lblAvgUnits.Size = New System.Drawing.Size(114, 13)
+        Me.lblAvgUnits.TabIndex = 7
+        Me.lblAvgUnits.Text = "Average Units Taken: "
         '
-        'Label9
+        'lblMinUnit
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label9.Location = New System.Drawing.Point(6, 61)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(106, 13)
-        Me.Label9.TabIndex = 8
-        Me.Label9.Text = "Minimum units taken:"
+        Me.lblMinUnit.AutoSize = True
+        Me.lblMinUnit.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMinUnit.Location = New System.Drawing.Point(6, 61)
+        Me.lblMinUnit.Name = "lblMinUnit"
+        Me.lblMinUnit.Size = New System.Drawing.Size(106, 13)
+        Me.lblMinUnit.TabIndex = 8
+        Me.lblMinUnit.Text = "Minimum units taken:"
         '
-        'Label10
+        'lblMaxUnit
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label10.Location = New System.Drawing.Point(6, 83)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(112, 13)
-        Me.Label10.TabIndex = 9
-        Me.Label10.Text = "Maximum units taken: "
+        Me.lblMaxUnit.AutoSize = True
+        Me.lblMaxUnit.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMaxUnit.Location = New System.Drawing.Point(6, 83)
+        Me.lblMaxUnit.Name = "lblMaxUnit"
+        Me.lblMaxUnit.Size = New System.Drawing.Size(112, 13)
+        Me.lblMaxUnit.TabIndex = 9
+        Me.lblMaxUnit.Text = "Maximum units taken: "
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.lblAvgTime)
+        Me.GroupBox1.Controls.Add(Me.lblMaxTime)
+        Me.GroupBox1.Controls.Add(Me.lblMinTime)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 92)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(200, 106)
@@ -245,35 +245,35 @@ Partial Class CurriculumMetericView
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Time Metrics"
         '
-        'Label4
+        'lblAvgTime
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label4.Location = New System.Drawing.Point(6, 16)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(127, 13)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Average Time in Quarters"
+        Me.lblAvgTime.AutoSize = True
+        Me.lblAvgTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblAvgTime.Location = New System.Drawing.Point(6, 16)
+        Me.lblAvgTime.Name = "lblAvgTime"
+        Me.lblAvgTime.Size = New System.Drawing.Size(127, 13)
+        Me.lblAvgTime.TabIndex = 3
+        Me.lblAvgTime.Text = "Average Time in Quarters"
         '
-        'Label1
+        'lblMaxTime
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label1.Location = New System.Drawing.Point(6, 61)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(111, 13)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Maximum Time Taken"
+        Me.lblMaxTime.AutoSize = True
+        Me.lblMaxTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMaxTime.Location = New System.Drawing.Point(6, 61)
+        Me.lblMaxTime.Name = "lblMaxTime"
+        Me.lblMaxTime.Size = New System.Drawing.Size(111, 13)
+        Me.lblMaxTime.TabIndex = 5
+        Me.lblMaxTime.Text = "Maximum Time Taken"
         '
-        'Label5
+        'lblMinTime
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label5.Location = New System.Drawing.Point(6, 38)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(108, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Minimum Time Taken"
+        Me.lblMinTime.AutoSize = True
+        Me.lblMinTime.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblMinTime.Location = New System.Drawing.Point(6, 38)
+        Me.lblMinTime.Name = "lblMinTime"
+        Me.lblMinTime.Size = New System.Drawing.Size(108, 13)
+        Me.lblMinTime.TabIndex = 4
+        Me.lblMinTime.Text = "Minimum Time Taken"
         '
         'lblMetricsTitle
         '
@@ -342,14 +342,14 @@ Partial Class CurriculumMetericView
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents lblAvgRemaining As System.Windows.Forms.Label
+    Friend WithEvents lblAvgUnits As System.Windows.Forms.Label
+    Friend WithEvents lblMinUnit As System.Windows.Forms.Label
+    Friend WithEvents lblMaxUnit As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblAvgTime As System.Windows.Forms.Label
+    Friend WithEvents lblMaxTime As System.Windows.Forms.Label
+    Friend WithEvents lblMinTime As System.Windows.Forms.Label
     Friend WithEvents lblMetricsTitle As System.Windows.Forms.Label
     Friend WithEvents lblGrad As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
