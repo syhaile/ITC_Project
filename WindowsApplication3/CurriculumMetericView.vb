@@ -171,6 +171,7 @@ Public Class CurriculumMetericView
 
                 If compare = curriculum then 
                     tempArray.Add(tempStudent.ID)
+
                 End If
 
             Next 
