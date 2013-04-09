@@ -18,20 +18,25 @@
         lblCurriculumValue.Text = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID
         lblExpectedGraduation.Text = "Expected Graduation Date: " + studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate.ToString("y")
         lblClassStandingValue.Text = getClassStanding()
+        clearCourseLists()
+        updateCourseLists()
 
     End Sub
 
     'Update the Student information labels
     Private Sub lbxStudentList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lbxStudentList.SelectedIndexChanged
         lblStudentName.Text = studentList(lbxStudentList.SelectedIndex).Name
-        'To string for curriculum?
         lblCurriculumValue.Text = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID
         lblExpectedGraduation.Text = "Expected Graduation Date: " + studentList(lbxStudentList.SelectedIndex).ExpectedGraduationDate.ToString("y")
         lblGPAValue.Text = calculateGPA()
         lblClassesTakenValue.Text = studentList(lbxStudentList.SelectedIndex).SectionsTaken.Count()
+        lblMinQuartersToGradValue.Text = getMinimumQuartersLeft()
+        clearCourseLists()
+        updateCourseLists()
         
     End Sub
 
+    'Determines GPA; returns String
     Private Function calculateGPA()
 
         Dim finalGradePoints As Double = 0.0
@@ -46,7 +51,7 @@
         For Each enrollment In coursesTakenList
 
             'Assign value to letter grade
-            calculateGradePoints(enrollment.Grade)
+            gradePoints = calculateGradePoints(enrollment.Grade)
 
             'Get course and then get the units for the course
             unitsTaken = getUnitsTaken()
@@ -66,6 +71,7 @@
 
     End Function
 
+    'Determine class standing based on total units taken; returns String
     Function getClassStanding()
 
         Dim classStanding As String
@@ -87,10 +93,9 @@
         Return classStanding
     End Function
 
+    'Determine grade points based on letter grade; returns Double
     Function calculateGradePoints(ByVal grade As String)
 
-        Dim enrollment As New Enrollment
-        Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
         Dim gradePoints As Double = 0.0
 
         'Assign value to letter grade
@@ -142,13 +147,12 @@
         Return unitsTaken
     End Function
 
+    'Determine the minimum quarters left to graduate; returns String
     Function getMinimumQuartersLeft()
         Dim minimumQuartersLeft As Double = 0.0
         Dim electiveCoursesRemaining As Double = 0.0
         Dim coursesLeftList As ArrayList = New ArrayList()
-        Dim electiveUnitsRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).electiveUnitsRequired
-        Dim requiredCoreCoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredCoreCourses.count()
-        Dim requiredGECoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredGECourses.count()
+        Dim electiveUnitsRemaining As Integer = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ElectiveUnitsRequired
 
         Dim course As New Course
         Dim enrollment As New Enrollment
@@ -190,13 +194,40 @@
         minimumQuartersLeft /= 4
         minimumQuartersLeft = Math.Ceiling(minimumQuartersLeft)
 
-        'For Each enrollment In coursesTakenList
-        '    course = courseDB.Item(enrollment.SectionTaken.CourseID)
-        '    unitsTaken += course.Units
-        'Next
-
-        Return minimumQuartersLeft
+        Return minimumQuartersLeft.ToString
 
     End Function
+
+    Sub updateCourseLists()
+        Dim coursesLeftList As ArrayList = New ArrayList()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim requiredCoreCoursesList As ArrayList = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredCoreCourses.Courses
+        Dim requiredGECoursesList As ArrayList = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredGECourses.Courses
+        Dim electiveCoursesList As ArrayList = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ElectiveCourses.Courses
+
+        Dim enrollment As New Enrollment
+        Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
+        Dim gradePoints As Double
+
+        For Each enrollment In coursesTakenList
+            gradePoints = calculateGradePoints(enrollment.Grade)
+
+            Select Case gradePoints
+                Case Is > 1.7
+                    lbxCompleted.Items.Add(enrollment.SectionTaken.CourseID)
+                Case 0
+                    lbxFailDrop.Items.Add(enrollment.SectionTaken.CourseID)
+                Case Else
+                    lbxNotTaken.Items.Add(enrollment.SectionTaken.CourseID)
+            End Select
+        Next
+
+    End Sub
+
+    Sub clearCourseLists()
+        lbxCompleted.Items.Clear()
+        lbxFailDrop.Items.Clear()
+        lbxNotTaken.Items.Clear()
+    End Sub
 
 End Class

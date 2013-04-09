@@ -16,7 +16,8 @@
         tempCourseDB.Add(course, course.ID)
         course = New Course("CS103", 4, "CS102", New ArrayList())
         tempCourseDB.Add(course, course.ID)
-
+        course = New Course("CS305", 4, "CS103", New ArrayList())
+        tempCourseDB.Add(course, course.ID)
 
         'Test Teacher
         Dim teacher As New Teacher(998877, "Dr. S Curl")
@@ -44,17 +45,36 @@
         sect2.CourseID = "CS102"
         Dim sect3 As New Section
         sect3.CourseID = "CS103"
+        Dim sect4 As New Section
+        sect4.CourseID = "CS305"
 
-        Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, Controller.getCurriculumDB.Item("2008"))
+        Dim tempReqCoreCourses As New RequiredCoreCourses
+        tempReqCoreCourses.addCourse("CS101")
+        tempReqCoreCourses.addCourse("CS305")
+        Dim tempReqGECourses As New RequiredGECourses
+        tempReqGECourses.addCourse("CS102")
+        Dim tempElectiveCoreCourses As New ElectiveCoreCourses
+        tempElectiveCoreCourses.addCourse("CS103")
+
+        Dim curriculum As New Curriculum
+        curriculum.ID = "2008"
+        curriculum.RequiredCoreCourses = tempReqCoreCourses
+        curriculum.RequiredGECourses = tempReqGECourses
+        curriculum.ElectiveCourses = tempElectiveCoreCourses
+        curriculum.ElectiveUnitsRequired = 20
+
+        Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, curriculum)
         student.addCourseTakenWithGrade(sect1, "A")
         student.addCourseTakenWithGrade(sect2, "B+")
-        student.addCourseTakenWithGrade(sect3, "C+")
+        student.addCourseTakenWithGrade(sect3, "C-")
+        student.addCourse(sect4)
         tempStudentDB.Add(student, student.ID)
 
-        student = New Student("442233", "Martin Legaspi", "2012", "Fall", True, Controller.getCurriculumDB.Item("2008"))
+        student = New Student("442233", "Martin Legaspi", "2012", "Fall", True, curriculum)
         student.addCourseTakenWithGrade(sect1, "B")
         student.addCourseTakenWithGrade(sect2, "C-")
         student.addCourseTakenWithGrade(sect3, "D")
+        student.addCourse(sect4)
         tempStudentDB.Add(student, student.ID)
         '/End Test Data'
 
