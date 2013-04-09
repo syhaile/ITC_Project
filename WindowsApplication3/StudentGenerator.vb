@@ -7,6 +7,8 @@
     Private m_currentQuarter As String
     Private m_currentYear As Integer
     Private m_quatersToDropout As Integer
+    Private m_randomClassSelection As Boolean
+    Private m_classesPerQuarter As Integer
     Private rng As New Random
 
     'db necessary to generate enrollments for students
@@ -30,6 +32,8 @@
         m_currentQuarter = "Spring"
         m_currentYear = 2013
         m_quatersToDropout = 3
+        m_randomClassSelection = true
+        m_classesPerQuarter = 4
         'create values for distribution
         ''generate list of curriculums
         For Each c As Curriculum In curricdb
@@ -37,7 +41,6 @@
             m_curriculumDistribution.Add(1.0/curricdb.Count)
         Next
 
-        'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
 
     Public Function generateStudents() As ArrayList 
@@ -101,7 +104,11 @@
                 totalquarters -= 3
             End If
             For quartercounter As Integer = 0 To calcQuatertersTaken(stud) Step 1
-                Dim coursestaking As Integer = (rng.Next mod 3) + 1
+                Dim coursestaking As Integer = m_classesPerQuarter - 1
+                If(m_randomClassSelection) Then
+                    coursestaking = (rng.Next mod 3) + 1                    
+                End If
+                
                 For classcounter As Integer = 0 To coursestaking Step 1
                     Dim tempsection As Section = generateRandomSection(stud.CurrentCurriculum)
                     While (Not isValidSection(stud, tempsection))

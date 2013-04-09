@@ -69,23 +69,23 @@ Partial Class DataGenerator
         Me.btnStudentBrowse = New System.Windows.Forms.Button()
         Me.txtStudentFileSrc = New System.Windows.Forms.TextBox()
         Me.Rooms = New System.Windows.Forms.TabPage()
-        Me.txtRoomsFileSrc = New System.Windows.Forms.TextBox()
-        Me.btnRoomsBrowse = New System.Windows.Forms.Button()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.btnRoomsGenerate = New System.Windows.Forms.Button()
-        Me.nudRoomsAvailable = New System.Windows.Forms.NumericUpDown()
-        Me.nudRoomsStudents = New System.Windows.Forms.NumericUpDown()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.nudRoomsStudents = New System.Windows.Forms.NumericUpDown()
+        Me.nudRoomsAvailable = New System.Windows.Forms.NumericUpDown()
+        Me.btnRoomsGenerate = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.btnRoomsBrowse = New System.Windows.Forms.Button()
+        Me.txtRoomsFileSrc = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.TabControl1.SuspendLayout()
         Me.Classes.SuspendLayout()
         CType(Me.nudClassesUnits, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Curriculum.SuspendLayout()
         Me.Students.SuspendLayout()
         Me.Rooms.SuspendLayout()
-        CType(Me.nudRoomsAvailable, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudRoomsStudents, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudRoomsAvailable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -562,68 +562,15 @@ Partial Class DataGenerator
         Me.Rooms.Text = "Rooms"
         Me.Rooms.UseVisualStyleBackColor = True
         '
-        'txtRoomsFileSrc
+        'Label15
         '
-        Me.txtRoomsFileSrc.Enabled = False
-        Me.txtRoomsFileSrc.Location = New System.Drawing.Point(106, 12)
-        Me.txtRoomsFileSrc.Name = "txtRoomsFileSrc"
-        Me.txtRoomsFileSrc.Size = New System.Drawing.Size(254, 20)
-        Me.txtRoomsFileSrc.TabIndex = 5
-        '
-        'btnRoomsBrowse
-        '
-        Me.btnRoomsBrowse.Location = New System.Drawing.Point(366, 10)
-        Me.btnRoomsBrowse.Name = "btnRoomsBrowse"
-        Me.btnRoomsBrowse.Size = New System.Drawing.Size(75, 23)
-        Me.btnRoomsBrowse.TabIndex = 6
-        Me.btnRoomsBrowse.Text = "Browse"
-        Me.btnRoomsBrowse.UseVisualStyleBackColor = True
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(6, 17)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(94, 16)
-        Me.Label13.TabIndex = 7
-        Me.Label13.Text = "Import a File"
-        '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(16, 475)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(578, 23)
-        Me.ProgressBar1.TabIndex = 1
-        '
-        'btnRoomsGenerate
-        '
-        Me.btnRoomsGenerate.Location = New System.Drawing.Point(199, 302)
-        Me.btnRoomsGenerate.Name = "btnRoomsGenerate"
-        Me.btnRoomsGenerate.Size = New System.Drawing.Size(75, 23)
-        Me.btnRoomsGenerate.TabIndex = 8
-        Me.btnRoomsGenerate.Text = "Generate"
-        Me.btnRoomsGenerate.UseVisualStyleBackColor = True
-        '
-        'nudRoomsAvailable
-        '
-        Me.nudRoomsAvailable.Location = New System.Drawing.Point(240, 196)
-        Me.nudRoomsAvailable.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
-        Me.nudRoomsAvailable.Name = "nudRoomsAvailable"
-        Me.nudRoomsAvailable.Size = New System.Drawing.Size(120, 20)
-        Me.nudRoomsAvailable.TabIndex = 9
-        Me.nudRoomsAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.nudRoomsAvailable.Value = New Decimal(New Integer() {40, 0, 0, 0})
-        '
-        'nudRoomsStudents
-        '
-        Me.nudRoomsStudents.Location = New System.Drawing.Point(240, 222)
-        Me.nudRoomsStudents.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
-        Me.nudRoomsStudents.Name = "nudRoomsStudents"
-        Me.nudRoomsStudents.Size = New System.Drawing.Size(120, 20)
-        Me.nudRoomsStudents.TabIndex = 10
-        Me.nudRoomsStudents.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.nudRoomsStudents.Value = New Decimal(New Integer() {30, 0, 0, 0})
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(6, 226)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(215, 16)
+        Me.Label15.TabIndex = 12
+        Me.Label15.Text = "How many students per room?"
         '
         'Label14
         '
@@ -635,15 +582,68 @@ Partial Class DataGenerator
         Me.Label14.TabIndex = 11
         Me.Label14.Text = "How many rooms available?"
         '
-        'Label15
+        'nudRoomsStudents
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(6, 226)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(215, 16)
-        Me.Label15.TabIndex = 12
-        Me.Label15.Text = "How many students per room?"
+        Me.nudRoomsStudents.Location = New System.Drawing.Point(240, 222)
+        Me.nudRoomsStudents.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
+        Me.nudRoomsStudents.Name = "nudRoomsStudents"
+        Me.nudRoomsStudents.Size = New System.Drawing.Size(120, 20)
+        Me.nudRoomsStudents.TabIndex = 10
+        Me.nudRoomsStudents.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudRoomsStudents.Value = New Decimal(New Integer() {30, 0, 0, 0})
+        '
+        'nudRoomsAvailable
+        '
+        Me.nudRoomsAvailable.Location = New System.Drawing.Point(240, 196)
+        Me.nudRoomsAvailable.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.nudRoomsAvailable.Name = "nudRoomsAvailable"
+        Me.nudRoomsAvailable.Size = New System.Drawing.Size(120, 20)
+        Me.nudRoomsAvailable.TabIndex = 9
+        Me.nudRoomsAvailable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudRoomsAvailable.Value = New Decimal(New Integer() {40, 0, 0, 0})
+        '
+        'btnRoomsGenerate
+        '
+        Me.btnRoomsGenerate.Location = New System.Drawing.Point(199, 302)
+        Me.btnRoomsGenerate.Name = "btnRoomsGenerate"
+        Me.btnRoomsGenerate.Size = New System.Drawing.Size(75, 23)
+        Me.btnRoomsGenerate.TabIndex = 8
+        Me.btnRoomsGenerate.Text = "Generate"
+        Me.btnRoomsGenerate.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(6, 17)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(94, 16)
+        Me.Label13.TabIndex = 7
+        Me.Label13.Text = "Import a File"
+        '
+        'btnRoomsBrowse
+        '
+        Me.btnRoomsBrowse.Location = New System.Drawing.Point(366, 10)
+        Me.btnRoomsBrowse.Name = "btnRoomsBrowse"
+        Me.btnRoomsBrowse.Size = New System.Drawing.Size(75, 23)
+        Me.btnRoomsBrowse.TabIndex = 6
+        Me.btnRoomsBrowse.Text = "Browse"
+        Me.btnRoomsBrowse.UseVisualStyleBackColor = True
+        '
+        'txtRoomsFileSrc
+        '
+        Me.txtRoomsFileSrc.Enabled = False
+        Me.txtRoomsFileSrc.Location = New System.Drawing.Point(106, 12)
+        Me.txtRoomsFileSrc.Name = "txtRoomsFileSrc"
+        Me.txtRoomsFileSrc.Size = New System.Drawing.Size(254, 20)
+        Me.txtRoomsFileSrc.TabIndex = 5
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(16, 475)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(578, 23)
+        Me.ProgressBar1.TabIndex = 1
         '
         'DataGenerator
         '
@@ -664,8 +664,8 @@ Partial Class DataGenerator
         Me.Students.PerformLayout()
         Me.Rooms.ResumeLayout(False)
         Me.Rooms.PerformLayout()
-        CType(Me.nudRoomsAvailable, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudRoomsStudents, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudRoomsAvailable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
