@@ -103,7 +103,7 @@ Public Class MDIParentForm
 
     Private Sub CurriculumViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CurriculumViewToolStripMenuItem.Click
         ' Create a new instance of the child form.
-        Dim ChildForm As New CurriculumView
+        Dim ChildForm As New CurriculumMetericView
         ' Make it a child of this MDI form before showing it.
         ChildForm.MdiParent = Me
 
