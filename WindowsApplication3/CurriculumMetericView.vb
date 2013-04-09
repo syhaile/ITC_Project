@@ -123,26 +123,54 @@ Public Class CurriculumMetericView
     End Sub
 
     Public Sub avgTime()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
 
+        For Each tempStudent In students
+
+        Next
     End Sub
 
     Public Sub minTime()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
 
+        For Each tempStudent In students
+
+        Next
     End Sub
 
     Public Sub maxTime()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
 
+        For Each tempStudent In students
+
+        Next
     End Sub
 
     Public Sub avgUnits()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
+
 
     End Sub
 
     Public Sub minUnits()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
 
     End Sub
 
     Public Sub maxUnits()
+        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim enrollment As New Enrollment
 
     End Sub
 
