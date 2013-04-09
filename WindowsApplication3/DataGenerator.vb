@@ -147,10 +147,15 @@ Public Class DataGenerator
     Private Sub btnRandomGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRandomGenerate.Click
         Dim myGenerator As New StudentGenerator(Controller.getCurriculumDB, Controller.getCourseDB)
         Dim mylist As ArrayList = myGenerator.generateStudents
+        Dim mycollection As Collection = Controller.getStudentDB
         For Each st As Student In mylist
-            testbox.Text += st.ID + " " + st.Name + vbNewLine
-            Controller.updateStudentDB(Controller.getStudentDB.add(st,st.ID))
+            'testbox.Text += st.ID + " " + st.Name + vbNewLine
+            mycollection.add(st,st.ID)
         Next
+        For Each st As Student In Controller.getStudentDB
+            testbox.Text += st.ID + " " + st.Name + vbNewLine
+        Next
+
     End Sub
 
     Private Sub btnClassesImport_Click(sender As Object, e As EventArgs) Handles btnClassesImport.Click
