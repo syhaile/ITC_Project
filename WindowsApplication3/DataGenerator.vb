@@ -153,45 +153,49 @@ Public Class DataGenerator
     End Sub
 
     Private Sub btnClassesImport_Click(sender As Object, e As EventArgs) Handles btnClassesImport.Click
-        Dim stringReader As String
-        Dim reader As StreamReader
+        If Not txtClassesFileSRC.Text = "" Then
+            Dim stringReader As String
+            Dim reader As StreamReader
 
-        If classesLocalFile = True Then
-            reader = New StreamReader(txtClassesFileSRC.Text)
-            stringReader = reader.ReadLine()
+            If classesLocalFile = True Then
+                reader = New StreamReader(txtClassesFileSRC.Text)
+                stringReader = reader.ReadLine()
+            Else
+                reader = ReadFile(txtClassesFileSRC.Text)
+                stringReader = reader.ReadLine()
+
+            End If
+
+
+
+
+            While Not stringReader Is Nothing
+                Dim lineValue() As String = stringReader.Split(vbTab)
+
+                Dim preRequisitArray As New ArrayList
+                Dim tempCourse As New Course
+                tempCourse.ID = lineValue(0)
+                tempCourse.Units = Integer.Parse(lineValue(1))
+
+                Dim preRequisit() As String = lineValue(2).Split(",")
+                For index = 0 To preRequisit.Count - 1 Step 1
+                    preRequisitArray.Add(preRequisit(index))
+                Next
+
+                tempCourse.PreRequisitCourse = preRequisitArray
+                tempCourse.CompanionCourse = lineValue(3)
+                tempCourseDB.Add(tempCourse, tempCourse.ID)
+                lboxClassesCourses.Items.Add(tempCourse.ID)
+                stringReader = reader.ReadLine()
+            End While
+
+            updateCourseDB()
+            updateListbox()
         Else
-            reader = ReadFile(txtClassesFileSRC.Text)
-            stringReader = reader.ReadLine()
-
+            MessageBox.Show("Please browse for a file before importing")
         End If
-
-
-
-
-        While Not StringReader Is Nothing
-            Dim lineValue() As String = StringReader.Split(vbTab)
-
-            Dim preRequisitArray As New ArrayList
-            Dim tempCourse As New Course
-            tempCourse.ID = lineValue(0)
-            tempCourse.Units = Integer.Parse(lineValue(1))
-
-            Dim preRequisit() As String = lineValue(2).Split(",")
-            For index = 0 To preRequisit.Count - 1 Step 1
-                preRequisitArray.Add(preRequisit(index))
-            Next
-
-            tempCourse.PreRequisitCourse = preRequisitArray
-            tempCourse.CompanionCourse = lineValue(3)
-            tempCourseDB.Add(tempCourse, tempCourse.ID)
-            lboxClassesCourses.Items.Add(tempCourse.ID)
-            StringReader = reader.ReadLine()
-        End While
-
-        updateCourseDB()
-        updateListbox()
+        
     End Sub
-
 
     Private Sub btnCurriculumBrowse_Click(sender As Object, e As EventArgs) Handles btnCurriculumBrowse.Click
         txtCurriculumFileSrc.Enabled = True
@@ -210,116 +214,112 @@ Public Class DataGenerator
 
     End Sub
 
-
-
     Private Sub btnCurriculumImport_Click(sender As Object, e As EventArgs) Handles btnCurriculumImport.Click
-        Dim curriculumYear As String = ""
-        Dim reqGE, reqCore, reqElect, reqGEStart, reqGEEnd, reqCoreStart, reqCoreEnd, reqElectStart, reqElectEnd As Integer
-        Dim stringReader As String
-        Dim reader As StreamReader
+        If Not txtCurriculumFileSrc.Text = "" Then
+            Dim curriculumYear As String = ""
+            Dim reqGE, reqCore, reqElect, reqGEStart, reqGEEnd, reqCoreStart, reqCoreEnd, reqElectStart, reqElectEnd As Integer
+            Dim stringReader As String
+            Dim reader As StreamReader
 
-        If curriculumLocalFile = True Then
-            reader = New StreamReader(txtCurriculumFileSrc.Text)
-        Else
-            reader = ReadFile(txtCurriculumFileSrc.Text)
-        End If
-
-        stringReader = reader.ReadLine()
-
-        While Not stringReader Is Nothing
-            Dim lineValue() As String = stringReader.Split(vbTab)
-
-            'Determine location of "curriculum year", "Category's"
-            For index = 0 To lineValue.Count - 1 Step 1
-                If lineValue(index) = "CURRICULUM YEAR" Then
-                    curriculumYear = lineValue(index + 1)
-                End If
-
-                If lineValue(index) = "CATEGORY" Then
-                    If lineValue(index + 1) = "Require GE" Then
-                        reqGE = index + 1
-                    ElseIf lineValue(index + 1) = "Required Core" Then
-                        reqCore = index + 1
-                    ElseIf lineValue(index + 1) = "Elective Core" Then
-                        reqElect = index + 1
-                    End If
-                End If
-            Next
-
-            'Set start and end location
-            reqGEStart = reqGE + 1
-            reqGEEnd = reqCore - 2
-            reqCoreStart = reqCore + 1
-            reqCoreEnd = reqElect - 2
-            reqElectStart = reqElect + 2
-            reqElectEnd = lineValue.Count - 1
-
-            Dim reqElectiveUnits As String = lineValue(reqElect + 1)
-
-            Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
-
-            'Get Required GE Courses
-            For index = reqGEStart To reqGEEnd Step 1
-                reqGEArray.Add(lineValue(index))
-            Next
-
-            'Get Required Core Courses
-            For index = reqCoreStart To reqCoreEnd Step 1
-                reqCoreArray.Add(lineValue(index))
-            Next
-
-            'Get Elective Courses
-            For index = reqElectStart To reqElectEnd Step 1
-                reqElectArray.Add(lineValue(index))
-            Next
-
-
-            'set Required GE Courses
-            Dim tempReqGE As New RequiredGECourses
-            For index = 0 To reqGEArray.Count - 1 Step 1
-                tempReqGE.addCourse(reqGEArray(index))
-            Next
-
-            'set Required Core Courses
-            Dim tempReqCore As New RequiredCoreCourses
-            For index = 0 To reqCoreArray.Count - 1 Step 1
-                tempReqCore.addCourse(reqCoreArray(index))
-            Next
-
-            'set Elective Courses
-            Dim tempElective As New ElectiveCoreCourses
-            For index = 0 To reqElectArray.Count - 1 Step 1
-                tempElective.addCourse(reqElectArray(index))
-            Next
-
-            'set Curriculum
-            Dim tempCurriculum As New Curriculum
-            tempCurriculum.ID = curriculumYear
-            tempCurriculum.RequiredGECourses = tempReqGE
-            tempCurriculum.RequiredCoreCourses = tempReqCore
-            tempCurriculum.ElectiveUnitsRequired = reqElectiveUnits
-            tempCurriculum.ElectiveCourses = tempElective
-            If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
-                tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+            If curriculumLocalFile = True Then
+                reader = New StreamReader(txtCurriculumFileSrc.Text)
             Else
-                tempCurriculumCollection.Remove(tempCurriculum.ID)
-                tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+                reader = ReadFile(txtCurriculumFileSrc.Text)
             End If
 
-
-
-            Controller.updateCurriculumDB(tempCurriculumCollection)
-
             stringReader = reader.ReadLine()
-        End While
-        updateComboBox()
-        ''set curriculum year
-        'cboCurriculumYear.Items.Add(curriculumYear)
-        'cboCurriculumYear.SelectedItem = curriculumYear
-        'lboxCurriculumReqGE.Items.Add(reqGEArray(index))
-        ' lboxCurriculumReqCore.Items.Add(reqCoreArray(index))
-        'lboxCurriculumElective.Items.Add(reqCoreArray(index))
 
+            While Not stringReader Is Nothing
+                Dim lineValue() As String = stringReader.Split(vbTab)
+
+                'Determine location of "curriculum year", "Category's"
+                For index = 0 To lineValue.Count - 1 Step 1
+                    If lineValue(index) = "CURRICULUM YEAR" Then
+                        curriculumYear = lineValue(index + 1)
+                    End If
+
+                    If lineValue(index) = "CATEGORY" Then
+                        If lineValue(index + 1) = "Require GE" Then
+                            reqGE = index + 1
+                        ElseIf lineValue(index + 1) = "Required Core" Then
+                            reqCore = index + 1
+                        ElseIf lineValue(index + 1) = "Elective Core" Then
+                            reqElect = index + 1
+                        End If
+                    End If
+                Next
+
+                'Set start and end location
+                reqGEStart = reqGE + 1
+                reqGEEnd = reqCore - 2
+                reqCoreStart = reqCore + 1
+                reqCoreEnd = reqElect - 2
+                reqElectStart = reqElect + 2
+                reqElectEnd = lineValue.Count - 1
+
+                Dim reqElectiveUnits As String = lineValue(reqElect + 1)
+
+                Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
+
+                'Get Required GE Courses
+                For index = reqGEStart To reqGEEnd Step 1
+                    reqGEArray.Add(lineValue(index))
+                Next
+
+                'Get Required Core Courses
+                For index = reqCoreStart To reqCoreEnd Step 1
+                    reqCoreArray.Add(lineValue(index))
+                Next
+
+                'Get Elective Courses
+                For index = reqElectStart To reqElectEnd Step 1
+                    reqElectArray.Add(lineValue(index))
+                Next
+
+
+                'set Required GE Courses
+                Dim tempReqGE As New RequiredGECourses
+                For index = 0 To reqGEArray.Count - 1 Step 1
+                    tempReqGE.addCourse(reqGEArray(index))
+                Next
+
+                'set Required Core Courses
+                Dim tempReqCore As New RequiredCoreCourses
+                For index = 0 To reqCoreArray.Count - 1 Step 1
+                    tempReqCore.addCourse(reqCoreArray(index))
+                Next
+
+                'set Elective Courses
+                Dim tempElective As New ElectiveCoreCourses
+                For index = 0 To reqElectArray.Count - 1 Step 1
+                    tempElective.addCourse(reqElectArray(index))
+                Next
+
+                'set Curriculum
+                Dim tempCurriculum As New Curriculum
+                tempCurriculum.ID = curriculumYear
+                tempCurriculum.RequiredGECourses = tempReqGE
+                tempCurriculum.RequiredCoreCourses = tempReqCore
+                Dim temp() As String = reqElectiveUnits.Split(" ")
+                tempCurriculum.ElectiveUnitsRequired = temp(0)
+                tempCurriculum.ElectiveCourses = tempElective
+                If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
+                    tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+                Else
+                    tempCurriculumCollection.Remove(tempCurriculum.ID)
+                    tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+                End If
+
+
+
+                Controller.updateCurriculumDB(tempCurriculumCollection)
+
+                stringReader = reader.ReadLine()
+            End While
+            updateComboBox()
+        Else
+            MessageBox.Show("Please browse for a file before importing")
+        End If
     End Sub
 
     Private Sub updateComboBox()
@@ -461,18 +461,36 @@ Public Class DataGenerator
         Next
     End Sub
 
+    Private Function inputBetweenRange(ByVal input As Integer, ByVal maxValue As Integer, ByVal minValue As Integer) As Boolean
+        Dim result As Boolean = False
+        If (input >= minValue) And (input <= maxValue) Then
+            result = True
+        End If
+        Return result
+    End Function
+
     Private Sub btnCurriculumNew_Click(sender As Object, e As EventArgs) Handles btnCurriculumNew.Click
         Dim year As String = 1999
         Dim int As Integer
-        While Not (year >= 2000) And (year <= 2100)
+        Dim max As Integer = 2100
+        Dim min As Integer = 2000
+        Dim intValidation As Boolean = False
+        While Not intValidation = True
             Try
-                int = Integer.Parse(InputBox("Please enter the year this curriculum will be applied to", "Curriculum Year Required", "2014"))
-                year = int.ToString
+                int = InputBox("Please enter the year this curriculum will be applied to", "Curriculum Year Required", "2014")
+                If inputBetweenRange(int, max, min) = True Then
+                    year = int.ToString
+                    intValidation = True
+                Else
+                    MessageBox.Show("Please Enter a year between 2000 and 2100", "Incorrect Year")
+                End If
+
             Catch ex As Exception
-                MessageBox.Show("Please Enter a year between 2000 and 2100")
+                MessageBox.Show("Please enter a integer EX: 2014", "Input Error")
             End Try
 
         End While
+
 
         Dim tempCurriculum As New Curriculum
         tempCurriculum.ID = year
@@ -489,6 +507,7 @@ Public Class DataGenerator
         Controller.updateCurriculumDB(tempCurriculumCollection)
         updateComboBox()
         cboCurriculumYear.SelectedItem = tempCurriculum.ID
+
     End Sub
 
     Private Sub btnStudentBrowse_Click(sender As Object, e As EventArgs) Handles btnStudentBrowse.Click
@@ -498,4 +517,39 @@ Public Class DataGenerator
             txtStudentFileSrc.Text = fbd.FileName
         End If
     End Sub
+
+    Private Sub btnRoomsGenerate_Click(sender As Object, e As EventArgs) Handles btnRoomsGenerate.Click
+        Dim studentsPerRoom As Integer = nudRoomsStudents.Value
+        Dim numberOfRooms As Integer = nudRoomsAvailable.Value
+        Dim roomNumber As String = ""
+        Dim ID As String = ""
+        Dim IDNumber As Integer
+        Dim rnd As New Random
+        Dim alphaArray() As Char = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
+
+        For counter = 1 To numberOfRooms Step 1
+            For index = 1 To 3 Step 1
+                If index = 1 Then
+                    roomNumber = alphaArray(rnd.Next(0, alphaArray.Count - 1))
+                Else
+                    roomNumber += alphaArray(rnd.Next(0, alphaArray.Count - 1))
+                End If
+            Next
+
+            IDNumber = rnd.Next(100, 999)
+            ID = roomNumber & "-" & IDNumber
+            Dim tempRoom As New Room(ID, studentsPerRoom)
+            Dim tempRoomDB As New RoomDatabase
+            tempRoomDB.MasterDatabase = Controller.getRoomDB
+            If Not tempRoomDB.MasterDatabase.Contains(tempRoom.ID) Then
+                tempRoomDB.addRoom(tempRoom)
+            Else
+                tempRoomDB.MasterDatabase.Remove(tempRoom.ID)
+                tempRoomDB.MasterDatabase.Add(tempRoom, tempRoom.ID)
+            End If
+
+            Controller.updateRoomDB(tempRoomDB.MasterDatabase)
+        Next
+    End Sub
+    
 End Class
