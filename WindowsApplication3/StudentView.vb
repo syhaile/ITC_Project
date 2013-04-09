@@ -40,12 +40,14 @@
         Dim unitsTaken As Double = 0.0
         Dim totalUnitsTaken As Double = 0.0
         Dim GPA As Double
+        Dim enrollment As New Enrollment
+        Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
 
         For Each enrollment In coursesTakenList
 
             'Assign value to letter grade
 
-            calculateGPA()
+            calculateGradePoints(enrollment.Grade)
 
             'Select Case enrollment.Grade
             '    Case "A"
@@ -141,7 +143,7 @@
         Dim tempElectiveList As ArrayList = New ArrayList()
         Dim electiveUnitsRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).electiveUnitsRequired
         Dim requiredCoreCoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredCoreCourses.count()
-        Dim requiredGECoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredGECourses.count()
+        Dim requiredGECoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredGECourses.count()
 
         Dim course As New Course
         Dim enrollment As New Enrollment
@@ -185,45 +187,41 @@
 
     End Function
 
-    Function calculateGradePoints()
+    Function calculateGradePoints(ByVal grade As String)
 
         Dim enrollment As New Enrollment
         Dim coursesTakenList As ArrayList = studentList(lbxStudentList.SelectedIndex).SectionsTaken
         Dim gradePoints As Double = 0.0
 
-        For Each enrollment In coursesTakenList
-
-            'Assign value to letter grade
-            Select Case enrollment.Grade
-                Case "A"
-                    gradePoints = 4.0
-                Case "A-"
-                    gradePoints = 3.7
-                Case "B+"
-                    gradePoints = 3.33
-                Case "B"
-                    gradePoints = 3.0
-                Case "B-"
-                    gradePoints = 2.7
-                Case "C+"
-                    gradePoints = 2.3
-                Case "C"
-                    gradePoints = 2.0
-                Case "C-"
-                    gradePoints = 1.7
-                Case "D+"
-                    gradePoints = 1.3
-                Case "D"
-                    gradePoints = 1.0
-                Case "D-"
-                    gradePoints = 0.7
-                Case "F"
-                    gradePoints = 0
-                Case "W"
-                    gradePoints = 0
-            End Select
-
-        Next
+        'Assign value to letter grade
+        Select Case grade
+            Case "A"
+                gradePoints = 4.0
+            Case "A-"
+                gradePoints = 3.7
+            Case "B+"
+                gradePoints = 3.33
+            Case "B"
+                gradePoints = 3.0
+            Case "B-"
+                gradePoints = 2.7
+            Case "C+"
+                gradePoints = 2.3
+            Case "C"
+                gradePoints = 2.0
+            Case "C-"
+                gradePoints = 1.7
+            Case "D+"
+                gradePoints = 1.3
+            Case "D"
+                gradePoints = 1.0
+            Case "D-"
+                gradePoints = 0.7
+            Case "F"
+                gradePoints = 0
+            Case "W"
+                gradePoints = 0
+        End Select
 
         Return gradePoints
 
