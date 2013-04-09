@@ -135,12 +135,12 @@
 
     Function getMinimumQuartersLeft()
         Dim mininumQuartersLeft As Double = 0.0
-        Dim requiredCoreCourses = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredCoreCourses.Courses.Count()
-        Dim requiredGECourses = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredGECourses.Courses.Count()
-        Dim ElectiveCourses = 4
-        Dim coursesLeftCount As Double = 0.0
+        ' Dim requiredCoreCourses = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredCoreCourses.Courses.Count()
+        'Dim requiredGECourses = studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.RequiredGECourses.Courses.Count()
+        'Dim ElectiveCourses = 4
+        'Dim coursesLeftCount As Double = 0.0
         Dim coursesLeftList As ArrayList = New ArrayList()
-        Dim tempElectiveList As ArrayList = New ArrayList()
+        ' Dim tempElectiveList As ArrayList = New ArrayList()
         Dim electiveUnitsRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).electiveUnitsRequired
         Dim requiredCoreCoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredCoreCourses.count()
         Dim requiredGECoursesRemaining As Integer = Controller.getCurriculumDB.Item(studentList(lbxStudentList.SelectedIndex).CurrentCurriculum.ID).RequiredGECourses.count()
