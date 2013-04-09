@@ -102,12 +102,6 @@
     <Compile Include="CurriculumMetericView.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CurriculumView.Designer.vb">
-      <DependentUpon>CurriculumView.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CurriculumView.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="DataGenerator.Designer.vb">
       <DependentUpon>DataGenerator.vb</DependentUpon>
     </Compile>
@@ -166,9 +160,6 @@
   <ItemGroup>
     <EmbeddedResource Include="CurriculumMetericView.resx">
       <DependentUpon>CurriculumMetericView.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CurriculumView.resx">
-      <DependentUpon>CurriculumView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataGenerator.resx">
       <DependentUpon>DataGenerator.vb</DependentUpon>

@@ -43,7 +43,7 @@ Partial Class CurriculumMetericView
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblMetricsTitle = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblGrad = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage2.SuspendLayout()
@@ -160,7 +160,7 @@ Partial Class CurriculumMetericView
         Me.TabPage1.Controls.Add(Me.GroupBox2)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.lblMetricsTitle)
-        Me.TabPage1.Controls.Add(Me.Label2)
+        Me.TabPage1.Controls.Add(Me.lblGrad)
         Me.TabPage1.Controls.Add(Me.Label3)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -286,15 +286,15 @@ Partial Class CurriculumMetericView
         Me.lblMetricsTitle.TabIndex = 0
         Me.lblMetricsTitle.Text = "Metrics Title"
         '
-        'Label2
+        'lblGrad
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.Label2.Location = New System.Drawing.Point(9, 40)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(160, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Number of Graduated Students: "
+        Me.lblGrad.AutoSize = True
+        Me.lblGrad.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.lblGrad.Location = New System.Drawing.Point(9, 40)
+        Me.lblGrad.Name = "lblGrad"
+        Me.lblGrad.Size = New System.Drawing.Size(160, 13)
+        Me.lblGrad.TabIndex = 1
+        Me.lblGrad.Text = "Number of Graduated Students: "
         '
         'Label3
         '
@@ -351,7 +351,7 @@ Partial Class CurriculumMetericView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents lblMetricsTitle As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblGrad As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents lblCurriculumTitle As System.Windows.Forms.Label
