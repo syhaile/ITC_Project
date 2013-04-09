@@ -6,6 +6,7 @@ Public Class CurriculumMetericView
     Private m_graduatedStudents As Integer
     Private m_curriculum As String
     Private m_maxUnits, m_minUnits, m_avgUnits As String 
+
     'For displaying class information in the class metrics view
     Dim courses As Collection = Controller.getCourseDB
     Dim courseList As New List(Of Course)
@@ -157,16 +158,31 @@ Public Class CurriculumMetericView
     Public Sub Units()
         'Dim unitsTaken As Integer
         Dim unitArray As new ArrayList
+        Dim course As New Course
+        Dim courseDB As Collection = Controller.getCourseDB()
+         
+        Dim coursesTakenList As ArrayList = tempStudent.SectionsTaken
         
-        'Dim coursesTakenList As ArrayList = tempStudent.SectionsTaken
+        Dim tempArray As New ArrayList
+
+        For Each curriculum In tempStudent.CurrentCurriculum.ID
+            
+            For Each compare In curriculumList(cmbxCurriclum.SelectedIndex).ID
+
+                If compare = curriculum then 
+                    tempArray.Add(tempStudent.ID)
+                End If
+
+            Next 
+        Next
+
+
         'For Each Me.enrollment In coursesTakenList
         '    tempCourse = courses.Item(enrollment.SectionTaken.CourseID)
-        '    unitsTaken += tempCourse.Units
+        '    unitsTaken += course.Units
+
         '    unitArray.Add(unitsTaken)
         'Next 
-
-            unitArray.Add(4)
-            unitArray.Add(16)
 
         m_maxUnits = (maxUnits(unitArray)).ToString
         m_minUnits = (minUnits(unitArray)).ToString
@@ -176,7 +192,7 @@ Public Class CurriculumMetericView
         lblMinUnit.Text = "Minimum units taken: " + m_minUnits
         lblAvgUnits.Text = "Average units taken: " + m_avgUnits
 
-    End Sub 'working so far 
+    End Sub 
 
     Public Function avgUnits(ByVal unitArray As ArrayList)
         Dim units As Integer = Nothing 
