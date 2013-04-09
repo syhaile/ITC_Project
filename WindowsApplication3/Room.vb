@@ -7,7 +7,7 @@
 Public Class Room
     'This class should make up what a room is (ID, location)
     Private m_id As String
-    Private m_capacity, m_building, m_roomNumber As Integer
+    Private m_capacity As Integer
 
     Public Sub New()
 
@@ -27,26 +27,6 @@ Public Class Room
         End Set
     End Property
 
-
-    Public Property Building() As Integer
-        Get
-            Return m_building
-        End Get
-        Set(ByVal value As Integer)
-            m_building = value
-        End Set
-    End Property
-
-    Public Property RoomNumber() As Integer
-        Get
-            Return m_roomNumber
-
-        End Get
-        Set(ByVal value As Integer)
-            m_roomNumber = value
-        End Set
-    End Property
-
     Public Property Capacity As Integer
         Get 
             Return m_capacity
@@ -58,6 +38,6 @@ Public Class Room
 
     'needs fixin
     Public Function getDescription()
-        Return "Room ID: " & m_id & vbCrLf & "Room Location: " 
+        Return "Room ID: " & m_id & vbCrLf & "Current Capacity: " & m_capacity
     End Function
 End Class

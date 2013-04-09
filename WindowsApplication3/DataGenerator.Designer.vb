@@ -66,7 +66,8 @@ Partial Class DataGenerator
         Me.btnRandomGenerate = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnStudentBrowse = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtStudentFileSrc = New System.Windows.Forms.TextBox()
+        Me.btnCurriculumNew = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Classes.SuspendLayout()
         CType(Me.nudClassesUnits, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -262,6 +263,7 @@ Partial Class DataGenerator
         '
         'Curriculum
         '
+        Me.Curriculum.Controls.Add(Me.btnCurriculumNew)
         Me.Curriculum.Controls.Add(Me.cboCurriculumYear)
         Me.Curriculum.Controls.Add(Me.Label12)
         Me.Curriculum.Controls.Add(Me.Label11)
@@ -395,7 +397,7 @@ Partial Class DataGenerator
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(41, 47)
+        Me.Label6.Location = New System.Drawing.Point(52, 93)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(59, 15)
         Me.Label6.TabIndex = 21
@@ -430,9 +432,9 @@ Partial Class DataGenerator
         'lboxCurriculumCourses
         '
         Me.lboxCurriculumCourses.FormattingEnabled = True
-        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(25, 65)
+        Me.lboxCurriculumCourses.Location = New System.Drawing.Point(21, 111)
         Me.lboxCurriculumCourses.Name = "lboxCurriculumCourses"
-        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(158, 303)
+        Me.lboxCurriculumCourses.Size = New System.Drawing.Size(166, 251)
         Me.lboxCurriculumCourses.TabIndex = 6
         '
         'btnCurriculumBrowse
@@ -468,7 +470,7 @@ Partial Class DataGenerator
         Me.Students.Controls.Add(Me.btnRandomGenerate)
         Me.Students.Controls.Add(Me.Label2)
         Me.Students.Controls.Add(Me.btnStudentBrowse)
-        Me.Students.Controls.Add(Me.TextBox2)
+        Me.Students.Controls.Add(Me.txtStudentFileSrc)
         Me.Students.Location = New System.Drawing.Point(4, 22)
         Me.Students.Name = "Students"
         Me.Students.Size = New System.Drawing.Size(574, 419)
@@ -513,12 +515,21 @@ Partial Class DataGenerator
         Me.btnStudentBrowse.Text = "Browse"
         Me.btnStudentBrowse.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txtStudentFileSrc
         '
-        Me.TextBox2.Location = New System.Drawing.Point(106, 12)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(254, 20)
-        Me.TextBox2.TabIndex = 2
+        Me.txtStudentFileSrc.Location = New System.Drawing.Point(106, 12)
+        Me.txtStudentFileSrc.Name = "txtStudentFileSrc"
+        Me.txtStudentFileSrc.Size = New System.Drawing.Size(254, 20)
+        Me.txtStudentFileSrc.TabIndex = 2
+        '
+        'btnCurriculumNew
+        '
+        Me.btnCurriculumNew.Location = New System.Drawing.Point(21, 47)
+        Me.btnCurriculumNew.Name = "btnCurriculumNew"
+        Me.btnCurriculumNew.Size = New System.Drawing.Size(117, 23)
+        Me.btnCurriculumNew.TabIndex = 34
+        Me.btnCurriculumNew.Text = "Create New"
+        Me.btnCurriculumNew.UseVisualStyleBackColor = True
         '
         'DataGenerator
         '
@@ -553,7 +564,7 @@ Partial Class DataGenerator
     Friend WithEvents Students As System.Windows.Forms.TabPage
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnStudentBrowse As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtStudentFileSrc As System.Windows.Forms.TextBox
     Friend WithEvents txtClassesPrerequisites As System.Windows.Forms.TextBox
     Friend WithEvents cboxClassesPrerequisites As System.Windows.Forms.CheckBox
     Friend WithEvents txtClassesCompanion As System.Windows.Forms.TextBox
@@ -583,4 +594,5 @@ Partial Class DataGenerator
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cboCurriculumYear As System.Windows.Forms.ComboBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents btnCurriculumNew As System.Windows.Forms.Button
 End Class

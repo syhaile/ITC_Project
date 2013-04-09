@@ -3,13 +3,32 @@
 Public Class DataGenerator
     Private tempCourseDB As Collection = Controller.getCourseDB
     Private tempCurriculumCollection As Collection = Controller.getCurriculumDB
+    Private classesLocalFile As Boolean = True
+    Private curriculumLocalFile As Boolean = True
+    Private studentLocalFile As Boolean = True
 
+    Private Function ReadFile(ByVal url As String) As StreamReader
+        Dim req As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(url)
+        Dim rep As System.Net.HttpWebResponse = req.GetResponse()
+        Dim str As New System.IO.StreamReader(rep.GetResponseStream)
 
+        Return str
+    End Function
 
     Private Sub btnClassesBrowse_Click(sender As Object, e As EventArgs) Handles btnClassesBrowse.Click
         txtClassesFileSRC.Enabled = True
-        txtClassesFileSRC.Text = "C:\courses.txt"
-        'pop up windows browser for file src
+        Dim input As Integer = MessageBox.Show("Is the file a local file?", "File Import", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+        If input = vbYes Then
+            Dim fbd As New OpenFileDialog
+            If fbd.ShowDialog = DialogResult.OK Then
+                txtClassesFileSRC.Text = fbd.FileName
+            End If
+            classesLocalFile = True
+        ElseIf input = vbNo Then
+            Dim fileLocation As String = InputBox("Please enter the web location of file you wish to upload", "Web File Import", "http://www.csupomona.edu/~mavenegas/courses.txt")
+            txtClassesFileSRC.Text = fileLocation
+            classesLocalFile = False
+        End If
     End Sub
 
     Private Sub txtCourseName_TextChanged(sender As Object, e As EventArgs) Handles txtCourseName.TextChanged
@@ -104,7 +123,7 @@ Public Class DataGenerator
     Private Sub btnCurriculumAddCore_Click(sender As Object, e As EventArgs) Handles btnCurriculumAddCore.Click
         If lboxCurriculumCourses.SelectedIndex = -1 Then
             MessageBox.Show("You must have a course selected in order to attach it to the current curriculum")
-        Else       
+        Else
             lboxCurriculumReqCore.Items.Add(lboxCurriculumCourses.SelectedItem)
             lboxCurriculumReqCore.SelectedItem = lboxCurriculumCourses.SelectedItem
             lboxCurriculumCourses.Items.Remove(lboxCurriculumCourses.SelectedItem)
@@ -134,12 +153,23 @@ Public Class DataGenerator
     End Sub
 
     Private Sub btnClassesImport_Click(sender As Object, e As EventArgs) Handles btnClassesImport.Click
-        Dim reader As New StreamReader(txtClassesFileSRC.Text)
-        Dim stringReader As String = reader.ReadLine()
+        Dim stringReader As String
+        Dim reader As StreamReader
+
+        If classesLocalFile = True Then
+            reader = New StreamReader(txtClassesFileSRC.Text)
+            stringReader = reader.ReadLine()
+        Else
+            reader = ReadFile(txtClassesFileSRC.Text)
+            stringReader = reader.ReadLine()
+
+        End If
 
 
-        While Not stringReader Is Nothing
-            Dim lineValue() As String = stringReader.Split(vbTab)
+
+
+        While Not StringReader Is Nothing
+            Dim lineValue() As String = StringReader.Split(vbTab)
 
             Dim preRequisitArray As New ArrayList
             Dim tempCourse As New Course
@@ -148,24 +178,35 @@ Public Class DataGenerator
 
             Dim preRequisit() As String = lineValue(2).Split(",")
             For index = 0 To preRequisit.Count - 1 Step 1
-                preRequisitArray.Add(index)
+                preRequisitArray.Add(preRequisit(index))
             Next
 
             tempCourse.PreRequisitCourse = preRequisitArray
             tempCourse.CompanionCourse = lineValue(3)
             tempCourseDB.Add(tempCourse, tempCourse.ID)
             lboxClassesCourses.Items.Add(tempCourse.ID)
-            stringReader = reader.ReadLine()
+            StringReader = reader.ReadLine()
         End While
 
         updateCourseDB()
         updateListbox()
     End Sub
 
- 
+
     Private Sub btnCurriculumBrowse_Click(sender As Object, e As EventArgs) Handles btnCurriculumBrowse.Click
         txtCurriculumFileSrc.Enabled = True
-        txtCurriculumFileSrc.Text = "C:\curriculumTest.txt"
+        Dim input As Integer = MessageBox.Show("Is the file a local file?", "File Import", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+        If input = vbYes Then
+            Dim fbd As New OpenFileDialog
+            If fbd.ShowDialog = DialogResult.OK Then
+                txtCurriculumFileSrc.Text = fbd.FileName
+            End If
+            curriculumLocalFile = True
+        ElseIf input = vbNo Then
+            Dim fileLocation As String = InputBox("Please enter the web location of file you wish to upload", "Web File Import", "http://www.csupomona.edu/~mavenegas/curriculumTest.txt")
+            txtCurriculumFileSrc.Text = fileLocation
+            curriculumLocalFile = False
+        End If
 
     End Sub
 
@@ -174,9 +215,16 @@ Public Class DataGenerator
     Private Sub btnCurriculumImport_Click(sender As Object, e As EventArgs) Handles btnCurriculumImport.Click
         Dim curriculumYear As String = ""
         Dim reqGE, reqCore, reqElect, reqGEStart, reqGEEnd, reqCoreStart, reqCoreEnd, reqElectStart, reqElectEnd As Integer
-        Dim reader As New StreamReader(txtCurriculumFileSrc.Text)
-        Dim stringReader As String = reader.ReadLine()
+        Dim stringReader As String
+        Dim reader As StreamReader
 
+        If curriculumLocalFile = True Then
+            reader = New StreamReader(txtCurriculumFileSrc.Text)
+        Else
+            reader = ReadFile(txtCurriculumFileSrc.Text)
+        End If
+
+        stringReader = reader.ReadLine()
 
         While Not stringReader Is Nothing
             Dim lineValue() As String = stringReader.Split(vbTab)
@@ -203,9 +251,10 @@ Public Class DataGenerator
             reqGEEnd = reqCore - 2
             reqCoreStart = reqCore + 1
             reqCoreEnd = reqElect - 2
-            reqElectStart = reqElect + 1
+            reqElectStart = reqElect + 2
             reqElectEnd = lineValue.Count - 1
 
+            Dim reqElectiveUnits As String = lineValue(reqElect + 1)
             Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
 
             'Get Required GE Courses
@@ -223,7 +272,7 @@ Public Class DataGenerator
                 reqElectArray.Add(lineValue(index))
             Next
 
-            
+
             'set Required GE Courses
             Dim tempReqGE As New RequiredGECourses
             For index = 0 To reqGEArray.Count - 1 Step 1
@@ -272,13 +321,14 @@ Public Class DataGenerator
     End Sub
 
     Private Sub updateComboBox()
+        cboCurriculumYear.Items.Clear()
         tempCurriculumCollection = Controller.getCurriculumDB
         Dim tempCurriculum As New Curriculum
         For Each tempCurriculum In tempCurriculumCollection
             cboCurriculumYear.Items.Add(tempCurriculum.ID)
         Next
     End Sub
-   
+
     Private Sub lboxCurriculumReqGE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lboxCurriculumReqGE.SelectedIndexChanged
         If Not lboxCurriculumReqGE.SelectedIndex = -1 Then
             lboxCurriculumElective.SelectedIndex = -1
@@ -409,4 +459,41 @@ Public Class DataGenerator
         Next
     End Sub
 
+    Private Sub btnCurriculumNew_Click(sender As Object, e As EventArgs) Handles btnCurriculumNew.Click
+        Dim year As String = 1999
+        Dim int As Integer
+        While Not (year >= 2000) And (year <= 2100)
+            Try
+                int = Integer.Parse(InputBox("Please enter the year this curriculum will be applied to", "Curriculum Year Required", "2014"))
+                year = int.ToString
+            Catch ex As Exception
+                MessageBox.Show("Please Enter a year between 2000 and 2100")
+            End Try
+
+        End While
+
+        Dim tempCurriculum As New Curriculum
+        tempCurriculum.ID = year
+        tempCurriculum.RequiredGECourses = New RequiredGECourses
+        tempCurriculum.RequiredCoreCourses = New RequiredCoreCourses
+        tempCurriculum.ElectiveCourses = New ElectiveCoreCourses
+        If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
+            tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+        Else
+            tempCurriculumCollection.Remove(tempCurriculum.ID)
+            tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
+        End If
+
+        Controller.updateCurriculumDB(tempCurriculumCollection)
+        updateComboBox()
+        cboCurriculumYear.SelectedItem = tempCurriculum.ID
+    End Sub
+
+    Private Sub btnStudentBrowse_Click(sender As Object, e As EventArgs) Handles btnStudentBrowse.Click
+        txtCurriculumFileSrc.Enabled = True
+        Dim fbd As New OpenFileDialog
+        If fbd.ShowDialog = DialogResult.OK Then
+            txtStudentFileSrc.Text = fbd.FileName
+        End If
+    End Sub
 End Class
