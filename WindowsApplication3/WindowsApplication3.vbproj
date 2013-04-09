@@ -121,6 +121,12 @@
     <Compile Include="Room.vb" />
     <Compile Include="RoomDatabase.vb" />
     <Compile Include="ScheduleDatabase.vb" />
+    <Compile Include="ScheduleView.Designer.vb">
+      <DependentUpon>ScheduleView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Section.vb" />
     <Compile Include="Schedule.vb" />
     <Compile Include="Student.vb" />
@@ -175,6 +181,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleView.resx">
+      <DependentUpon>ScheduleView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentView.resx">
       <DependentUpon>StudentView.vb</DependentUpon>
