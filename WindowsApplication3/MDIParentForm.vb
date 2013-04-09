@@ -84,7 +84,7 @@ Public Class MDIParentForm
         ChildForm.MdiParent = Me
 
         m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
+        ChildForm.Text = "Data Implementation: Window " & m_ChildFormNumber
 
         ChildForm.Show()
     End Sub
@@ -96,7 +96,7 @@ Public Class MDIParentForm
         ChildForm.MdiParent = Me
 
         m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
+        ChildForm.Text = "Student View: Window " & m_ChildFormNumber
 
         ChildForm.Show()
     End Sub
@@ -108,12 +108,20 @@ Public Class MDIParentForm
         ChildForm.MdiParent = Me
 
         m_ChildFormNumber += 1
-        ChildForm.Text = "Window " & m_ChildFormNumber
+        ChildForm.Text = "Curriculum View: Window " & m_ChildFormNumber
 
         ChildForm.Show()
     End Sub
 
     Private Sub SchedulesViewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SchedulesViewToolStripMenuItem.Click
+        ' Create a new instance of the child form.
+        Dim ChildForm As New ScheduleView
+        ' Make it a child of this MDI form before showing it.
+        ChildForm.MdiParent = Me
 
+        m_ChildFormNumber += 1
+        ChildForm.Text = "Schedule View: Window " & m_ChildFormNumber
+
+        ChildForm.Show()
     End Sub
 End Class

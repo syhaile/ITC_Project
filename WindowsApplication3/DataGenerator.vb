@@ -70,7 +70,13 @@ Public Class DataGenerator
             templist.Add(word)
         Next
         Dim course As New Course(txtCourseName.Text, nudClassesUnits.Value, txtClassesCompanion.Text, templist)
-        tempCourseDB.Add(course, course.ID)
+        If tempCourseDB.Contains(course.ID) = False Then
+            tempCourseDB.Add(course, course.ID)
+        Else
+            tempCourseDB.Remove(course.ID)
+            tempCourseDB.Add(course, course.ID)
+        End If
+
         updateCourseDB()
         updateListbox()
         txtCourseName.Text = ""
@@ -190,7 +196,13 @@ Public Class DataGenerator
 
                 tempCourse.PreRequisitCourse = preRequisitArray
                 tempCourse.CompanionCourse = lineValue(3)
-                tempCourseDB.Add(tempCourse, tempCourse.ID)
+                If tempCourseDB.Contains(tempCourse.ID) = False Then
+                    tempCourseDB.Add(tempCourse, tempCourse.ID)
+                Else
+                    tempCourseDB.Remove(tempCourse.ID)
+                    tempCourseDB.Add(tempCourse, tempCourse.ID)
+                End If
+
                 lboxClassesCourses.Items.Add(tempCourse.ID)
                 stringReader = reader.ReadLine()
             End While
