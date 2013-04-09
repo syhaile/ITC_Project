@@ -255,6 +255,7 @@ Public Class DataGenerator
             reqElectEnd = lineValue.Count - 1
 
             Dim reqElectiveUnits As String = lineValue(reqElect + 1)
+
             Dim reqGEArray, reqCoreArray, reqElectArray, allCourses As New ArrayList
 
             'Get Required GE Courses
@@ -296,6 +297,7 @@ Public Class DataGenerator
             tempCurriculum.ID = curriculumYear
             tempCurriculum.RequiredGECourses = tempReqGE
             tempCurriculum.RequiredCoreCourses = tempReqCore
+            tempCurriculum.ElectiveUnitsRequired = reqElectiveUnits
             tempCurriculum.ElectiveCourses = tempElective
             If Not tempCurriculumCollection.Contains(tempCurriculum.ID) Then
                 tempCurriculumCollection.Add(tempCurriculum, tempCurriculum.ID)
