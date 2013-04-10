@@ -144,8 +144,7 @@ Public Class CurriculumMetericView
 
     Public Sub time()
         ' Dim quarterCount As Integer = 0
-        Dim currentQuarter As String = ""
-        Dim currentYear As Integer = 0
+       
 
         Dim quarterArray As New ArrayList
         Dim totalQuarterArray As New ArrayList
@@ -158,6 +157,8 @@ Public Class CurriculumMetericView
 
         For Each enrollarray As ArrayList In quarterArray
             Dim quarterCount As Integer = 0
+            Dim currentQuarter As String = ""
+            Dim currentYear As Integer = 0
             For Each enroll As Enrollment In enrollarray
                 If ((Not enroll.Quarter = currentQuarter Or Not _
                     enroll.Year = currentYear) Or enroll.Quarter = Nothing) Then
@@ -190,8 +191,7 @@ Public Class CurriculumMetericView
             num = quarterArray.Count
             calc = quarters / num
         Next
-        avgTime = calc
-        Return avgTime
+        Return calc
 
     End Function 'cant test yet
 
