@@ -159,15 +159,15 @@ Partial Class DataGenerator
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(361, 46)
+        Me.Label5.Location = New System.Drawing.Point(330, 46)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(103, 15)
+        Me.Label5.Size = New System.Drawing.Size(184, 15)
         Me.Label5.TabIndex = 20
-        Me.Label5.Text = "Courses Added"
+        Me.Label5.Text = "Courses Added to Database"
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(428, 261)
+        Me.Button3.Location = New System.Drawing.Point(428, 353)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(97, 23)
         Me.Button3.TabIndex = 19
@@ -179,12 +179,12 @@ Partial Class DataGenerator
         Me.lboxClassesCourses.FormattingEnabled = True
         Me.lboxClassesCourses.Location = New System.Drawing.Point(327, 64)
         Me.lboxClassesCourses.Name = "lboxClassesCourses"
-        Me.lboxClassesCourses.Size = New System.Drawing.Size(198, 173)
+        Me.lboxClassesCourses.Size = New System.Drawing.Size(198, 277)
         Me.lboxClassesCourses.TabIndex = 18
         '
         'btnClassesAddClass
         '
-        Me.btnClassesAddClass.Location = New System.Drawing.Point(327, 261)
+        Me.btnClassesAddClass.Location = New System.Drawing.Point(327, 353)
         Me.btnClassesAddClass.Name = "btnClassesAddClass"
         Me.btnClassesAddClass.Size = New System.Drawing.Size(97, 23)
         Me.btnClassesAddClass.TabIndex = 17
@@ -194,7 +194,7 @@ Partial Class DataGenerator
         'txtClassesPrerequisites
         '
         Me.txtClassesPrerequisites.Enabled = False
-        Me.txtClassesPrerequisites.Location = New System.Drawing.Point(137, 219)
+        Me.txtClassesPrerequisites.Location = New System.Drawing.Point(137, 275)
         Me.txtClassesPrerequisites.Name = "txtClassesPrerequisites"
         Me.txtClassesPrerequisites.Size = New System.Drawing.Size(100, 20)
         Me.txtClassesPrerequisites.TabIndex = 16
@@ -203,7 +203,7 @@ Partial Class DataGenerator
         '
         Me.cboxClassesPrerequisites.AutoSize = True
         Me.cboxClassesPrerequisites.Enabled = False
-        Me.cboxClassesPrerequisites.Location = New System.Drawing.Point(114, 196)
+        Me.cboxClassesPrerequisites.Location = New System.Drawing.Point(114, 249)
         Me.cboxClassesPrerequisites.Name = "cboxClassesPrerequisites"
         Me.cboxClassesPrerequisites.Size = New System.Drawing.Size(86, 17)
         Me.cboxClassesPrerequisites.TabIndex = 15
@@ -213,7 +213,7 @@ Partial Class DataGenerator
         'txtClassesCompanion
         '
         Me.txtClassesCompanion.Enabled = False
-        Me.txtClassesCompanion.Location = New System.Drawing.Point(137, 159)
+        Me.txtClassesCompanion.Location = New System.Drawing.Point(137, 207)
         Me.txtClassesCompanion.Name = "txtClassesCompanion"
         Me.txtClassesCompanion.Size = New System.Drawing.Size(100, 20)
         Me.txtClassesCompanion.TabIndex = 14
@@ -222,7 +222,7 @@ Partial Class DataGenerator
         '
         Me.cboxClassesCompanion.AutoSize = True
         Me.cboxClassesCompanion.Enabled = False
-        Me.cboxClassesCompanion.Location = New System.Drawing.Point(114, 136)
+        Me.cboxClassesCompanion.Location = New System.Drawing.Point(114, 181)
         Me.cboxClassesCompanion.Name = "cboxClassesCompanion"
         Me.cboxClassesCompanion.Size = New System.Drawing.Size(107, 17)
         Me.cboxClassesCompanion.TabIndex = 13
@@ -232,7 +232,7 @@ Partial Class DataGenerator
         'nudClassesUnits
         '
         Me.nudClassesUnits.Enabled = False
-        Me.nudClassesUnits.Location = New System.Drawing.Point(139, 99)
+        Me.nudClassesUnits.Location = New System.Drawing.Point(139, 139)
         Me.nudClassesUnits.Maximum = New Decimal(New Integer() {4, 0, 0, 0})
         Me.nudClassesUnits.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nudClassesUnits.Name = "nudClassesUnits"
@@ -245,7 +245,7 @@ Partial Class DataGenerator
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(93, 99)
+        Me.Label8.Location = New System.Drawing.Point(93, 139)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(40, 15)
         Me.Label8.TabIndex = 11
@@ -253,7 +253,7 @@ Partial Class DataGenerator
         '
         'txtCourseName
         '
-        Me.txtCourseName.Location = New System.Drawing.Point(137, 64)
+        Me.txtCourseName.Location = New System.Drawing.Point(137, 99)
         Me.txtCourseName.Name = "txtCourseName"
         Me.txtCourseName.Size = New System.Drawing.Size(100, 20)
         Me.txtCourseName.TabIndex = 4
@@ -262,7 +262,7 @@ Partial Class DataGenerator
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(37, 65)
+        Me.Label4.Location = New System.Drawing.Point(37, 100)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(94, 15)
         Me.Label4.TabIndex = 3
@@ -329,9 +329,9 @@ Partial Class DataGenerator
         '
         Me.btnCurriculumNew.Location = New System.Drawing.Point(21, 47)
         Me.btnCurriculumNew.Name = "btnCurriculumNew"
-        Me.btnCurriculumNew.Size = New System.Drawing.Size(117, 23)
+        Me.btnCurriculumNew.Size = New System.Drawing.Size(166, 43)
         Me.btnCurriculumNew.TabIndex = 34
-        Me.btnCurriculumNew.Text = "Create New"
+        Me.btnCurriculumNew.Text = "Create New Curriculum"
         Me.btnCurriculumNew.UseVisualStyleBackColor = True
         '
         'cboCurriculumYear
@@ -440,11 +440,11 @@ Partial Class DataGenerator
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(52, 93)
+        Me.Label6.Location = New System.Drawing.Point(24, 93)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(59, 15)
+        Me.Label6.Size = New System.Drawing.Size(144, 15)
         Me.Label6.TabIndex = 21
-        Me.Label6.Text = "Courses"
+        Me.Label6.Text = "Courses on Database"
         '
         'btnCurriculumAddGE
         '
@@ -751,7 +751,7 @@ Partial Class DataGenerator
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(6, 226)
+        Me.Label15.Location = New System.Drawing.Point(23, 126)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(215, 16)
         Me.Label15.TabIndex = 12
@@ -761,7 +761,7 @@ Partial Class DataGenerator
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(6, 200)
+        Me.Label14.Location = New System.Drawing.Point(23, 100)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(203, 16)
         Me.Label14.TabIndex = 11
@@ -769,7 +769,7 @@ Partial Class DataGenerator
         '
         'nudRoomsStudents
         '
-        Me.nudRoomsStudents.Location = New System.Drawing.Point(240, 222)
+        Me.nudRoomsStudents.Location = New System.Drawing.Point(257, 122)
         Me.nudRoomsStudents.Maximum = New Decimal(New Integer() {200, 0, 0, 0})
         Me.nudRoomsStudents.Name = "nudRoomsStudents"
         Me.nudRoomsStudents.Size = New System.Drawing.Size(120, 20)
@@ -779,7 +779,7 @@ Partial Class DataGenerator
         '
         'nudRoomsAvailable
         '
-        Me.nudRoomsAvailable.Location = New System.Drawing.Point(240, 196)
+        Me.nudRoomsAvailable.Location = New System.Drawing.Point(257, 96)
         Me.nudRoomsAvailable.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
         Me.nudRoomsAvailable.Name = "nudRoomsAvailable"
         Me.nudRoomsAvailable.Size = New System.Drawing.Size(120, 20)
@@ -789,7 +789,7 @@ Partial Class DataGenerator
         '
         'btnRoomsGenerate
         '
-        Me.btnRoomsGenerate.Location = New System.Drawing.Point(199, 302)
+        Me.btnRoomsGenerate.Location = New System.Drawing.Point(216, 202)
         Me.btnRoomsGenerate.Name = "btnRoomsGenerate"
         Me.btnRoomsGenerate.Size = New System.Drawing.Size(75, 23)
         Me.btnRoomsGenerate.TabIndex = 8
