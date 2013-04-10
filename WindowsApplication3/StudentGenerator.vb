@@ -7,6 +7,8 @@
     Private m_currentQuarter As String
     Private m_currentYear As Integer
     Private m_quatersToDropout As Integer
+    Private m_randomClassSelection As Boolean
+    Private m_classesPerQuarter As Integer
     Private rng As New Random
 
     'db necessary to generate enrollments for students
@@ -30,6 +32,8 @@
         m_currentQuarter = "Spring"
         m_currentYear = 2013
         m_quatersToDropout = 3
+        m_randomClassSelection = true
+        m_classesPerQuarter = 4
         'create values for distribution
         ''generate list of curriculums
         For Each c As Curriculum In curricdb
@@ -37,7 +41,6 @@
             m_curriculumDistribution.Add(1.0/curricdb.Count)
         Next
 
-        'redim m_curriculumDistribution(m_curriculumdb.
     End Sub
 
     Public Function generateStudents() As ArrayList 
@@ -87,9 +90,9 @@
         Dim rng As New Random
 
         For dropcounter As Integer = 0 to studentsToDrop Step 1
-            Dim tempindex As Integer = rng.Next() mod studentList.Count -1
+            Dim tempindex As Integer = rng.Next() mod studentList.Count 
             While(isDuplicateID(dropoutstudents, studentList.Item(tempindex).ID))
-                tempindex = rng.Next() mod studentList.Count -1
+                tempindex = rng.Next() mod studentList.Count 
             End While
             dropoutstudents.Add(studentList.Item(tempindex))
         Next
@@ -101,7 +104,11 @@
                 totalquarters -= 3
             End If
             For quartercounter As Integer = 0 To calcQuatertersTaken(stud) Step 1
-                Dim coursestaking As Integer = (rng.Next mod 3) + 1
+                Dim coursestaking As Integer = m_classesPerQuarter - 1
+                If(m_randomClassSelection) Then
+                    coursestaking = (rng.Next mod 3) + 1                    
+                End If
+                
                 For classcounter As Integer = 0 To coursestaking Step 1
                     Dim tempsection As Section = generateRandomSection(stud.CurrentCurriculum)
                     While (Not isValidSection(stud, tempsection))
@@ -115,6 +122,69 @@
 
         Return studentList
     End Function
+
+    Property NumberOfStudents As Integer
+        Get
+            Return m_numberStudents
+        End Get
+        Set(value As Integer)
+            m_numberStudents = value
+        End Set
+    End Property
+
+    Property DropoutRate As Double
+        Get
+            Return m_dropoutRate
+        End Get
+        Set(value As Double)
+            m_dropoutRate = value
+        End Set
+    End Property
+
+    Property ClassesPerQuarter As Integer
+        Get
+            Return m_classesPerQuarter
+        End Get
+        Set(value As Integer)
+            m_classesPerQuarter = value
+        End Set
+    End Property
+
+    Property CurrentQuarter As String
+        Get
+            Return m_currentQuarter
+        End Get
+        Set(value As String)
+            m_currentQuarter = value
+        End Set
+    End Property
+
+    Property CurrentYear As String
+        Get
+            Return m_currentYear
+        End Get
+        Set(value As String)
+            m_currentYear = value
+        End Set
+    End Property
+
+    Property RandomClassesPerQuarter As Boolean
+        Get
+            Return m_randomClassSelection
+        End Get
+        Set(value As Boolean)
+            m_randomClassSelection = value
+        End Set
+    End Property
+
+    Property CurriculumDistribution As ArrayList
+        Get
+            Return m_curriculumDistribution
+        End Get
+        Set(value As ArrayList)
+            m_curriculumDistribution = value
+        End Set
+    End Property
 
     Private Function generateCode() As String
         Dim code As String = ""
@@ -250,7 +320,7 @@
 
     Private Function calcYear(ByVal currentCounter As Integer, ByVal stud As Student) As Integer
         Dim value As Integer = stud.EnrolledYear
-        value += currentCounter/3
+        value += currentCounter / 3
 
         Return value
     End Function

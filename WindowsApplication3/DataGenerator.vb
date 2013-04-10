@@ -6,6 +6,7 @@ Public Class DataGenerator
     Private classesLocalFile As Boolean = True
     Private curriculumLocalFile As Boolean = True
     Private studentLocalFile As Boolean = True
+    Private curriculumDistribution As New ArrayList
 
     Private Function ReadFile(ByVal url As String) As StreamReader
         Dim req As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create(url)
@@ -70,7 +71,13 @@ Public Class DataGenerator
             templist.Add(word)
         Next
         Dim course As New Course(txtCourseName.Text, nudClassesUnits.Value, txtClassesCompanion.Text, templist)
-        tempCourseDB.Add(course, course.ID)
+        If tempCourseDB.Contains(course.ID) = False Then
+            tempCourseDB.Add(course, course.ID)
+        Else
+            tempCourseDB.Remove(course.ID)
+            tempCourseDB.Add(course, course.ID)
+        End If
+
         updateCourseDB()
         updateListbox()
         txtCourseName.Text = ""
@@ -145,12 +152,32 @@ Public Class DataGenerator
     End Sub
 
     Private Sub btnRandomGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRandomGenerate.Click
+        'check for valid data
+        ''
         Dim myGenerator As New StudentGenerator(Controller.getCurriculumDB, Controller.getCourseDB)
+        'pull from controls
+        myGenerator.NumberOfStudents = nudNumberofStudentsgenerated.Value
+        myGenerator.DropoutRate = nudDropRate.Value / 100
+        myGenerator.CurrentQuarter = cbxCurrentQuarter.SelectedItem
+        myGenerator.CurrentYear = Integer.Parse(nudCurrentYear.value)
+        myGenerator.RandomClassesPerQuarter = chkRandClassGen.Checked
+        myGenerator.ClassesPerQuarter = nudClassesPerQuarter.Value
+        myGenerator.CurriculumDistribution = curriculumDistribution
+
         Dim mylist As ArrayList = myGenerator.generateStudents
+        Dim mycollection As Collection = Controller.getStudentDB
         For Each st As Student In mylist
-            testbox.Text += st.ID + " " + vbNewLine
+            'testbox.Text += st.ID + " " + st.Name + vbNewLine
+            mycollection.add(st,st.ID)
         Next
+        For Each st As Student In Controller.getStudentDB
+            testbox.Text += st.ID + " " + st.Name + vbNewLine
+        Next
+
+
     End Sub
+
+
 
     Private Sub btnClassesImport_Click(sender As Object, e As EventArgs) Handles btnClassesImport.Click
         If Not txtClassesFileSRC.Text = "" Then
@@ -184,7 +211,13 @@ Public Class DataGenerator
 
                 tempCourse.PreRequisitCourse = preRequisitArray
                 tempCourse.CompanionCourse = lineValue(3)
-                tempCourseDB.Add(tempCourse, tempCourse.ID)
+                If tempCourseDB.Contains(tempCourse.ID) = False Then
+                    tempCourseDB.Add(tempCourse, tempCourse.ID)
+                Else
+                    tempCourseDB.Remove(tempCourse.ID)
+                    tempCourseDB.Add(tempCourse, tempCourse.ID)
+                End If
+
                 lboxClassesCourses.Items.Add(tempCourse.ID)
                 stringReader = reader.ReadLine()
             End While
@@ -548,5 +581,36 @@ Public Class DataGenerator
             Controller.updateRoomDB(tempRoomDB.MasterDatabase)
         Next
     End Sub
-    
+
+    Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabControl1.SelectedIndexChanged
+        If (TabControl1.SelectedIndex = 2) Then
+            'intitialize student tab
+            Dim myCurricColl As Collection = Controller.getCurriculumDB
+            For Each temp In myCurricColl
+                cbxCurriculumYear.Items.Add(temp.ID)
+                curriculumDistribution.Add(1.0/myCurricColl.Count)
+            Next
+            cbxCurrentQuarter.SelectedIndex = 2
+            cbxCurriculumYear.SelectedIndex = cbxCurriculumYear.Items.Count -1
+
+        End If
+    End Sub
+
+    Private Sub cbxCurriculumYear_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxCurriculumYear.SelectedValueChanged
+        txtCurriculumDist.Text = (curriculumDistribution.Item(cbxCurriculumYear.SelectedIndex) * 100).ToString
+        
+    End Sub
+
+
+    Private Sub txtCurriculumDist_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCurriculumDist.TextChanged
+        If(Not cbxCurriculumYear.SelectedIndex = -1)
+            Dim result As Double
+            If(Double.TryParse(txtCurriculumDist.Text, result))
+                result /= 100
+                curriculumDistribution.Item(cbxCurriculumYear.SelectedIndex) = result
+            End If
+        End If
+        
+    End Sub
+
 End Class

@@ -7,6 +7,8 @@
         Dim tempRoomDB As Collection = Controller.getRoomDB
         Dim tempStudentDB As Collection = Controller.getStudentDB
         Dim tempScheduleDB As Collection = Controller.getScheduleDB
+        Dim tempCurriculumDB As Collection = Controller.getCurriculumDB
+
         Dim course As New Course("CS101", 4, "", New ArrayList())
         tempCourseDB.Add(course, course.ID)
 
@@ -62,6 +64,7 @@
         curriculum.RequiredGECourses = tempReqGECourses
         curriculum.ElectiveCourses = tempElectiveCoreCourses
         curriculum.ElectiveUnitsRequired = 20
+        tempCurriculumDB.Add(curriculum)
 
         Dim student As New Student("112233", "Miguel Venegas", "2012", "Fall", True, curriculum)
         student.addCourseTakenWithGrade(sect1, "A")
@@ -88,6 +91,7 @@
         scheduler.addStudentID("112233")
         tempScheduleDB.Add(scheduler, scheduler.ScheduleID)
 
+        Controller.updateCurriculumDB(tempCurriculumDB)
         Controller.updateCourseDB(tempCourseDB)
         Controller.updateRoomDB(tempRoomDB)
         Controller.updateScheduleDB(tempScheduleDB)
