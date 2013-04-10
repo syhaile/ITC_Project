@@ -320,7 +320,7 @@
 
     Private Function calcYear(ByVal currentCounter As Integer, ByVal stud As Student) As Integer
         Dim value As Integer = stud.EnrolledYear
-        value += currentCounter/3
+        value += currentCounter / 3
 
         Return value
     End Function

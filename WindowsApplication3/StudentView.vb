@@ -1,5 +1,7 @@
 ﻿Public Class StudentView
 
+    'TODO: Average units taken calculation
+
     Dim students As Collection = Controller.getStudentDB()
     Dim studentList As New List(Of Student)
 
