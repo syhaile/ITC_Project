@@ -14,6 +14,8 @@ Public Class CurriculumMetericView
     Dim tempCourse As New Course
     Dim enrollment As New Enrollment
 
+    Dim enrollmentList As New List(Of Enrollment)
+
     'For displaying information about students from their curriculums
     Dim students As Collection = Controller.getStudentDB
     Dim studentList As New List(Of Student)
@@ -40,6 +42,9 @@ Public Class CurriculumMetericView
             curriculumList.Add(tempCurriculum)
         Next
 
+        For Each tempStudent In students
+            studentList.Add(tempStudent)
+        Next
     End Sub
 
     'handles user changes to the selected curriculum year 
@@ -50,6 +55,7 @@ Public Class CurriculumMetericView
         populateCurriculums()
         calcedGraduated()
         Units()
+        time()
 
     End Sub 
 
@@ -134,23 +140,44 @@ Public Class CurriculumMetericView
 
     Public Sub calcedDropped()
 
-    End Sub
+    End Sub 'not finished 
 
     Public Sub time()
+        ' Dim quarterCount As Integer = 0
+        Dim currentQuarter As String = ""
+        Dim currentYear As Integer = 0
 
         Dim quarterArray As New ArrayList
-        Dim course As New Course
-        Dim courseDB As Collection = Controller.getCourseDB()
+        Dim totalQuarterArray As New ArrayList
 
-        m_maxTime = (maxTime(quarterArray)).ToString
-        m_minTime = (minTime(quarterArray)).ToString
-        m_avgTime = (avgTime(quarterArray)).ToString
+        For Each std As Student In studentList
+            If std.CurrentCurriculum.ID = curriculumList(cmbxCurriclum.SelectedIndex).ID Then
+                quarterArray.Add(std.SectionsTaken)
+            End If
+        Next
+
+        For Each enrollarray As ArrayList In quarterArray
+            Dim quarterCount As Integer = 0
+            For Each enroll As Enrollment In enrollarray
+                If ((Not enroll.Quarter = currentQuarter Or Not _
+                    enroll.Year = currentYear) Or enroll.Quarter = Nothing) Then
+                    quarterCount += 1
+                    currentQuarter = enroll.Quarter
+                    currentYear = enroll.Year
+                End If
+            Next
+            totalQuarterArray.Add(quarterCount)
+        Next
+
+        m_maxTime = (maxTime(totalQuarterArray)).ToString
+        m_minTime = (minTime(totalQuarterArray)).ToString
+        m_avgTime = (avgTime(totalQuarterArray)).ToString
 
         lblMaxTime.Text = "Maximum quarters attended: " + m_maxTime
         lblMinTime.Text = "Minimum quarters attended: " + m_minTime
         lblAvgTime.Text = "Average quarters attended: " + m_avgTime
 
-    End Sub
+    End Sub 'This needs much work 
 
     Public Function avgTime(ByVal quarterArray As ArrayList) 'in quarters 
         Dim quarters As Integer = Nothing
@@ -166,7 +193,7 @@ Public Class CurriculumMetericView
         avgTime = calc
         Return avgTime
 
-    End Function
+    End Function 'cant test yet
 
     Public Function minTime(ByVal quarterArray As ArrayList) 'in quarters 
         Dim min As Integer = Nothing
@@ -181,7 +208,7 @@ Public Class CurriculumMetericView
         minTime = min
         Return minTime
 
-    End Function
+    End Function 'cant test yet
 
     Public Function maxTime(ByVal quarterArray As ArrayList) 'in quarters 
         Dim max As Integer = Nothing
@@ -196,64 +223,51 @@ Public Class CurriculumMetericView
         maxTime = max
         Return maxTime
 
-    End Function
+    End Function 'cant test yet
+
+
+
+
+
 
     ' these four blocks of code are used to determine unit metrics 
     Public Sub Units()
-        'Dim unitsTaken As Integer
+
         Dim unitArray As new ArrayList
-        'Dim course As New Course
-        'Dim courseDB As Collection = Controller.getCourseDB()
+        Dim course As New Course
+        Dim courseDB As Collection = Controller.getCourseDB()
          
         'Dim coursesTakenList As ArrayList = tempStudent.SectionsTaken
         
-        'Dim tempArray As New ArrayList
+        Dim sectionArray As New ArrayList
 
-        For Each id In tempStudent.ID
-
-            MessageBox.Show(id)
+        For Each std As Student In studentList
+            If std.CurrentCurriculum.ID = curriculumList(cmbxCurriclum.SelectedIndex).ID Then
+                sectionArray.Add(std.SectionsTaken)
+            End If
         Next
 
-        ''For Each cid In tempStudent.CurrentCurriculum.ID
-        ''    If cid = curriculumList(cmbxCurriclum.SelectedIndex).ID And tempStudent.CurrentCurriculum.ID Then
-        ''        tempArray.Add(tempStudent.ID)
-        ''    Else
-        ''        'do nothing
-        ''    End If
-        ''Next
+        For Each enrollarray As ArrayList In sectionArray
+            Dim unitsTaken As Integer = 0
+            For Each enroll As Enrollment In enrollarray
+                tempCourse = courses.Item(enroll.SectionTaken.CourseID)
+                unitsTaken += tempCourse.Units
 
-
-
-        'For Each curriculum In tempStudent.CurrentCurriculum.ID
-
-        '    For Each compare In curriculumList(cmbxCurriclum.SelectedIndex).ID
-
-        '        If compare = curriculum then 
-        '            tempArray.Add(tempStudent.ID)
-
-        '        End If
-
-        '    Next 
-        'Next
-
-
-        'For Each Me.enrollment In coursesTakenList
-        '    tempCourse = courses.Item(enrollment.SectionTaken.CourseID)
-        '    unitsTaken += course.Units
-
-        '    unitArray.Add(unitsTaken)
-        'Next 
+            Next
+            unitArray.Add(unitsTaken)
+        Next
 
         m_maxUnits = (maxUnits(unitArray)).ToString
         m_minUnits = (minUnits(unitArray)).ToString
         m_avgUnits = (avgUnits(unitArray)).ToString
-        m_unitsLeft = (avgUnitsRemaining()).ToString
+        ' m_unitsLeft = (avgUnitsRemaining()).ToString
 
         lblMaxUnit.Text = "Maximum units taken: " + m_maxUnits
         lblMinUnit.Text = "Minimum units taken: " + m_minUnits
         lblAvgUnits.Text = "Average units taken: " + m_avgUnits
-        lblAvgRemaining.Text = "Average Remaining Units: " + m_unitsLeft
-    End Sub
+        'lblAvgRemaining.Text = "Average Remaining Units: " + m_unitsLeft
+
+    End Sub 'works for avg, max, and min 
 
     Public Function avgUnits(ByVal unitArray As ArrayList)
         Dim units As Integer = Nothing 
@@ -262,7 +276,7 @@ Public Class CurriculumMetericView
         For i As Integer = 0 to (unitArray.Count - 1)
             units += unitArray(i) 
 
-            unitArray.Count.ToString 
+            'unitArray.Count.ToString 
             num = unitArray.Count
             calc = units / num
         Next
@@ -273,7 +287,7 @@ Public Class CurriculumMetericView
     Public Function avgUnitsRemaining()
         avgUnitsRemaining = "0"
         Return avgUnitsRemaining
-    End Function
+    End Function 'not working 
 
     Public Function maxUnits(ByVal unitArray As ArrayList)
         Dim max As Integer = Nothing 

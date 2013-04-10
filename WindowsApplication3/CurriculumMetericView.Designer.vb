@@ -46,6 +46,7 @@ Partial Class CurriculumMetericView
         Me.lblGrad = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.lstBoxTest = New System.Windows.Forms.ListBox()
         Me.TabPage2.SuspendLayout()
         Me.ClassBox.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -56,6 +57,7 @@ Partial Class CurriculumMetericView
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.lstBoxTest)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.cmbxCurriclum)
         Me.TabPage2.Controls.Add(Me.ClassBox)
@@ -316,6 +318,14 @@ Partial Class CurriculumMetericView
         Me.TabControl1.Size = New System.Drawing.Size(809, 593)
         Me.TabControl1.TabIndex = 10
         '
+        'lstBoxTest
+        '
+        Me.lstBoxTest.FormattingEnabled = True
+        Me.lstBoxTest.Location = New System.Drawing.Point(157, 180)
+        Me.lstBoxTest.Name = "lstBoxTest"
+        Me.lstBoxTest.Size = New System.Drawing.Size(218, 316)
+        Me.lstBoxTest.TabIndex = 21
+        '
         'CurriculumMetericView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -363,4 +373,5 @@ Partial Class CurriculumMetericView
     Friend WithEvents ClassBox As System.Windows.Forms.GroupBox
     Friend WithEvents cmbxCurriclum As System.Windows.Forms.ComboBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lstBoxTest As System.Windows.Forms.ListBox
 End Class
