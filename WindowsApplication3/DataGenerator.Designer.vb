@@ -71,7 +71,7 @@ Partial Class DataGenerator
         Me.nudClassesPerQuarter = New System.Windows.Forms.NumericUpDown()
         Me.lblClassesPerQuarter = New System.Windows.Forms.Label()
         Me.lblCurrentYear = New System.Windows.Forms.Label()
-        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
+        Me.nudCurrentYear = New System.Windows.Forms.NumericUpDown()
         Me.lblCurrentQuarter = New System.Windows.Forms.Label()
         Me.nudDropRate = New System.Windows.Forms.NumericUpDown()
         Me.lblDropRate = New System.Windows.Forms.Label()
@@ -100,7 +100,7 @@ Partial Class DataGenerator
         Me.Curriculum.SuspendLayout()
         Me.Students.SuspendLayout()
         CType(Me.nudClassesPerQuarter, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudCurrentYear, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudDropRate, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudNumberofStudentsgenerated, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Rooms.SuspendLayout()
@@ -517,7 +517,7 @@ Partial Class DataGenerator
         Me.Students.Controls.Add(Me.nudClassesPerQuarter)
         Me.Students.Controls.Add(Me.lblClassesPerQuarter)
         Me.Students.Controls.Add(Me.lblCurrentYear)
-        Me.Students.Controls.Add(Me.NumericUpDown3)
+        Me.Students.Controls.Add(Me.nudCurrentYear)
         Me.Students.Controls.Add(Me.lblCurrentQuarter)
         Me.Students.Controls.Add(Me.nudDropRate)
         Me.Students.Controls.Add(Me.lblDropRate)
@@ -608,16 +608,16 @@ Partial Class DataGenerator
         Me.lblCurrentYear.TabIndex = 15
         Me.lblCurrentYear.Text = "Current Year"
         '
-        'NumericUpDown3
+        'nudCurrentYear
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(29, 195)
-        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {3000, 0, 0, 0})
-        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(120, 20)
-        Me.NumericUpDown3.TabIndex = 14
-        Me.NumericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.NumericUpDown3.Value = New Decimal(New Integer() {2013, 0, 0, 0})
+        Me.nudCurrentYear.Location = New System.Drawing.Point(29, 195)
+        Me.nudCurrentYear.Maximum = New Decimal(New Integer() {3000, 0, 0, 0})
+        Me.nudCurrentYear.Minimum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.nudCurrentYear.Name = "nudCurrentYear"
+        Me.nudCurrentYear.Size = New System.Drawing.Size(120, 20)
+        Me.nudCurrentYear.TabIndex = 14
+        Me.nudCurrentYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.nudCurrentYear.Value = New Decimal(New Integer() {2013, 0, 0, 0})
         '
         'lblCurrentQuarter
         '
@@ -848,7 +848,7 @@ Partial Class DataGenerator
         Me.Students.ResumeLayout(False)
         Me.Students.PerformLayout()
         CType(Me.nudClassesPerQuarter, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudCurrentYear, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudDropRate, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudNumberofStudentsgenerated, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Rooms.ResumeLayout(False)
@@ -918,7 +918,7 @@ Partial Class DataGenerator
     Friend WithEvents nudClassesPerQuarter As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblClassesPerQuarter As System.Windows.Forms.Label
     Friend WithEvents lblCurrentYear As System.Windows.Forms.Label
-    Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents nudCurrentYear As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblCurrentQuarter As System.Windows.Forms.Label
     Friend WithEvents nudDropRate As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblDropRate As System.Windows.Forms.Label

@@ -153,13 +153,13 @@ Public Class DataGenerator
 
     Private Sub btnRandomGenerate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRandomGenerate.Click
         'check for valid data
-
+        ''
         Dim myGenerator As New StudentGenerator(Controller.getCurriculumDB, Controller.getCourseDB)
         'pull from controls
         myGenerator.NumberOfStudents = nudNumberofStudentsgenerated.Value
         myGenerator.DropoutRate = nudDropRate.Value / 100
         myGenerator.CurrentQuarter = cbxCurrentQuarter.SelectedItem
-        myGenerator.CurrentYear = Integer.Parse(cbxCurriculumYear.SelectedItem)
+        myGenerator.CurrentYear = Integer.Parse(nudCurrentYear.value)
         myGenerator.RandomClassesPerQuarter = chkRandClassGen.Checked
         myGenerator.ClassesPerQuarter = nudClassesPerQuarter.Value
         myGenerator.CurriculumDistribution = curriculumDistribution
@@ -590,13 +590,15 @@ Public Class DataGenerator
                 cbxCurriculumYear.Items.Add(temp.ID)
                 curriculumDistribution.Add(1.0/myCurricColl.Count)
             Next
-            
+            cbxCurrentQuarter.SelectedIndex = 2
+            cbxCurriculumYear.SelectedIndex = cbxCurriculumYear.Items.Count -1
 
         End If
     End Sub
 
     Private Sub cbxCurriculumYear_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cbxCurriculumYear.SelectedValueChanged
         txtCurriculumDist.Text = (curriculumDistribution.Item(cbxCurriculumYear.SelectedIndex) * 100).ToString
+        
     End Sub
 
 
